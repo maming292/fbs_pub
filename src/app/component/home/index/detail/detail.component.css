@@ -1,0 +1,14 @@
+.cban{height: 100%;float: left;}
+.right{background: url(../../../../../assets/img/building.png)no-repeat 6% 106%;background-size: 44% 77%;}
+.r_right{width: 53%;height: 100%;padding: 10px 15px;}
+.first{background: #5fc2db}.second{background: #55c4ab}.first,.second{color: white;border-radius: 8px;width: 90%;height: 45px;line-height: 45px;text-align: center;margin: auto}
+.inclass{width: 200px;}.ui-button{height:35px!important;}
+.bld{text-align:center;line-height:45px;font-weight: bold;font-size: 17px;}
+.b_bd{text-align: center;border-bottom: 2px solid dimgray;font-size: 17px;font-weight: bold;line-height: 3;width: 82%!important;margin: auto;position: relative;}
+.b_bd::after{ content:"";width:0;height:0;position:absolute;left: calc(50% - 5px);top: 103%;border-top: solid 4px dimgray;border-left: solid 6px transparent;border-right: solid 6px transparent;}
+.ht-25,.ht-50,.ht-33{width: 100%;position: relative }.ht-25{height: 25%;}.ht-50{height: 50%;}.ht-33{height: 33.333333%;}
+.wid-50,.wid-33{height: 100%;width: 50%;}.wid-33{width: 33.333333%;}.inft{padding: 20px 0;}
+.inft>div{float: left;}.inftext{font-size: 22px;font-weight: bold;text-align: left;line-height: 3.5;}
+.bigfont{color: #00b89f;font-size: 55px;position: absolute;top:-66px;}
+.clr1,.clr2,.clr3{text-align: center;font-size: 17px;font-weight: bold;line-height: 3}
+.clr1{color: #5fc2db}.clr2{color: #55c4ab}.clr3{color: #e3b55d}

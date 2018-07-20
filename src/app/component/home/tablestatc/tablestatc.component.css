@@ -1,0 +1,118 @@
+.tables {
+	padding: 30px;
+}
+/*.tables *{
+	margin: auto;
+	padding: inherit;
+}*/
+.tables>div {
+	border: 1px solid #E2E2E2;
+	background: #fff;
+}
+.backs{
+	padding: 10px 20px;
+	text-align: right;
+	border-bottom: 1px solid #E2E2E2 ;
+	
+}
+.seach{
+	padding: 20px 30px;
+}
+.seach select{
+	height: 50px;
+	width: 200px;
+	padding: 0 15px;
+	border: 1px solid #E2E2E2;
+	border-radius: 5px;
+	margin-right: 20px;
+}
+.times{
+	position: relative;
+	display: inline-block;
+}
+.times input{
+	height: 50px;
+	width: 200px;
+	padding: 0 15px;
+	border: 1px solid #E2E2E2;
+	border-radius: 5px;
+	margin-right: 20px;
+}
+.times span{
+	position: absolute;
+	top: 15px;
+	right: 30px;
+	font-size: 20px;
+	color: #999;
+}
+
+.out{
+	display: inline-block;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	width: 150px;
+	padding: 0 15px;
+	color: #fff;
+	border-radius: 5px;
+	background: #1DBC9B;
+	float: right;
+	font-size: 18px;
+}
+.tablecontent{
+	overflow: scroll;
+	height: 520px;
+	padding: 30px;
+}
+.tablecontent table{
+	min-width: 130%;
+}
+.tablecontent table th{
+	/*min-width: 100px;*/
+	/*height: 40px;*/
+	color: #77879D;
+	font-weight: 400;
+	text-align: center;
+}
+.tablecontent table th span{
+	display: inline-block;
+	/*padding: 0 10px;
+	box-sizing: content-box;*/
+}
+.tablecontent table td{
+	height: 40px;
+	color: #77879D;
+	text-align: center;
+}
+
+
+/* 分页 */
+li{
+	list-style-type: none;
+}
+.page{
+	text-align: right;
+	padding: 30px 60px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	
+}
+.page ul{
+	display: inline-flex;	
+	width: 400px;
+	justify-content: space-between;
+}
+
+.page ul li select{
+	width: 50px;
+	text-align: center;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+
+
+
+
+

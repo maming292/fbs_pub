@@ -1,0 +1,115 @@
+#datadisplay{
+	position: absolute;
+	width: 100%;
+	top: 50px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #F0F4FB;
+}
+
+#datadisplay .title{
+	padding: 0 30px;
+	background: #E5E8EF;
+	height: 50px;
+}
+#datadisplay .title b{
+	display: inline-block;
+	font-weight: 400;
+	color: #333333;
+	font-size: 14px;
+	height: 50px;
+	line-height: 50px;
+	vertical-align: middle;
+}
+#datadisplay .title span{
+	display: inline-block;
+	height: 15px;
+	width: 5px;
+	background: #01BEA4;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+.ecList{
+	width: 75%;
+	margin: 0 auto;
+	
+}
+.ecList>div{
+	width: 100%;
+	
+	position: relative;
+}
+.ecList>div.echartsContent{
+	border: 1px solid #DCDCDC;
+	background: #fff;
+	margin-top: 50px;
+}
+.select{
+	position: absolute;
+	top: 20px;
+	left: 0;
+	z-index: 1000;
+}
+
+.select select{
+	border: 1px solid #ddd;
+	padding: 5px;
+	border-radius: 5px;
+}
+ .btns{
+ 	position: absolute;
+ 	top: 20px;
+ 	right: 50px;
+ 	z-index: 100;
+ }
+ .btns a{
+ 	display: inline-block;
+ 	width: 50px;
+ 	
+ }
+.ec{
+	padding: 50px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

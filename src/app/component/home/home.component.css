@@ -1,0 +1,67 @@
+.acti{
+  background: #463a3a42;
+}
+.byclass.acti{
+	background: #463a3a42;
+}
+@media (max-width: 768px) {
+  .sidebar-mini.sidebar-collapse .main-header .logo {
+    width: 50px;
+  }
+  .main-header .navbar {
+    margin: 0;
+  }
+  .logo{
+    float: none;
+    width: 100%!important;
+    text-align: left;
+    padding-left: 50px ;
+  }
+  .sidebar-toggle{
+    display: none;
+  }
+  .acti{
+  background: #463a3a42;
+}
+}
+
+
+@media (max-width: 1310px){
+  #flag_ul .dropdown{
+      width: 50px;
+      height: 50px;
+    }
+    .toogle{
+      display: none;
+    }
+}
+
+.logo{width: 330px;}
+.navbar-static-top{margin-left: 330px;}
+
+
+.cc{
+  vertical-align: middle;
+  display: inline-block;
+  width: 20px;
+  height: 18px;
+}
+.sc1{
+  background:url(../../../assets/img/u156.png)no-repeat;background-size: 100% 100%;
+}
+.sc2{
+  background:url(../../../assets/img/u159.png)no-repeat;background-size: 100% 100%;
+}
+.sc3{
+  background:url(../../../assets/img/u164.png)no-repeat;background-size: 100% 100%;
+}
+.sc4{
+  background:url(../../../assets/img/u169.png)no-repeat;background-size: 100% 100%;
+}
+.sc5{
+  background:url(../../../assets/img/u176.png)no-repeat;background-size: 100% 100%;
+}
+.acti{
+  background: #463a3a42;
+}
+

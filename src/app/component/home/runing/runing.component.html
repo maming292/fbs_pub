@@ -1,0 +1,322 @@
+<div class="view" style="padding: 15px;min-width: 1450px;">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title" id="title" >配网运行</h3>
+    </div>
+    <div class="panel-body" >
+      <div class="row clearfix">
+        <div class="col-md-4 column ui-sortable" style="height: 84vh">
+          <div class="box">
+            <!--<div class="row clearfix pdlft">
+              <div class="col-md-6 column ui-sortable" style="">
+                <select class="form-control" style="border-radius: 8px;">
+                  <option>全站</option>
+                </select>
+              </div>
+              <div class="col-md-6 column ui-sortable" style="">
+                <p-calendar [(ngModel)]="startdate"  (onSelect)="callbackI($event)" [showIcon]="true" [placeholder]="'开始日期'" dateFormat="yy-mm-dd"
+                             [locale]="ch" [readonlyInput]="true"></p-calendar>
+              </div>
+            </div>-->
+            <div class="row clearfix pdlft">
+              <div class="col-md-12 column ui-sortable" style="">
+                <div class="info-box">
+                  <span class="info-box-icon bg-aqua bg5184">
+
+                  </span>
+
+                  <div class="info-box-content">
+                    <span class="info-box-number bl">{{leftData.companyNumber}}</span>
+                    <span class="">接入光伏站总数</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+              </div>
+            </div>
+            <div class="row clearfix pdlft" style="padding: 6px 0;">
+              <div class="col-md-4 column ui-sortable info-box-number bl" style="">
+                {{leftData.all|fixedNumber}}
+              </div>
+              <div class="col-md-4 column ui-sortable info-box-number gn" style="">
+                {{leftData.month|fixedNumber}}
+              </div>
+              <div class="col-md-4 column ui-sortable info-box-number og" style="">
+                {{leftData.day|fixedNumber}}
+              </div>
+            </div>
+            <div class="row clearfix pdlft" style="padding: 15px 0;">
+              <div class="col-md-4 column ui-sortable " style="">
+                总电量
+                <span class="blue bac">kWh</span>
+              </div>
+              <div class="col-md-4 column ui-sortable " style="">
+                当月
+                <span class="green bac">kWh</span>
+              </div>
+              <div class="col-md-4 column ui-sortable " style="">
+                当日
+                <span class="orange bac">kWh</span>
+              </div>
+            </div>
+            <div class="row clearfix pdlft wid-76" style="padding-bottom: 8px;">
+              <div class="col-md-3 column ui-sortable" style="">
+                <span class="clor1 bac"><img src="../../../../assets/images/u5079.png" alt="">运行:15</span>
+              </div>
+              <div class="col-md-3 column ui-sortable" style="">
+                <span class="clor2 bac"><img src="../../../../assets/images/u5084.png" alt="">待机:15</span>
+              </div>
+              <div class="col-md-3 column ui-sortable" style="">
+                <span class="clor3 bac"><img src="../../../../assets/images/u5089.png" alt="">告警:15</span>
+              </div>
+              <div class="col-md-3 column ui-sortable" style="">
+                <span class="clor4 bac"><img src="../../../../assets/images/u5094.png" alt=""> 离线:15</span>
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="row clearfix pdlft">
+              <div class="col-md-12 column ui-sortable" style="">
+                <div class="info-box">
+                  <span class="info-box-icon bg-aqua bg5184">
+
+                  </span>
+
+                  <div class="info-box-content">
+                    <span class="info-box-number bl">0</span>
+                    <span class="">接入风能站总数</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+              </div>
+            </div>
+            <div class="row clearfix pdlft" style="padding: 6px 0;">
+              <div class="col-md-4 column ui-sortable info-box-number bl" style="">
+                0
+              </div>
+              <div class="col-md-4 column ui-sortable info-box-number gn" style="">
+                0
+              </div>
+              <div class="col-md-4 column ui-sortable info-box-number og" style="">
+              0
+              </div>
+            </div>
+            <div class="row clearfix pdlft" style="padding: 15px 0;">
+              <div class="col-md-4 column ui-sortable " style="">
+                总电量
+                <span class="blue bac">kWh</span>
+              </div>
+              <div class="col-md-4 column ui-sortable " style="">
+                当月
+                <span class="green bac">kWh</span>
+              </div>
+              <div class="col-md-4 column ui-sortable " style="">
+                当日
+                <span class="orange bac">kWh</span>
+              </div>
+            </div>
+            <div class="row clearfix pdlft wid-76" style="padding-bottom: 8px;">
+              <div class="col-md-3 column ui-sortable" style="">
+                <span class="clor1 bac"><img src="../../../../assets/images/u5079.png" alt="">运行:15</span>
+              </div>
+              <div class="col-md-3 column ui-sortable" style="">
+                <span class="clor2 bac"><img src="../../../../assets/images/u5084.png" alt="">待机:15</span>
+              </div>
+              <div class="col-md-3 column ui-sortable" style="">
+                <span class="clor3 bac"><img src="../../../../assets/images/u5089.png" alt="">告警:15</span>
+              </div>
+              <div class="col-md-3 column ui-sortable" style="">
+                <span class="clor4 bac"><img src="../../../../assets/images/u5094.png" alt=""> 离线:15</span>
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="row clearfix pdlft">
+              <div class="col-md-12 column ui-sortable" style="">
+                <div class="info-box">
+                  <span class="info-box-icon bg-aqua bg5184">
+
+                  </span>
+
+                  <div class="info-box-content">
+                    <span class="info-box-number bl">0</span>
+                    <span class="">接其他站总数</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+              </div>
+            </div>
+            <div class="row clearfix pdlft" style="padding: 6px 0;">
+              <div class="col-md-4 column ui-sortable info-box-number bl" style="">
+                0
+              </div>
+              <div class="col-md-4 column ui-sortable info-box-number gn" style="">
+                0
+              </div>
+              <div class="col-md-4 column ui-sortable info-box-number og" style="">
+                0
+              </div>
+            </div>
+            <div class="row clearfix pdlft" style="padding: 15px 0;">
+              <div class="col-md-4 column ui-sortable " style="">
+                总电量
+                <span class="blue bac">kWh</span>
+              </div>
+              <div class="col-md-4 column ui-sortable " style="">
+                当月
+                <span class="green bac">kWh</span>
+              </div>
+              <div class="col-md-4 column ui-sortable " style="">
+                当日
+                <span class="orange bac">kWh</span>
+              </div>
+            </div>
+            <div class="row clearfix pdlft wid-76" style="padding-bottom: 8px;">
+              <div class="col-md-3 column ui-sortable" style="">
+                <span class="clor1 bac"><img src="../../../../assets/images/u5079.png" alt="">运行:15</span>
+              </div>
+              <div class="col-md-3 column ui-sortable" style="">
+                <span class="clor2 bac"><img src="../../../../assets/images/u5084.png" alt="">待机:15</span>
+              </div>
+              <div class="col-md-3 column ui-sortable" style="">
+                <span class="clor3 bac"><img src="../../../../assets/images/u5089.png" alt="">告警:15</span>
+              </div>
+              <div class="col-md-3 column ui-sortable" style="">
+                <span class="clor4 bac"><img src="../../../../assets/images/u5094.png" alt=""> 离线:15</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 column ui-sortable" style="">
+          <div class="row clearfix pdlft">
+            <div class="col-md-4 column ui-sortable" style="">
+              <select class="form-control" style="border-radius: 8px;" [(ngModel)]='companyId' (change)="Run(companyId)">
+                <option *ngFor="let item of mapCompany;let i = index;" [value]='item.ID'>{{item.COMPANY_NAME}}</option>
+              </select>
+            </div>
+            <div class="col-md-8 column ui-sortable" style="">
+              <button  (click)='tables()' type="button" class="btn  btn-info btn-lg" style="height: 50px;"><img src="../../../../assets/images/u6068.png" />表格统计</button>
+              <button (click)='todis()' type="button" class="btn  btn-primary btn-lg" style="height: 50px;"><img src="../../../../assets/images/u6070.png" />图表分析</button>
+            </div>
+          </div>
+          <div class="row clearfix pdlft bg_yellow" >
+            <div class="col-md-3 column ui-sortable" style="position: relative;height: 92px;">
+              <div class="box" style="border-top: 1px solid #d2d6de;bottom: 0;position: relative;top:0;padding: 10px!important;">
+                <div>日发电量：<span class="bl">{{topData.day|fixedNumber}} kwh</span></div>
+                <div>当月电量：<span class="bl">{{topData.month|fixedNumber}} kwh</span></div>
+                <div>总发电量：<span class="bl">{{topData.all|fixedNumber}} kwh</span></div>
+              </div>
+            </div>
+            <div class="col-md-4 column ui-sortable" style="height: 100px;">
+                <div style="width: 98%;height: 25px;left:22px;top:24px;overflow: hidden;position: relative;" >
+                  <div style="width: 500px;height: 25px;left: -6px;" class="rows"></div>
+                </div>
+                <div style="width: 25px;height: 62px;overflow: hidden;position: relative;" >
+                  <div style="width: 25px;height: 90px;top:-3px;" class="cols"></div>
+                </div>
+            </div>
+            <div class="col-md-1" style="height: 80px;padding:0 9px; ">
+                <div style="width: 100%;height: 100%;margin: auto" class="orc">
+                  <div  style="height: 100%;;width:100%;margin: 0 auto" class="byq"></div>
+
+                </div>
+            </div>
+            <div class="col-md-4" style="height: 90px;padding-left:0;position: relative ">
+              <div class="col-md-10 attn" style="height: 10px;margin-top:24px;" ></div>
+              <div class="col-md-2 atty" style="height: 80px;" ></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-9  npd">
+              <div class="row">
+
+                <div class="col-md-3  "  *ngFor="let item of centerData ;let i=index" >
+                  <div class="row " style="margin: auto;">
+                    <div class="col-md-10  " style="min-height: 200px;">
+                      <div class="col-md-12 text-right npd  " style="height: 50px;line-height: 50px;">有功功率:
+                        <div class="gn dinbk" >
+                          <div class="gn dbox" style="position: relative;top:-9px;" >{{item.P|fixedNumber}} kW</div>
+
+                        </div>
+                      </div>
+                      <div class="col-md-12 text-right npd " style="height: 50px;line-height: 50px;">A项:
+                        <div class="gn dinbk" >
+                          <div class="gn dbox" >{{item.UA|fixedNumber}}V</div>
+                          <div class="gn dbox" >{{item.IA|fixedNumber}}A</div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 text-right npd  " style="height: 50px;line-height: 50px;">B项:
+                        <div class="gn dinbk" >
+                          <div class="gn dbox" >{{item.UB|fixedNumber}}V</div>
+                          <div class="gn dbox" >{{item.IB|fixedNumber}} A</div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 text-right npd " style="height: 50px;line-height: 50px;">C项:
+                        <div class="gn dinbk" >
+                          <div class="gn dbox" >{{item.UC|fixedNumber}}V</div>
+                          <div class="gn dbox" >{{item.IC|fixedNumber}}A</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2 npd" >
+                      <div class="cols lt" style="min-height: 196px;width: 18px;"></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 bgn " style="height: 80px;position: relative">
+                      <span class="btm">逆变器</span>
+                    </div>
+                    <div class="col-md-12" style="height: 89px;">
+                      <div class="cols lt " style="width: 18px;height: 89px;margin-left: calc(100% - 121px);">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="pull-right">
+                        <div><span class="grey ibk "></span>PV6: <span class="gy">--/--</span></div>
+                        <div><span class="green ibk "></span>PV6:<span class="gn">537.2V/7.31A</span> </div>
+                        <div><span class="green ibk "></span>PV6:<span class="gn">537.2V/7.31A</span></div>
+                        <div><span class="red ibk"></span>PV6:<span class="rd">537.2V/7.31A</span></div>
+                        <div><span class="blue ibk"></span>PV6:<span class="bl">537.2V/7.31A</span></div>
+                        <div><span class="grey ibk"></span>PV6:<span class="gy">537.2V/7.31A</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="swiper-container"  >
+                  <div class="swiper-wrapper" >
+                    <div class="swiper-slide" *ngFor="let item of facList">
+                      <img src="../../../../assets/images/u5240.png" [title]="item.FACILITY_NUMBER" (click)="getC(item.FACILITY_NUMBER)"/>
+                    </div>
+                  </div>
+                  <!-- 如果需要导航按钮 -->
+                  <div class="swiper-button-prev" (click)="move($event)"></div>
+                  <div class="swiper-button-next" (click)="move($event)"></div>
+                  <!-- 如果需要分页器 -->
+                  <div class="swiper-pagination"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3  ">
+                <div class="row npd">
+                  <div class="col-md-6  npd" >
+                    <div class="mt-45 lt down-bg" style="width: 22px;height: 390px;"></div>
+                    <div class="fuhe" style="margin: auto;height: 90px;line-height: 6">负荷</div>
+                    <div class="pull-right">
+                      <div>有功: <span class="gn">{{P|fixedNumber}}</span></div>
+                      <div>电量：<span class="gn">{{topData.all|fixedNumber}}</span></div>
+                      <div>时间：<span class="gn">2018-1-10</span></div>
+                    </div>
+                  </div>
+                  <div class="col-md-6  " >
+                    <div class="mt-45 lt down-bg" style="width: 22px;height: 585px;"></div>
+                    <div class="chuneng" style="margin: auto;padding-left: 9px;height: 90px;line-height: 6">储能</div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>

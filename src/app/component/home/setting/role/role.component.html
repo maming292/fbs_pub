@@ -1,0 +1,123 @@
+<div class="station">
+	<div class="header">
+		<span>系统设置&nbsp;&gt;&nbsp;角色管理</span>
+	</div>
+	<div class="selects">
+		<input type="text" name="stationName" id="stationName" value="" placeholder="角色名称"  [(ngModel)]='role_name'/>
+		<a class="sea" (click)='seach(role_name)'>
+			<img src="../../../../../assets/img/search_b.png" />
+		</a>
+
+		<div class="fr">
+			<a class="add" (click)='shows()'>
+				<img src="../../../../../assets/img/adds.png" />
+				<span>新增</span>
+			</a>
+			<a class="out" (click)='out()'>
+				<img src="../../../../../assets/img/outs.png" />
+				<span >导出</span>
+			</a>
+		</div>
+	</div>
+	<div class="stationList">
+		<div class="list">
+			<table class="tableHead">
+				<thead>
+					<tr>
+						<td style="width: 80px;">序号</td>
+						<td style="width: 300px;">角色名称</td>
+						<td>描述</td>
+						<td style="width: 200px;">
+							<div>操作</div>
+							<div>
+								<a>权限</a>
+								<a>编辑</a>
+								<a>删除</a>
+							</div>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor='let items of msglist;let i = index;'>
+						<ng-container *ngIf='i>=(page-1)*10&&i<page*10'>
+						<td>{{i+1}}</td>
+							<!--<td *ngFor='let item of items;let i = index;'>{{item}}</td>-->
+							<td>{{items[0]}}</td>
+							<td>{{items[1]}}</td>
+						<td>
+							<a><img src="../../../../../assets/img/qx.png" /></a>
+							<a (click)='compile(items[0],items[1],items[2])'><img src="../../../../../assets/img/bj.png" /></a>
+							<a (click)='del(items[2])'><img src="../../../../../assets/img/sc.png" /></a>
+						</td>
+						</ng-container>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="page">
+			<ul>
+				<li (click)='first()'>
+					<a><img src="../../../../../assets/img/pgbegin.png" /></a>
+				</li>
+				<li (click)='prev()'>
+					<a><img src="../../../../../assets/img/pgprev.png" /></a>
+				</li>
+				<li>
+					<select name="" [(ngModel)]='page'>
+						<ng-container *ngFor='let p of pageArr; let s = index'>
+							<option [value]="p">{{p}}</option>
+						</ng-container>
+					</select>
+				</li>
+				<li (click)='next()'>
+					<a><img src="../../../../../assets/img/pgnext.png" /></a>
+				</li>
+				<li (click)='last()'>
+					<a><img src="../../../../../assets/img/pgend.png" /></a>
+				</li>
+				<li><span>共{{msglist.length}}条记录，当前页面{{page}}/{{maxPage}}页</span></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="alerts" *ngIf='alertshow'>
+		<span class="middles"></span>
+		<div id="win">
+			<div class="alerttitle">
+				<span>设置角色</span><i (click)='hiddens()' class="glyphicon glyphicon-remove"></i>
+			</div>
+			<div class="put">
+				<span>角色名称</span><input type="text" placeholder="填写角色名称" [(ngModel)]='addrolename'/>
+			</div>
+			<div class="put">
+				<span>角色描述</span><input type="text" placeholder="填写角色描述"  [(ngModel)]='addroledesc'/>
+			</div>
+
+			<div class="myBtn">
+				<a (click)='hiddens()'>取消</a>
+				<a (click)='save()'>确定</a>
+			</div>
+		</div>
+	</div>
+	
+		<div class="alerts" *ngIf='showcompile'>
+		<span class="middles"></span>
+		<div id="win">
+			<div class="alerttitle">
+				<span>设置角色</span><i (click)='hiddencompile()' class="glyphicon glyphicon-remove"></i>
+			</div>
+			<div class="put">
+				<input type="hidden" [(ngModel)] ='id_com' />
+				<span>角色名称</span><input type="text" placeholder="填写角色名称" [(ngModel)]='rolename_com'/>
+			</div>
+			<div class="put">
+				<span>角色描述</span><input type="text" placeholder="填写角色描述"  [(ngModel)]='roledesc_com'/>
+			</div>
+
+			<div class="myBtn">
+				<a (click)='hiddencompile()'>取消</a>
+				<a (click)='savecompile()'>确定</a>
+			</div>
+		</div>
+	</div>
+</div>

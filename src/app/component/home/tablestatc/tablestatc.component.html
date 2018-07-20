@@ -1,0 +1,131 @@
+<div class="tables">
+	<div>
+		<div class="backs" (click)='backs()'>
+			<span><img src="../../../../../assets/images/backs.png" /></span>
+		</div>
+		<div class="seach">
+			
+			<select [(ngModel)]='station_seach'>
+				<option value="">站点</option>
+				<ng-container *ngFor='let p of station_arr'>
+					<option [value]="p.ID">{{p.COMPANY_NAME}}</option>
+				</ng-container>
+			</select>
+			<select [(ngModel)]='par_seach'>
+				<option value="">位置</option>
+				<ng-container *ngFor='let p of par_arr'>
+					<option [value]="p.ID">{{p.FACILITY_NAME}}</option>
+				</ng-container>
+			</select>
+			<div class="times">
+				<input type="text" [(ngModel)]='star_seach' placeholder="开始时间" id='star' />
+				<span class="glyphicon glyphicon-calendar"></span>
+			</div>
+			<div class="times">
+				<input type="text" [(ngModel)]='end_seach' placeholder="结束时间" id='end' />
+				<span class="glyphicon glyphicon-calendar"></span>
+			</div>
+			<a class="sea" (click)='getdata()'>
+				<img _ngcontent-c8="" src="../../../../../assets/img/search_b.png">
+			</a>
+			<span class="out" (click)='out()'>导出</span>
+			  
+			  <!--<div id="ps"></div>-->
+			  
+			  
+		</div>
+		<div class="tablecontent">
+			<table  border="1" cellspacing="100">
+				<thead>
+					<tr>
+						<th><span>序号</span></th>
+						<th><span>站点</span></th>
+						<th><span>逆变器</span></th>
+						<th><span>PV1输入电压</span></th>
+						<th><span>PV1输入电流</span></th>
+						<th><span>PV2输入电压</span></th>
+						<th><span>PV2输入电流</span></th>
+						<th><span>PV3输入电压</span></th>
+						<th><span>PV3输入电流</span></th>
+						<th><span>PV4输入电压</span></th>
+						<th><span>PV4输入电流</span></th>
+						<th><span>PV5输入电压</span></th>
+						<th><span>PV5输入电流</span></th>
+						<th><span>PV6输入电压</span></th>
+						<th><span>PV6输入电流</span></th>
+						<th><span>A相电流</span></th>
+						<th><span>A相电压</span></th>
+						<th><span>B相电流</span></th>
+						<th><span>B相电压</span></th>
+						<th><span>C相电流</span></th>
+						<th><span>C相电压</span></th>
+						<th><span>有功功率</span></th>
+						<th><span>功率因素</span></th>
+						<th><span>二氧化碳减排量</span></th>
+						<th><span>上报时间</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr role="row" class="odd" *ngFor="let item of pageslist;let i =index;">
+								<td class="sorting_1">{{i+1}}</td>
+								<td>{{item.COMPANY_NAME}}</td>
+								<td>{{item.INVERTER_NUMBER}}</td>
+								<td>{{item.V_PV1}}</td>
+								<td>{{item.I_PV1}}</td>
+								<td>{{item.V_PV2}}</td>
+								<td>{{item.I_PV2}}</td>
+								<td>{{item.V_PV3}}</td>
+								<td>{{item.I_PV3}}</td>
+								<td>{{item.V_PV4}}</td>
+								<td>{{item.I_PV4}}</td>
+								<td>{{item.V_PV5}}</td>
+								<td>{{item.I_PV5}}</td>
+								<td>{{item.V_PV6}}</td>
+								<td>{{item.I_PV6}}</td>
+								<td>{{item.IA}}</td>
+								<td>{{item.UA}}</td>
+								<td>{{item.IB}}</td>
+								<td>{{item.UB}}</td>
+								<td>{{item.IC}}</td>
+								<td>{{item.UC}}</td>
+								<td>{{item.P}}</td>
+								<td>{{item.HZ}}</td>
+								<td>{{item.CO2}}</td>
+								<td>{{item.TIME}}</td>
+							</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="dataTables_paginate paging_simple_numbers pull-right" id="example1_paginate" style="margin: 20px 0;">
+			<ul class="pagination">
+				<li class="paginate_button previous" id="example1_previous" (click)="turn(4,$event)">
+					<a href="javascript:(0)" aria-controls="example1" data-dt-idx="0" tabindex="0">首页</a>
+				</li>
+				<li class="paginate_button" (click)="turn(1,$event)">
+					<a href="javascript:(0)" aria-controls="example1" data-dt-idx="1" tabindex="0">上一页</a>
+				</li>
+				<li class="paginate_button ">
+					<a href="javascript:(0)" aria-controls="example1" data-dt-idx="2" tabindex="0">{{pagenum}}</a>
+				</li>
+				<li class="paginate_button " (click)="turn(2,$event)">
+					<a href="javascript:(0)" aria-controls="example1" data-dt-idx="2" tabindex="0">下一页</a>
+				</li>
+				<li class="paginate_button " (click)="turn(5,$event)">
+					<a href="javascript:(0)" aria-controls="example1" data-dt-idx="3" tabindex="0">尾页</a>
+				</li>
+				<li class="paginate_button ">
+					<a href="javascript:(0)" aria-controls="example1" data-dt-idx="4" tabindex="0">当前{{pagenum}}/{{pages}}页，{{allpages}}条数据</a>
+				</li>
+				<li class="paginate_button ">
+					<a href="javascript:(0)" aria-controls="example1" data-dt-idx="5" tabindex="0">第</a>
+				</li>
+				<li class="paginate_button ">
+					<a href="javascript:(0)" contenteditable="true" id="turn" aria-controls="example1" data-dt-idx="6" tabindex="0">1</a>
+				</li>
+				<li class="paginate_button next" id="example1_next" [class.disabled]="gflag" (click)="turn(3,$event)">
+					<a href="javascript:(0)" aria-controls="example1" data-dt-idx="7" tabindex="0">跳转</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

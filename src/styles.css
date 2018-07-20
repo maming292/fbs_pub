@@ -1,0 +1,70 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+  margin: 0;
+  padding: 0;
+  border:0;
+  box-sizing: border-box;
+}
+
+html,body{
+  overflow-x: hidden;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  font-size: 15px!important;
+}
+.content{padding-top: 0!important;}
+.orange {
+  background: #FF7F36;
+}
+.blue {
+  background: #009CFF;
+}
+.green {
+  background: #58D68D;
+}
+.orange,.green,.blue,.clor1,.clor2,.clor3,.clor4{
+  color: white;
+}
+.clor1{
+   background: #37bc9b;
+ }
+.clor2{
+  background: #2979ff;
+}
+.bac>img{width:16px;height: 16px;vertical-align: text-bottom}
+.clor3{
+  background: red;
+}
+.clor4{
+  background: #a1a1a1;
+}
+.bac{
+  display: inline-block;
+  width: 56px;
+  height: 22px;
+  line-height: 2;
+  font-size: 12px;
+  border-radius: 12px;
+  position: relative;
+  top: -2px;
+  text-align: center;
+}
+.bl {
+  color: #009CFF;
+}
+.borders{border:1px solid;}.npd{padding: 0!important;}.lt{border-left: 1px solid #f7f7f7;border-right:1px solid #f7f7f7;}
+.gn {
+  color: #58D68D;
+}
+.og {
+  color: #FF7F36;
+}
+.bl {
+  color: #009CFF;
+}
+.dinbk{display: inline-block;height: 50px;width: auto;position: relative;top:10px;right: 5px;text-align: left}
+.dbox{height: 20px;line-height: 20px;}

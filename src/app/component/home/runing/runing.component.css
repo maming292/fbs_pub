@@ -1,0 +1,24 @@
+.box{background: none;padding: 20px 0;}.info-box{min-height: 64px;padding: 2px 3px;}.info-box>span{height: 50px;width: 50px;border-radius: 50%;}
+.bg5184{background: url(../../../../assets/images/u5184.png)no-repeat;background-size: 100% 100%;}
+.pdlft{margin:0 auto;}.wid-76 .bac{width: 76px;}.bg_yellow{background: url(../../../../assets/images/u5734.png) bottom no-repeat}
+.rows{background: url(../../../../assets/images/u33102.png)repeat-x;animation: left-right .8s infinite;}
+.cols{background: url(../../../../assets/images/u33101.png) repeat-y;animation: top-bottom .8s infinite;}
+.rows,.cols{position: absolute;}
+@keyframes left-right{0%{opacity: .3}50%{opacity: .8}100%{opacity: .3}}
+@keyframes top-bottom{0%{opacity: .8}50%{opacity: .3}100%{opacity: .8}}
+.orc{position: relative;}
+.orc::after{content: "";display: block;height: 100%;width:5px;background: url(../../../../assets/images/u5908.png)no-repeat;position: absolute;left: 0;top:0;}
+.orc::before{content: "";display: block;height: 100%;width: 5px;background: url(../../../../assets/images/u5908.png)no-repeat;position: absolute;right: 0;}
+.attn{background:url(../../../../assets/images/u5912.png)no-repeat;position: relative;}
+.attn::after{content:"";display: block;position: absolute;right: 0;
+  width: 15px;height: 15px;border-radius:50%;top: -5px;background:url(../../../../assets/images/u5914.png)no-repeat }
+.atty{background:url(../../../../assets/images/u5916.png)no-repeat;padding: 0;background-size: 100% 100%;}
+.bgn{background:url(../../../../assets/images/u5634.png) 72% 0 / 27% no-repeat; }
+.btm{position: absolute;bottom: 0; right: 25%;}.ibk{width: 8px;height: 10px;display: inline-block;}
+.grey{background: grey;}.red{background: red;}.gy{color: grey;}.rd{color: red;}
+.lft-90{position: relative;margin: 0;left: 96px;}
+.swiper-slide{height: 140px;width: 130px;margin: auto}.mt-45{margin-left: 70px;}
+.down-bg{background:url(../../../../assets/images/u5868.png)50% 0 repeat-y }
+.fuhe{background:url(../../../../assets/images/u5852.png)50% 0 no-repeat;padding-left: 110px;}
+.chuneng{background:url(../../../../assets/images/u5242.png)45px 0 / 66px no-repeat}
+.byq{background:url(../../../../assets/img/swing.png)50% 0 / 68% 100% no-repeat; }

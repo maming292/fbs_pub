@@ -1,0 +1,82 @@
+#setting {
+	height: 100%;
+	/*padding-top: 50px;*/
+}
+
+#setting .setMenu {
+	position: absolute;
+	bottom: 0;
+	top: 50px;
+	left: 0;
+	width: 110px;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	background: -webkit-linear-gradient(#274077, #27396A);
+	/* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(#274077, #27396A);
+	/* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(#274077, #27396A);
+	/* Firefox 3.6 - 15 */
+	background: linear-gradient(#274077, #27396A);
+	/* 标准的语法 */
+}
+
+.setMenu li {
+	width: 100%;
+	padding: 20px 0;
+	
+}
+
+.setMenu li span {
+	color: #fff;
+}
+
+.setMenu li div {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: #FFFFFF;
+	margin: 0 auto;
+	margin-bottom: 15px;
+}
+.setMenu li div {
+	background-size: 100% 100%;
+}
+.setMenu li:nth-child(1) div {
+	background-image: url(../../../../assets/images/sa1.png);
+}
+.setMenu li:nth-child(2) div {
+	background-image: url(../../../../assets/images/sa2.png);
+}
+.setMenu li:nth-child(3) div {
+	background-image: url(../../../../assets/images/sa3.png);
+}
+.setMenu li:nth-child(4) div {
+	background-image: url(../../../../assets/images/sa4.png);
+}
+.setMenu li:nth-child(5) div {
+	background-image: url(../../../../assets/images/sa5.png);
+}
+.setMenu li:nth-child(1).active div {
+	background-image: url(../../../../assets/images/sa1a.png);
+}
+.setMenu li:nth-child(2).active div {
+	background-image: url(../../../../assets/images/sa2a.png);
+}
+.setMenu li:nth-child(3).active div {
+	background-image: url(../../../../assets/images/sa3a.png);
+}
+.setMenu li:nth-child(4).active div {
+	background-image: url(../../../../assets/images/sa4a.png);
+}
+.setMenu li:nth-child(5).active div {
+	background-image: url(../../../../assets/images/sa5a.png);
+}
+
+.setMenu li.active{
+	background: #304168;
+}
+.setMenu li.active span{
+	color: #2092E9;
+}

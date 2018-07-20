@@ -1,0 +1,134 @@
+<div style="position: absolute;width: 100%;height: 93.5vh;min-height: 720px;">
+  <div class="cban left" style="width: 40%;padding: 5px 10px">
+    <div style="width: 100%;height:50%;background: white;padding: 15px;text-align: center">
+        <p style="height: 30px;line-height: 30px;text-align: left">无锡广盈实业有限公司</p>
+        <img style="width: auto;height: calc(100% - 35px);" src="../../../../../assets/img/gsbg.png"/></div>
+    <div class="right chart" id="od5" echarts [options]="option"  style="width: 100%;height: 50%;margin-top: 5px;background: white">
+
+    </div>
+  </div>
+  <div class="cban right" style="width: 60%;">
+      <div class="r_right pull-right" >
+        <div class="ht-25" style="min-height: 140px;height: 10%!important;">
+          <div class="form-group">
+            <select class="form-control wid-50" style="border-radius: 6px;float: right">
+              <option>无锡广盈实业有限公司</option>
+            </select>
+          </div>
+        </div>
+        <div   style=" min-height: 140px;margin:auto"  class="row ht-25 inft">
+          <div class="wid-50">
+                <div class="ht-50 inftext" style="border-bottom: 2px solid gray;">
+                  <div style="margin: auto;width: 160px;">CO₂减排 <span class="bigfont">8<span style="font-size: 35px">%</span></span></div>
+                </div>
+          </div>
+          <div class="wid-50">
+            <div class="ht-50 inftext" style="border-bottom:2px solid gray;">
+                 <div style="margin: auto;width: 180px;">成本节约/年<span class="bigfont">8<span style="font-size: 35px">%</span></span></div>
+            </div>
+            <div class="ht-50 inftext">
+                  <div style="margin: auto;width: 180px;">投资回报率<span class="bigfont">7<span style="font-size: 35px">年</span></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ht-50 inft">
+          <div class="wid-33">
+            <div class="ht-33">
+              <div class="ht-50">
+                  <div class="first" >
+                    <img src="../../../../../assets/img/riz.png" alt="">
+                    电桩状态
+                  </div>
+              </div>
+              <div class="ht-50 bld" >
+                    正常
+              </div>
+            </div>
+            <div class="ht-33">
+              <div class="ht-50">
+                <div class="second" >
+                  <img src="../../../../../assets/img/riz.png" alt="">
+                  热量
+                </div>
+              </div>
+              <div class="ht-50 bld" >
+                0.005MJ/M<sup>2</sup>
+              </div>
+            </div>
+            <div class="ht-33">
+              <div class="ht-50 b_bd">
+                  预测日发电量
+              </div>
+              <div class="ht-50 clr1">
+                10000.00Kwh
+              </div>
+            </div>
+          </div>
+          <div class="wid-33">
+            <div class="ht-33">
+              <div class="ht-50">
+                <div class="first" >
+                  <img src="../../../../../assets/img/riz.png" alt="">
+                  电站类型
+                </div>
+              </div>
+              <div class="ht-50 bld" >
+                光伏站
+              </div>
+            </div>
+            <div class="ht-33">
+              <div class="ht-50">
+                <div class="second" >
+                  <img src="../../../../../assets/img/riz.png" alt="">
+                  辐射
+                </div>
+              </div>
+              <div class="ht-50 bld" >
+                568W/m<sup>2</sup>
+              </div>
+            </div>
+            <div class="ht-33">
+              <div class="ht-50 b_bd">
+                当前日发电量
+              </div>
+              <div class="ht-50 clr2">
+               {{now}}Kwh
+              </div>
+            </div>
+          </div>
+          <div class="wid-33">
+            <div class="ht-33">
+              <div class="ht-50">
+                <div class="first" >
+                  <img src="../../../../../assets/img/riz.png" alt="">
+                  建站规模
+                </div>
+              </div>
+              <div class="ht-50 bld" >
+                20X15 30X4
+              </div>
+            </div>
+            <div class="ht-33">
+              <div class="ht-50">
+                <div class="second" >
+                  <img src="../../../../../assets/img/riz.png" alt="">
+                  气压
+                </div>
+              </div>
+              <div class="ht-50 bld" >
+                568min
+              </div>
+            </div>
+            <div class="ht-33">
+              <div class="ht-50 b_bd">
+                累计总发电量
+              </div>
+              <div class="ht-50 clr3">
+                {{all}}Kwh
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

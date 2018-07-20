@@ -1,0 +1,138 @@
+<div class="body" style="position: relative">
+	<aside class="main-sidebar pull-right" style="padding-top: 0;min-width:440px;right:0!important;left: inherit;background-color: rgb(236, 240, 245);height: 95%;">
+		<div class="contentd">
+			<div class="right">
+				<div class="r_top">
+					<div style="background: #00BCFF">
+						<img src="../../../assets/img/u187.png" alt="">
+						<span>线路数<br>
+								<span style="background: #0096CC">1</span>条
+						</span>
+					</div>
+					<div style="background: #00EFD2">
+						<img src="../../../assets/img/u193.png" alt="">
+						<span>光伏用户<br>
+								<span style="background: #00BFA8">4</span>家
+						</span>
+					</div>
+					<div style="background: #88DD67">
+						<img src="../../../assets/img/u199.png" alt="">
+						<span>用户总数<br>
+								<span style="background: #6DB152">9</span>家
+						</span>
+					</div>
+				</div>
+
+				<div class="r_center">
+					<div class="select row " style="padding: 25px;">
+						<div class="col-sm-4 text-center">
+							<select class="form-control">
+								<option value="-1">线路</option>
+								<!--<option *ngFor="let item of lnglats">{{item}}</option>-->
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<select class="form-control">
+								<option value="-1">电站类型</option>
+								<option *ngFor="let item of list">{{item.STAND_TYPE}}</option>
+							</select>
+						</div>
+						<div class="input-group input-group-sm col-sm-4 ">
+							<input type="text" class="form-control" placeholder="电站名称">
+							<span class="input-group-btn">
+                      <button type="button" class="btn btn-info btn-flat">搜</button>
+                    </span>
+						</div>
+					</div>
+					<div class="listshow">
+						<div class="ct_list" *ngFor="let item of details;let s=index" style="cursor: pointer">
+							<p class="title" style="padding: 10px 0 0;">
+								<span style="display: inline-block;
+              	width: 32%;" class="toogle">{{s+1}}、尤旺线</span>
+								<span>用户数 <b style="display: inline-block;
+              	width: 30px;text-align: center;color: #01BEA4;">8</b> <span>家</span></span>
+								<span>
+              	<img style="vertical-align: middle;margin-right: 5px;" src="../../../../assets/img/u285.png"/><span style="vertical-align: middle;display: inline-block;"><span>异常用户数</span><b style="display: inline-block;width: 20px;text-align: center;color: #EF4E4B;">0</b><span>家</span></span>
+								</span>
+
+								<!--<span class="pull-right" style="width: 60px;" *ngIf="map[item.ID]==0">
+                 <img src="../../../../assets/img/u361.png" alt=""><span>离线</span>
+              </span>-->
+							</p>
+							<div class="detail">
+								<table style="width: 100%;">
+									<tr>
+										<th>序号</th>
+										<th>电站名称</th>
+										<th>电站类型</th>
+										<th>有功功率（KW）</th>
+										<th>操作</th>
+									</tr>
+									<tr *ngFor='let ls of item;let i=index'>
+										<td>{{i+1}}</td>
+										<td>{{ls[0]}}</td>
+										<td>{{ls[1]}}</td>
+										<td>{{ls[2]}}</td>
+										<td [title]='i' (click)='setteam(s)' class="posi"><img src="../../../../assets/img/dw.png" /></td>
+									</tr>
+									<tr>
+										<td (click)='setEc(ecmsg[s][1])' colspan="5">
+											<a class="showLine">概率影响分析结果查看</a>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aside>
+	<div id="wrapper">
+		<div class="content-wrapper" style="min-height: 90vh;margin: 0 440px 0 0" id="map" style="display: none;">
+		</div>
+		<!-- 大图-->
+		<div class="nl2">
+			<div class="model">
+				<div class="co" (click)='cl($event)' (mouseenter)="p()" (mouseleave)="nameshow = false">
+					<div class="comname" *ngIf='nameshow'>
+						<span>无锡广盈实业有限公司</span>
+						<img src="https://webapi.amap.com/ui/1.0/ui/overlay/SimpleInfoWindow/assets/sharp.png" />
+					</div>
+				</div>
+				<div class="comdetail" *ngIf='lineshow'>
+					<span class="close glyphicon glyphicon-remove" (click)='lineshow = false'></span>
+					<h2>无锡广盈实业有限公司</h2>
+					<div>
+						<ul>
+							<li>所属路线：广盈线</li>
+							<li>电站类型：光伏站</li>
+							<li>电站状态：正常</li>
+							<li>建设类型：办公园区</li>
+							<li>有功功率：15.33KW</li>
+							<li>日发电量：35.33KW</li>
+							<li>CO2减排：11Kg</li>
+							<li>总发电量：1115.33KW</li>
+						</ul>
+					</div>
+					<div (click)='showliner()' class="lbtn">
+						<a class="showLine">概率影响分析结果查看</a>
+					</div>
+				</div>
+
+			</div>
+			<img src="../../../../assets/img/10kVbdx125-web.jpg" />
+		</div>
+	</div>
+	<div class="backMap" (click)="backMap()"> <img src="../../../assets/img/dtd.png" alt=""></div>
+	<!--Echart  弹窗-->
+	<div id="line">
+		<span class="middles"></span>
+		<div id="echart">
+			<span class="closes" (click)='closes()'>X</span>
+			<div id="ec"></div>
+			<p style="text-align: left;padding: 0 30px;">结论：光伏用户对整条线路的影响分布曲线图光伏用户概率影响分布曲线图光伏用户对整条线路的影响分布曲线图光伏用户概率影响分布曲线图</p>
+		</div>
+	</div>
+	<div class="amap-ui-smp-ifwn-content-body" style="display: none;"></div>
+</div>

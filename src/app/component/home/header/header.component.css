@@ -1,0 +1,233 @@
+ .acti {
+ 	background: #396C8B;
+ }
+ 
+ li {
+ 	list-style-type: none;
+ }
+ 
+ @media (max-width: 768px) {
+ 	.sidebar-mini.sidebar-collapse .main-header .logo {
+ 		width: 50px;
+ 	}
+ 	.main-header .navbar {
+ 		margin: 0;
+ 	}
+ 	.logo {
+ 		float: none;
+ 		width: 100%!important;
+ 		text-align: left;
+ 		padding-left: 50px;
+ 	}
+ 	.sidebar-toggle {
+ 		display: none;
+ 	}
+ }
+ 
+ @media (max-width: 1310px) {
+ 	#flag_ul .dropdown {
+ 		width: 50px;
+ 		height: 50px;
+ 	}
+ 	.toogle {
+ 		display: none;
+ 	}
+ }
+ 
+ .logo {
+ 	width: 330px;
+ }
+ 
+ .navbar-static-top {
+ 	margin-left: 330px;
+ }
+ 
+ .cc {
+ 	vertical-align: middle;
+ 	display: inline-block;
+ 	width: 20px;
+ 	height: 18px;
+ }
+ 
+ .sc1 {
+ 	background: url(../../../../assets/img/u156.png)no-repeat;
+ 	background-size: 100% 100%;
+ }
+ 
+ .sc2 {
+ 	background: url(../../../../assets/img/u159.png)no-repeat;
+ 	background-size: 100% 100%;
+ }
+ 
+ .sc3 {
+ 	background: url(../../../../assets/img/u164.png)no-repeat;
+ 	background-size: 100% 100%;
+ }
+ 
+ .sc4 {
+ 	background: url(../../../../assets/img/u169.png)no-repeat;
+ 	background-size: 100% 100%;
+ }
+ 
+ .sc5 {
+ 	background: url(../../../../assets/img/u176.png)no-repeat;
+ 	background-size: 100% 100%;
+ }
+ 
+ .acti {
+ 	background: #396C8B;
+ }
+ 
+ .alerts {
+ 	position: fixed;
+ 	top: 0;
+ 	left: 0;
+ 	right: 0;
+ 	bottom: 0;
+ 	background: rgba(0, 0, 0, 0.6);
+ 	z-index: 800;
+ 	/*margin-right: 440px;*/
+ 	text-align: center;
+ 	z-index: 10000;
+ 	/*display: none;*/
+ }
+ 
+ .middles {
+ 	display: inline-block;
+ 	height: 100%;
+ 	vertical-align: middle;
+ }
+ 
+ #win {
+ 	position: relative;
+ 	border-radius: 5px;
+ 	display: inline-block;
+ 	vertical-align: middle;
+ 	width: 580px;
+ 	background: #F2F2F2;
+ 	position: relative;
+ }
+ 
+ .alerttitle {
+ 	margin-bottom: 20px;
+ }
+ 
+ .alerttitle span {
+ 	display: inline-block;
+ 	width: 100%;
+ 	text-align: left;
+ 	padding: 5px 15px;
+ 	font-size: 20px;
+ 	color: #333333;
+ 	font-weight: 700;
+ 	height: 50px;
+ 	line-height: 50px;
+ }
+ 
+ .alerttitle i {
+ 	position: absolute;
+ 	top: 10px;
+ 	right: 10px;
+ 	font-size: 18px;
+ }
+ 
+ #win .put {
+ 	width: 100%;
+ 	margin-bottom: 15px;
+ }
+ 
+ #win .put span {
+ 	display: inline-block;
+ 	width: 13%;
+ 	padding-right: 10px;
+ 	text-align: right;
+ 	color: #666;
+ }
+ 
+ #win .put input,
+ #win .put select {
+ 	display: inline-block;
+ 	width: 80%;
+ 	background: #fff;
+ 	height: 40px;
+ 	line-height: 40px;
+ 	outline: none;
+ }
+ 
+ .myBtn {
+ 	padding: 30px 0;
+ }
+ 
+ .myBtn a {
+ 	display: inline-block;
+ 	width: 140px;
+ 	height: 40px;
+ 	line-height: 40px;
+ 	color: #fff;
+ 	border-radius: 5px;
+ }
+ 
+ .myBtn a:first-child {
+ 	background: #BAC7CC;
+ 	margin-right: 40px;
+ }
+ 
+ .myBtn a:last-child {
+ 	background: #1DBC9B;
+ }
+ /* 分页 */
+ 
+ .page {
+ 	text-align: right;
+ 	padding: 30px 60px;
+ 	position: absolute;
+ 	bottom: 0;
+ 	right: 0;
+ }
+ 
+ .page ul {
+ 	display: inline-flex;
+ 	width: 400px;
+ 	justify-content: space-between;
+ }
+ 
+ .page ul li select {
+ 	width: 50px;
+ 	text-align: center;
+ 	border: 1px solid #ccc;
+ 	border-radius: 5px;
+ }
+ 
+ .warings #win {
+ 	background: #F2F2F2;
+ 	padding: 0 15px 50px;
+ 	width: 700px;
+ }
+ 
+ .warings #win table {
+ 	width: 100%;
+ }
+ 
+ .warings #win td span {
+ 	display: inline-block;
+ 	width: 100%;
+ 	height: 100%;
+ 	margin-bottom: 10px;
+ 	background: #fff;
+ }
+ 
+ .warings #win table td,
+ .warings #win table th {
+ 	text-align: center;
+ }
+ 
+ .menuname {
+ 	display: inline-block;
+ 	padding-right: 75px;
+ }
+ 
+ .navbar-nav>.notifications-menu>.dropdown-menu,
+ .navbar-nav>.messages-menu>.dropdown-menu,
+ .navbar-nav>.tasks-menu>.dropdown-menu {
+ 	width: auto;
+ }

@@ -1,0 +1,288 @@
+li{
+	list-style-type: none;
+}
+.station{
+	padding:20px 30px 0 130px;
+	background: #F8F8F8;height: 100%;
+}
+.header{
+	padding-bottom: 30px;
+	font-size: 14px;
+	color: #333333;
+}
+.selects{
+	height: 75px;
+}
+.selects select{
+	width: 120px;
+	border: 1px solid #CCCCCC;
+	outline: none;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 5px;
+	background: none;
+	margin-right: 20px;
+	vertical-align: middle;
+}
+.selects input{
+	width: 200px;
+	border: 1px solid #CCCCCC;
+	outline: none;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 5px;
+	background: none;
+	margin-right: 20px;
+	padding: 0 10px;
+	vertical-align: middle;
+}
+.sea{
+	vertical-align: middle;
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+}
+.fr{
+	float: right;
+}
+.add{
+	display: inline-block;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 5px;
+	background: #1DBC9B;
+	text-align: center;
+	color: #FFFFFF;
+	margin-right: 20px;
+}
+.out{
+	display: inline-block;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 5px;
+	border: 1px solid #1DBC9B;
+	text-align: center;
+	color: #FFFFFF;
+}
+.out span{
+	color: #1DBC9B;
+}
+
+.out img,.add img{
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+.stationList{
+	width: 100%;
+	height: 535px;
+	border: 1px solid #ddd;
+	position: relative;
+}
+.tableHead{
+	width: 100%;
+}
+.tableHead td{
+	text-align: center;
+}
+table{
+	background: #FFF;
+}
+
+.tableHead thead td div a{
+	display: inline-block;
+	width: 48%;
+	color: #666666;
+}
+.tableHead tbody td{
+	height: 40px;
+}
+
+.tableHead tbody td a{
+	display: inline-block;
+	width: 48%;
+	text-align: center;
+}
+
+.alerts{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.6);
+	z-index: 800;
+	/*margin-right: 440px;*/
+	text-align: center;
+	z-index: 100;
+	/*display: none;*/
+}
+.middles {
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+
+#win {
+	position: relative;
+	border-radius: 5px;
+	display: inline-block;
+	vertical-align: middle;
+	width: 580px;
+	background: #F2F2F2;
+	position: relative;
+}
+.alerttitle{
+	margin-bottom: 20px;
+}
+.alerttitle span{
+	display: inline-block;
+	width: 100%;
+	text-align: left;
+	padding: 5px 15px;
+	font-size: 20px;
+	color: #333333;
+	font-weight: 700;
+	height: 50px;
+	line-height: 50px;
+}
+.alerttitle i{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 18px;
+}
+#win .put{
+	width: 100%;
+	margin-bottom: 15px;
+}
+#win .put span{
+	display: inline-block;
+	width: 95px;
+	padding-right: 10px;
+	text-align: right;
+	color: #666;
+}
+#win .put input,#win .put select{
+	display: inline-block;
+	width: 82%;
+	background: #fff;
+	height: 40px;
+	line-height: 40px;
+	outline: none;
+}
+.myBtn{
+	padding: 30px 0;
+}
+.myBtn a{
+	display: inline-block;
+	width: 140px;
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	border-radius: 5px;
+}
+.myBtn a:first-child{
+	background: #BAC7CC;
+	margin-right: 40px;
+}
+
+.myBtn a:last-child{
+	background: #1DBC9B;
+}
+.put>p{
+	display: inline-block;
+	width: 287px;
+	text-align: right;
+	padding-right: 15px;
+}
+#win .put>p select,#win .put>p input{
+	display: inline-block;
+	width: 171px;
+}
+.up{
+	text-align: left;
+}
+.up span{
+	display: inline-block;
+	width: 100px;
+	text-align: right;
+	    padding-right: 10px;
+    text-align: right;
+    color: #666
+}
+.up div{
+	display: inline-block;
+}
+.notes{
+	margin-top: 25px;
+	color: #666666;
+	text-align: left;
+	font-size: 12px;
+	padding-left: 20px;
+}
+/* 分页 */
+.page{
+	text-align: right;
+	padding: 30px 60px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	
+}
+.page ul{
+	display: inline-flex;	
+	width: 400px;
+	justify-content: space-between;
+}
+
+.page ul li select{
+	width: 50px;
+	text-align: center;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.put img{
+	height: 68px;
+}
+input[type='file']{
+	width: 68px;
+	height: 68px;
+	position: absolute;
+	top: 0;
+	opacity: 0;
+	left: 0;
+}
+.upImg{
+	position: relative;
+}
+
+.alerttitle+div{
+	padding-right:12px ;
+}
+.alerttitle+div input{
+	margin-left: 1px;
+}
+.put input{
+	padding-left:10px;
+	padding-right:10px;
+}
+
+
+.put em{
+	color: red;
+	display: inline-block;
+	margin-right: 5px;
+	font-size: 20px;
+	height: 8px;
+	line-height: 14px;
+	vertical-align: middle;
+}
+
+
+
+
+

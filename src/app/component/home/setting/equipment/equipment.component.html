@@ -1,0 +1,121 @@
+<div class="station">
+	<div class="header">
+		<span>系统设置&nbsp;&gt;&nbsp;设备管理</span>
+	</div>
+	<div class="selects">
+		<select name="" id="area" [(ngModel)]='company'>
+			<option value="">站点</option>
+			<ng-container *ngFor='let p of company_opt'>
+				<option [value]="p">{{p}}</option>
+			</ng-container>
+		</select>
+		<select name="" id="kind" [(ngModel)]='area'>
+			<option value="">区域</option>
+			<ng-container *ngFor='let p of area_opt'>
+				<option [value]="p">{{p}}</option>
+			</ng-container>
+		</select>
+		<input type="text" name="stationName" id="stationName" value="" placeholder="设备编号" [(ngModel)]='num' />
+		<a class="sea" (click)='search() '>
+			<img src="../../../../../assets/img/search_b.png" />
+		</a>
+
+		<div class="fr">
+			<a class="out" (click)='out()'>
+				<img src="../../../../../assets/img/outs.png" />
+				<span>导出</span>
+			</a>
+		</div>
+	</div>
+	<div class="stationList">
+		<div class="list">
+			<table class="tableHead">
+				<thead>
+					<tr>
+						<td>序号</td>
+						<td>所属站点</td>
+						<td>所属区域</td>
+						<td>设备编号</td>
+						<td>设备位置</td>
+						<td>接入状态</td>
+						<td>接入时间</td>
+						<td>
+							<div>操作</div>
+							<div>
+								<a>编辑</a>
+							</div>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor='let items of msglist;let i = index;'>
+						<ng-container *ngIf='i>=(page-1)*10&&i<page*10'>
+							<td>{{i+1}}</td>
+							<td>{{items[0]}}</td>
+							<td>{{items[1]}}</td>
+							<td>{{items[2]}}</td>
+							<td>{{items[3]}}</td>
+							<td>{{items[4]}}</td>
+							<td>{{items[5]}}</td>
+							<td>
+								<a (click)='compile(items[0],items[3],items[6])'><img src="../../../../../assets/img/bj.png" /></a>
+								<!--<a (click)='del(items[6])'><img src="../../../../../assets/img/sc.png" /></a>-->
+							</td>
+						</ng-container>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="page">
+			<ul>
+				<li (click)='first()'>
+					<a><img src="../../../../../assets/img/pgbegin.png" /></a>
+				</li>
+				<li (click)='prev()'>
+					<a><img src="../../../../../assets/img/pgprev.png" /></a>
+				</li>
+				<li>
+					<select name="" [(ngModel)]='page'>
+						<ng-container *ngFor='let p of pageArr; let s = index'>
+							<option [value]="p">{{p}}</option>
+						</ng-container>
+					</select>
+				</li>
+				<li (click)='next()'>
+					<a><img src="../../../../../assets/img/pgnext.png" /></a>
+				</li>
+				<li (click)='last()'>
+					<a><img src="../../../../../assets/img/pgend.png" /></a>
+				</li>
+				<li><span>共{{msglist.length}}条记录，当前页面{{page}}/{{maxPage}}页</span></li>
+			</ul>
+		</div>
+	</div>
+
+	<!--编辑-->
+	<div class="alerts" *ngIf='showcompile'>
+		<span class="middles"></span>
+		<div id="win">
+			<input type="hidden" [(ngModel)]='id_com' />
+			<div class="alerttitle">
+				<span>设备编辑</span><i (click)='hiddencompile()' class="glyphicon glyphicon-remove"></i>
+			</div>
+			<div class="put">
+				<span><em>*</em>所属站点</span>
+				<select [(ngModel)]='company_com'>
+					<option value="">请选择站点</option>
+					<ng-container *ngFor='let p of company_opt'>
+						<option [value]="p">{{p}}</option>
+					</ng-container>
+				</select>
+			</div>
+			<div class="put">
+				<span>设备位置</span><input type="text" placeholder="填写设备位置" [(ngModel)]='area_com' />
+			</div>
+			<div class="myBtn">
+				<a (click)='hiddencompile()'>取消</a>
+				<a (click)='savecompile()'>确定</a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,121 @@
+@media (min-width: 768px) {
+  #wrapper{
+    margin-left: -50px!important;
+  }
+}
+@media (min-width: 100px) {
+  .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9{
+    float: left;
+  }
+  .col-sm-4{width: 33.33333333%;}
+}
+@media (min-width: 100px) {
+  .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {
+    float: left;
+  }
+  .col-md-2{width:16.66666667%}
+}
+
+
+.gm-style-cc{
+ display: none;
+}
+
+.contentd{
+  height: 90vh;
+  max-height: 900px;
+  font-size: 0;
+}
+.contentd>div{
+  font-size: 15px;
+  display: inline-block;
+  vertical-align: text-top;
+}
+.contentd>.right{
+  width: 100%;
+  height: 100%;
+}
+.contentd>.right >.r_top{
+  height: 20%;
+  background: url(../../../../assets/img/u177.png)no-repeat;
+}
+.contentd>.right >.r_top>div{
+  width: 31%;
+  height:70%;
+  display: inline-block;
+  margin-left:1%;
+  margin-top: 4%;
+  position: relative;
+  vertical-align: text-top;
+  padding: 10px 0 0 10px;
+  color: white;
+}
+.contentd>.right >.r_top>div>span{
+  width: 95%;
+  height:70%;
+  display: block;
+  text-align: center;
+  margin: auto;
+}
+.contentd>.right >.r_top>div>img{
+  width: 23px;
+  height: 20px;
+}
+.contentd>.right >.r_top>div>span>span{
+  display: inline-block;width: 78%;
+  height: 50%;
+  line-height: 2.5;
+  background: black;
+  margin: auto;
+  border-radius: 8px;
+}
+
+.ct_list{
+  height: 180px;
+  margin: 0 11px 0 auto;border-radius: 9px;
+  background: white;
+  width: 92%;
+}
+#crow>.col-md-2:nth-child(2),#crow>.col-md-2:nth-child(3),#crow>.col-md-2:nth-child(4){
+  border-right:1px solid #88DD67;
+  padding: 18px 0;
+  font-size: 12px;
+}
+#crow>.col-md-2:nth-child(5){
+  padding: 18px 0;
+  font-size: 12px;
+}
+#crow>.col-md-2{
+  padding:10px 0;margin: 0;
+  height: 100%;
+  text-align: center;
+}
+.bl{
+  color: #009CFF;
+  font-size: 15px;
+}
+.gn {
+  color: #58D68D;
+}
+.rows{
+  margin: 0;padding: 0;
+}
+.rows>div{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  text-align: center;
+
+}
+.axspan>div{
+padding: 8px 0;
+  font-size: 13px;line-height: 2.7;
+}
+.backMap{
+	/*box-shadow: 5px 5px 5px #999;*/
+	position: fixed;
+	top: 80px;
+	left: 50px;
+	z-index: 1000;
+	text-align: center;
+}

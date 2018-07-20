@@ -1,0 +1,185 @@
+<div class="station">
+	<div class="header">
+		<span>系统设置&nbsp;&gt;&nbsp;行政区域</span>
+	</div>
+	<div class="selects">
+		<select name="" id="area" [(ngModel)]='prov_v' (change)='getshi(1)'>
+			<option value="-1">选择省</option>
+			<ng-container *ngFor='let p of prov_s'>
+				<option [value]="p.value">{{p.text}}</option>
+			</ng-container>
+		</select>
+		<select name="" id="kind" [(ngModel)]='city_v' (change)='getqu()'>
+			<option value="-1">选择市</option>
+			<ng-container *ngFor='let p of city_s'>
+				<option [value]="p.CITYID">{{p.CITYNAME}}</option>
+			</ng-container>
+		</select>
+		<select name="" id="kind" [(ngModel)]='area_v'>
+			<option value="-1">区域</option>
+			<ng-container *ngFor='let p of area_s'>
+				<option [value]="p.CITYNAME">{{p.CITYNAME}}</option>
+			</ng-container>
+		</select>
+		<a class="sea" (click)='seach(prov_v,city_v,area_v)'>
+			<img src="../../../../../assets/img/search_b.png" />
+		</a>
+
+		<div class="fr">
+			<a class="add" (click)='shows()'>
+				<img src="../../../../../assets/img/adds.png" />
+				<span>新增</span>
+			</a>
+			<!--<a class="out">
+				<img src="../../../../../assets/img/outs.png" />
+				<span>导出</span>
+			</a>-->
+		</div>
+	</div>
+	<div class="stationList">
+		<div class="list">
+			<table class="tableHead">
+				<thead>
+					<tr>
+						<td>选择</td>
+						<td>省市</td>
+						<td>市县</td>
+						<td style="width: 500px;">区域</td>
+						<td style="width: 200px;">
+							<div>
+								<a>编辑</a>
+								<a>删除</a>
+							</div>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor='let items of msglist;let i = index;'>
+						<ng-container *ngIf='i>=(page-1)*10&&i<page*10'>
+							<td>{{i+1}}</td>
+							<td>{{items[0]}}</td>
+							<td>{{items[1]}}</td>
+							<td>{{items[2]}}</td>
+							<td>
+								<a (click)='compile(items[0],items[1],items[2],items[3])'><img src="../../../../../assets/img/bj.png" /></a>
+								<a (click)='del(items[3])'><img src="../../../../../assets/img/sc.png" /></a>
+							</td>
+						</ng-container>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="page">
+			<ul>
+				<li (click)='first()'>
+					<a><img src="../../../../../assets/img/pgbegin.png" /></a>
+				</li>
+				<li (click)='prev()'>
+					<a><img src="../../../../../assets/img/pgprev.png" /></a>
+				</li>
+				<li>
+					<select name="" [(ngModel)]='page'>
+						<ng-container *ngFor='let p of pageArr; let s = index'>
+							<option [value]="p">{{p}}</option>
+						</ng-container>
+					</select>
+				</li>
+				<li (click)='next()'>
+					<a><img src="../../../../../assets/img/pgnext.png" /></a>
+				</li>
+				<li (click)='last()'>
+					<a><img src="../../../../../assets/img/pgend.png" /></a>
+				</li>
+				<li><span>共{{msglist.length}}条记录，当前页面{{page}}/{{maxPage}}页</span></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="alerts" *ngIf='alertshow'>
+		<span class="middles"></span>
+		<div id="win">
+			<div class="alerttitle">
+				<span>设置区域</span><i (click)='hiddens()' class="glyphicon glyphicon-remove"></i>
+			</div>
+			<div class="put" style="text-align: right;padding-right: 15px;">
+				<p><span>省市</span>
+					<select [(ngModel)]='prov' (change)='getshi(2)'>
+						<option value="-1">选择省</option>
+						<ng-container *ngFor='let p of prov_s'>
+							<option [value]="p.text">{{p.text}}</option>
+						</ng-container>
+					</select>
+				</p>
+				<p><span>市县</span>
+					<select [(ngModel)]='city'>
+						<option value="-1">选择市</option>
+						<ng-container *ngFor='let p of city_a'>
+							<option [value]="p.CITYNAME">{{p.CITYNAME}}</option>
+						</ng-container>
+					</select>
+				</p>
+			</div>
+			<div class="put">
+				<!--				<span>区域</span><input [(ngModel)]='area' type="text" />
+-->
+					<span>区域</span>
+					<input type="text" [(ngModel)]='area'/>
+				<!--<select name="" id="kind" [(ngModel)]='area'>
+					<option value="-1">区域</option>
+					<ng-container *ngFor='let p of area_a'>
+						<option [value]="p.CITYID">{{p.CITYNAME}}</option>
+					</ng-container>
+				</select>-->
+			</div>
+
+			<div class="myBtn">
+				<a (click)='hiddens()'>取消</a>
+				<a (click)='save()'>确定</a>
+			</div>
+		</div>
+	</div>
+	<!-- 编辑-->
+	<div class="alerts" *ngIf='showcompile'>
+		<span class="middles"></span>
+		<div id="win">
+			<div class="alerttitle">
+				<span>编辑区域</span><i (click)='hiddencompile()' class="glyphicon glyphicon-remove"></i>
+			</div>
+			<div class="put" style="text-align: right;padding-right: 15px;">
+				<p><span>省市</span>
+					<input type="hidden" [(ngModel)]='id_com' />
+					<select [(ngModel)]='prov' (change)='getshi(3)'>
+						<option value="-1">选择省</option>
+						<ng-container *ngFor='let p of prov_s'>
+							<option [value]="p.text">{{p.text}}</option>
+						</ng-container>
+					</select>
+				</p>
+				<p><span>市县</span>
+					<select [(ngModel)]='city_com'>
+						<option value="-1" title="987">选择市</option>
+						<ng-container *ngFor='let p of city_c'>
+							<option [value]="p.CITYNAME" [title]='p.CITYNAME'>{{p.CITYNAME}}</option>
+						</ng-container>
+					</select>
+				</p>
+			</div>
+			<div class="put">
+				<span>区域</span>
+				<input type="text" [(ngModel)]='area_com'/>
+				<!--<select name="" id="kind" [(ngModel)]='area_com'>
+					<option value="-1">区域</option>
+					<ng-container *ngFor='let p of area_c'>
+						<option [value]="p.CITYNAME">{{p.CITYNAME}}</option>
+					</ng-container>
+				</select>-->
+			</div>
+
+			<div class="myBtn">
+				<a (click)='hiddencompile()'>取消</a>
+				<a (click)='savecompile()'>确定</a>
+			</div>
+		</div>
+	</div>
+
+</div>

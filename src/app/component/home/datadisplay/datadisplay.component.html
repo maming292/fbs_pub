@@ -1,0 +1,26 @@
+<div id="datadisplay">
+	<div class="title">
+		<span></span><b>数据质量控制</b>
+	</div>
+	<div class="ecList">
+		<div class="select">
+			<select class="name" [(ngModel)]='company_id' (change)='getData(company_id, time)'>
+				<option value="141">无锡广盈实业有限公司</option>
+				<option value="142">AA广盈实业有限公司</option>
+			</select>
+			<select [(ngModel)]='time' (change)='getData(company_id, time)'>
+				<option value="2018-05">2018年05月</option>
+				<option value="2018-06">2018年06月</option>
+			</select>
+			
+		</div>
+		<div class="echartsContent">
+				<div class="btns">
+						<a (click)='lineActive()' class="bar"><img [src]="btnChange[0]" /></a>
+						<a (click)='barActive()' class="line"><img [src]="btnChange[1]" /></a>
+					</div>
+			<!--<div id="main" class="ec"></div>-->
+			<div id="main" class="ec" style="width: 100%;height:600px;position: relative;"></div>
+		</div>
+	</div>
+</div>

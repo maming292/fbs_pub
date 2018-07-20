@@ -1,0 +1,77 @@
+<div id="tweather">
+  <div class="article" style="position: relative;" id="ft">
+    <div class="top">
+      <div class="form-group" style="padding-left: 40px;">
+        <label id="title">数据质量</label>
+        <!--<select class="form-control " style="display: inline-block;margin-left: 60px;margin-top:4px;width: 200px;border-radius: 8px;" >
+          <option>无锡广盈实业有限公司</option>
+        </select>-->
+      </div>
+    </div>
+
+	<div class="myselt"style="text-align: center;background: #fff;margin: 0; height: 60px;">
+		<select class="form-control " style="display: inline-block;width: 200px;margin-top: 8px;padding:0 0 0 15px;height:30px;border-radius: 8px;margin-right: 25px;">
+              <option>无锡广盈实业有限公司</option>
+            </select>
+            <select class="form-control" id="selcd" title="" style="width: 200px;margin-top: 8px;padding:0 0 0 15px;height:30px;border-radius: 8px;margin-right: 25px;display: inline-block;" [(ngModel)]='month' (change)='charts()'>
+                  <option value="2018-07">2018年07月</option>
+                  <option value="2018-06">2018年06月</option>
+                  <option value="2018-05">2018年05月</option>
+                  <option value="2018-04">2018年04月</option>
+                  <option value="2018-03">2018年03月</option>
+                  <option value="2018-02">2018年02月</option>
+                  <option value="2018-01">2018年01月</option>
+              </select>
+	</div>
+
+    <div class="first" >
+      <!--<div class="tp select">
+					<span class="right" style=" margin-right: 25px;">
+						<select class="form-control " style="display: inline-block;width: 200px;margin-top: 8px;padding:0 0 0 15px;height:30px;border-radius: 8px;margin-right: 25px;">
+              <option>无锡广盈实业有限公司</option>
+            </select>
+					</span>
+					
+      </div>
+      <div class="tp select">
+					<span class="left" style="margin-top:9px;">
+						<select class="form-control pull-left" id="selcd" title="" style="width: 200px;margin-top: 8px;padding:0 0 0 15px;height:30px;border-radius: 8px;margin-right: 25px;" [(ngModel)]='month' (change)='charts()'>
+                  <option value="2018-07">2018年07月</option>
+                  <option value="2018-06">2018年06月</option>
+                  <option value="2018-05">2018年05月</option>
+                  <option value="2018-04">2018年04月</option>
+                  <option value="2018-03">2018年03月</option>
+                  <option value="2018-02">2018年02月</option>
+                  <option value="2018-01">2018年01月</option>
+              </select>
+						  <p-calendar [(ngModel)]="date" [showIcon]="true" [placeholder]="'选择日期'"  dateFormat="yy-mm" [locale]="ch" [readonlyInput]="false"></p-calendar>
+					</span>
+					
+      </div>-->
+      <div class="tp cn border" echarts [options]="option1" style="height: 50%;"></div>
+      <div class="tp cn" echarts [options]="option2" style="height: 50%;"></div>
+    </div>
+    <div class="first" >
+      <div class="tp select">
+					<span class="right" style=" margin-right: 25px;">
+							<!--<select class="form-control " style="display: inline-block;width: 200px;height: 30px;padding:0 0 0 15px;margin-top: 8px;height:30px;;border-radius: 8px;">
+                <option>无锡广盈实业有限公司</option>
+              </select>-->
+					</span>
+      </div>
+      <div class="tp select">
+					<span class="left" style="margin-top:9px;">
+						 <!--<p-calendar [(ngModel)]="date_sc" [showIcon]="true" [placeholder]="'选择日期'"  dateFormat="yy-mm-dd" [locale]="ch" [readonlyInput]="false"></p-calendar>-->
+					</span>
+      </div>
+      <div class="tp cn border" echarts [options]="option3" style="height: 50%;"></div>
+      <div class="tp cn" echarts [options]="option4" style="height: 50%;"></div>
+
+    </div>
+  </div>
+  <!--<p-sidebar [(visible)]="display">
+    Content
+  </p-sidebar>
+
+  <button type="text" (click)="display = true" pButton icon="fa-external-link-square" label="Show"></button>-->
+</div>

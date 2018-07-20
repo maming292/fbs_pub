@@ -1,0 +1,221 @@
+<div class="station">
+	<div class="header">
+		<span>系统设置&nbsp;&gt;&nbsp;站点管理</span>
+	</div>
+	<div class="selects">
+		<select name="" id="area" [(ngModel)]='area_s'>
+			<option value="">所在区域</option>
+			<ng-container *ngFor='let p of area_arr'>
+					<option [value]="p">{{p}}</option>
+				</ng-container>
+		</select>
+		<select name="" id="kind" [(ngModel)]='standtype_s'>
+			<option value="">电站类型</option>
+			<option value="光伏站">光伏站</option>
+		</select>
+		<input  type="text" name="stationName" id="stationName" value="" placeholder="站点名称"  [(ngModel)]='companyname_s'/>
+		<a class="sea" (click)='seach()'>
+			<img src="../../../../../assets/img/search_b.png" />
+		</a>
+
+		<div class="fr">
+			<a class="add" (click)='shows()'>
+				<img src="../../../../../assets/img/adds.png" />
+				<span>新增</span>
+			</a>
+			<a class="out" (click)='out()'>
+				<img src="../../../../../assets/img/outs.png" />
+				<span>导出</span>
+			</a>
+		</div>
+	</div>
+	<div class="stationList">
+		<div class="list">
+			<table class="tableHead">
+				<thead>
+					<tr>
+						<td>序号</td>
+						<td>站点名称</td>
+						<td>电站类型</td>
+						<td>建设类型</td>
+						<td>建设规模</td>
+						<td>所属区域</td>
+						<td>投资回报率</td>
+						<td>成本节约/年</td>
+						<td>经度</td>
+						<td>纬度</td>
+						<td>站点图片</td>
+						<td>
+							<div>操作</div>
+							<div>
+								<a>编辑</a>
+								<a>删除</a>
+							</div>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor='let items of msglist;let i = index;'>
+						<ng-container *ngIf='i>=(page-1)*10&&i<page*10'>
+							<td>{{i+1}}</td>
+							<td>{{items[0]}}</td>
+							<td>{{items[1]}}</td>
+							<td>{{items[2]}}</td>
+							<td>{{items[3]}}</td>
+							<td>{{items[4]}}</td>
+							<td>{{items[5]}}</td>
+							<td>{{items[6]}}</td>
+							<td>{{items[7]}}</td>
+							<td>{{items[8]}}</td>
+							<td (click)='showPic(items[9])'>查看</td>
+							<td><a (click)='compile(items[0],items[1],items[2],items[3],items[4],items[5],items[6],items[7],items[8],items[9],items[10])'><img src="../../../../../assets/img/bj.png" /></a><a (click)='del(items[10])'><img src="../../../../../assets/img/sc.png" /></a>
+							</td>
+						</ng-container>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="page">
+			<ul>
+				<li (click)='first()'>
+					<a><img src="../../../../../assets/img/pgbegin.png" /></a>
+				</li>
+				<li (click)='prev()'>
+					<a><img src="../../../../../assets/img/pgprev.png" /></a>
+				</li>
+				<li>
+					<select name="" [(ngModel)]='page'>
+						<ng-container *ngFor='let p of pageArr; let s = index'>
+							<option [value]="p">{{p}}</option>
+						</ng-container>
+					</select>
+				</li>
+				<li (click)='next()'>
+					<a><img src="../../../../../assets/img/pgnext.png" /></a>
+				</li>
+				<li (click)='last()'>
+					<a><img src="../../../../../assets/img/pgend.png" /></a>
+				</li>
+				<li><span>共{{msglist.length}}条记录，当前页面{{page}}/{{maxPage}}页</span></li>
+			</ul>
+		</div>
+	</div>
+	<div class="alerts" *ngIf='alertshow'>
+		<span class="middles"></span>
+		<div id="win">
+			<div class="alerttitle">
+				<span>新增站点信息</span><i (click)='hiddens()' class="glyphicon glyphicon-remove"></i>
+			</div>
+			<div class="put">
+				<span><em>*</em>站点名称</span><input type="text" placeholder="填写用户名称" [(ngModel)]='companyname_new'/>
+			</div>
+			<div class="put">
+				<p><span><em>*</em>电站类型</span>
+					<input type="text"  [(ngModel)]='standtype_new' placeholder="填写电站类型"/>
+				</p>
+				<p><span><em>*</em>建设类型</span>
+					<input type="text"  [(ngModel)]='construction_new'/>
+				</p>
+			</div>
+			<div class="put">
+				<p><span><em>*</em>建设规模</span>
+					<input type="text"  [(ngModel)]='constructionscale_new'/>
+				</p>
+				<p><span><em>*</em>所属区域</span>
+					<select [(ngModel)]='area_new'>
+						<option value="">请选择</option>
+						<ng-container *ngFor='let p of area_arr'>
+					<option [value]="p">{{p}}</option>
+				</ng-container>
+					</select>
+				</p>
+			</div>
+			<div class="put">
+				<p><span>投资回报率</span>
+					<input type="number"  [(ngModel)]='raroc_new'/>
+				</p>
+				<p><span>节约成本/年</span>
+					<input type="text"  [(ngModel)]='savings_new'/>
+				</p>
+			</div>
+			<div class="put">
+				<p><span><em>*</em>经度</span>
+					<input type="text"  [(ngModel)]='long_new'/>
+				</p>
+				<p><span><em>*</em>纬度</span>
+					<input type="text"  [(ngModel)]='latitude_new'/>
+				</p>
+			</div>
+			<div class="up">
+				<span>站点图片</span>
+				<div class="upImg"><img src="../../../../../assets/img/up.png"/><input (change)='loadImg()' type="file" name="pic" id="pic" accept="image/gif, image/jpeg, image/png"/></div>
+			</div>
+			<div class="notes">备注：电站类型：1.光伏站 2.风能站 3.其他&nbsp;&nbsp;建设类型：1.办公园区 2.工厂 3.住宅</div>
+			<div class="myBtn">
+				<a (click)='hiddens()'>取消</a><a (click)='save()'>确定</a>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!--编辑-->
+		<div class="alerts" *ngIf='showcompile'>
+		<span class="middles"></span>
+		<div id="win">
+			<div class="alerttitle">
+				<span>编辑站点信息</span><i (click)='hiddencompile()' class="glyphicon glyphicon-remove"></i>
+			</div>
+			<div class="put">
+				<span><em>*</em>站点名称</span><input type="text" placeholder="填写站点名称" [(ngModel)]='companyname_com'/>
+			</div>
+			<div class="put">
+				<p><span><em>*</em>电站类型</span>
+					<input type="text"  [(ngModel)]='standtype_com' placeholder="填写电站类型" />
+				</p>
+				<p><span><em>*</em>建设类型</span>
+					<input type="text"  [(ngModel)]='construction_com'/>
+				</p>
+			</div>
+			<div class="put">
+				<p><span><em>*</em>建设规模</span>
+					<input type="text"  [(ngModel)]='constructionscale_com'/>
+				</p>
+				<p><span><em>*</em>所属区域</span>
+					<select [(ngModel)]='area_com'>
+						<option value="">请选择（必选）</option>
+						<ng-container *ngFor='let p of area_arr'>
+					<option [value]="p">{{p}}</option>
+				</ng-container>
+					</select>
+				</p>
+			</div>
+			<div class="put">
+				<p><span>投资回报率</span>
+					<input type="number"  [(ngModel)]='raroc_com'/>
+				</p>
+				<p><span>节约成本/年</span>
+					<input type="text"  [(ngModel)]='savings_com'/>
+				</p>
+			</div>
+			<div class="put">
+				<p><span><em>*</em>经度</span>
+					<input type="text"  [(ngModel)]='long_com'/>
+				</p>
+				<p><span><em>*</em>纬度</span>
+					<input type="text"  [(ngModel)]='latitude_com'/>
+				</p>
+			</div>
+			<div class="up">
+				<span>站点图片</span>
+				<div class="upImg"><img src="../../../../../assets/img/up.png"/><input (change)='comImg()' type="file" name="pic" id="pic_com" accept="image/gif, image/jpeg, image/png"/></div>
+			</div>
+			<div class="notes">备注：电站类型：1.光伏站 2.风能站 3.其他&nbsp;&nbsp;建设类型：1.办公园区 2.工厂 3.住宅</div>
+			<div class="myBtn">
+				<a (click)='hiddencompile()'>取消</a><a (click)='savecompile()'>确定</a>
+			</div>
+		</div>
+	</div>
+	
+	 <!--上传图片 展示-->
+	<!--<img [src]="imgbase64_new" style="width: 700px;"/>-->
+</div>
