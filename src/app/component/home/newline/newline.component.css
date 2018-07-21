@@ -71,10 +71,10 @@
 }
 
 .contentd>.right>.r_top>div {
-	width: 28%;
+	width: 31.5%;
 	height: 70%;
 	display: inline-block;
-	margin-left: 3.5%;
+	margin-left: 1%;
 	margin-top: 4%;
 	position: relative;
 	vertical-align: text-top;
@@ -270,7 +270,7 @@
 .nl2 {
 	position: relative;
 	display: inline-block;
-	margin-right: 440px;
+	margin-right: 500px;
 }
 
 .nl2>img {

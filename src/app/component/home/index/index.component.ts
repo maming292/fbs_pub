@@ -53,9 +53,9 @@ export class IndexComponent implements OnInit {
 	}
 	// 首页地图
 	get() {
-		let info = new HttpParams().set('page', '1').set('total_number', '10000').set('area', this.area).set('stand_type', this.standtype).set('company_name', this.companyname)
+		let info = new HttpParams().set('page', '1').set('total_number', '10000').set('area', this.area).set('stand_type', this.standtype).set('company_name', this.companyname);
+		
 		this.serve.getData(this.url, info).then(data => {
-			console.log(data);
 			if(data['code'] == 200) {
 				this.secarea = data['areaAll'];
 				//				this.sectype = data['listCompany'];

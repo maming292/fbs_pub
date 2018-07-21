@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { IndexService } from '../../../services/index.service';
 import swal from 'sweetalert2';
@@ -25,8 +25,22 @@ export class NewlineComponent implements OnInit {
 	team: any;
 	nameshow: any = false;
 	lineshow:any = false;
+// 临时	
+	stationNumber: any;
+	warnNumber: any;
+	energy: any;
+	area: any = '';
+	standtype: any = '';
+	companyname: any = '';
+	url = '/fbs/foreignForC/synthesize';
+	secarea: any = '';
+	sectype: any = '';
+	lister: any;
+	map: any;
 	constructor(private route: Router, private serve: IndexService, private http: HttpClient) {}
 	ngOnInit() {
+		this.get();
+		
 		var a = [{ //路径
 			name: '路线0',
 			path: [
@@ -314,5 +328,29 @@ export class NewlineComponent implements OnInit {
 	}
 	p(){
 		this.nameshow = !this.nameshow;
+	}
+	
+	
+	// 临时
+		get() {
+		let info = new HttpParams().set('page', '1').set('total_number', '10000').set('area', this.area).set('stand_type', this.standtype).set('company_name', this.companyname);
+		console.log(info)
+		this.serve.getData(this.url, info).then(data => {
+			console.log(data);
+			if(data['code'] == 200) {
+				this.secarea = data['areaAll'];
+				//				this.sectype = data['listCompany'];
+				this.sectype = data['standtype'];
+				this.lister = data['company']['list'];
+				this.stationNumber = data['facilityCount'];
+				this.warnNumber = data['warnCount'];
+				this.energy = data['energy'];
+				this.map = data['start']
+			} else {
+				swal(`~~~@${data['code']}`);
+			}
+		}).catch(err => {
+			console.log(err);
+		})
 	}
 }

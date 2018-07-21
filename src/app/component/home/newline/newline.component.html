@@ -1,5 +1,5 @@
 <div class="body" style="position: relative">
-	<aside class="main-sidebar pull-right" style="padding-top: 0;min-width:440px;right:0!important;left: inherit;background-color: rgb(236, 240, 245);height: 95%;">
+	<!--<aside class="main-sidebar pull-right" style="padding-top: 0;min-width:440px;right:0!important;left: inherit;background-color: rgb(236, 240, 245);height: 95%;">
 		<div class="contentd">
 			<div class="right">
 				<div class="r_top">
@@ -28,7 +28,6 @@
 						<div class="col-sm-4 text-center">
 							<select class="form-control">
 								<option value="-1">线路</option>
-								<!--<option *ngFor="let item of lnglats">{{item}}</option>-->
 							</select>
 						</div>
 						<div class="col-sm-4">
@@ -54,10 +53,6 @@
 								<span>
               	<img style="vertical-align: middle;margin-right: 5px;" src="../../../../assets/img/u285.png"/><span style="vertical-align: middle;display: inline-block;"><span>异常用户数</span><b style="display: inline-block;width: 20px;text-align: center;color: #EF4E4B;">0</b><span>家</span></span>
 								</span>
-
-								<!--<span class="pull-right" style="width: 60px;" *ngIf="map[item.ID]==0">
-                 <img src="../../../../assets/img/u361.png" alt=""><span>离线</span>
-              </span>-->
 							</p>
 							<div class="detail">
 								<table style="width: 100%;">
@@ -87,7 +82,130 @@
 				</div>
 			</div>
 		</div>
-	</aside>
+	</aside>-->
+	
+	  <aside class="main-sidebar pull-right" style="padding-top: 0;min-width:500px;right:0!important;left: inherit;background-color: rgb(236, 240, 245);">
+    <div class="contentd">
+      <div class="right">
+        <div class="r_top">
+          <div style="background: #00BCFF">
+            <img src="../../../assets/img/u187.png" alt="">
+            <span>电站数<br>
+								<span style="background: #0096CC">{{stationNumber}}</span>
+							</span>
+          </div>
+          <div style="background: #00EFD2">
+            <img src="../../../assets/img/u193.png" alt="">
+            <span>报警条数<br>
+								<span style="background: #00BFA8">{{warnNumber}}</span>
+							</span>
+          </div>
+          <div style="background: #88DD67">
+            <img src="../../../assets/img/u199.png" alt="">
+            <span>年累计电量<br>
+								<span style="background: #6DB152">{{energy}}</span>度
+							</span>
+          </div>
+        </div>
+        <div class="r_center">
+          <div class="select row " style="padding: 25px;">
+            <div class="col-sm-4 text-center">
+              <select class="form-control" [(ngModel)] = 'area'>
+              	<option value="">区域</option>
+                <option *ngFor="let item of secarea" [value]='item'>{{item}}</option>
+              </select>
+            </div>
+            <div class="col-sm-4"  >
+              <select class="form-control" [(ngModel)] = 'standtype'>
+              	<option value="">电站类型</option>
+                <option *ngFor="let item of sectype" [value]='item'>{{item}}</option>
+              </select>
+            </div>
+            <div class="input-group input-group-sm col-sm-4 " >
+              <input type="text" class="form-control" placeholder="电站名称" [(ngModel)] = 'companyname'>
+              <span class="input-group-btn">
+                      <button type="button" class="btn btn-info btn-flat" (click)='get()'>搜</button>
+                    </span>
+            </div>
+          </div>	
+          
+          <div style="overflow: scroll;height: 65vh;">
+          <div class="ct_list" *ngFor="let item of lister;let i=index" style="cursor: pointer"  (click)="onClick(item.DAY_EQ,item.SUM_EQ)"  >
+            <p  style="padding: 10px;height: 40px;line-height: 20px;" >
+              <span class="toogle">{{i+1}}、{{item.FACILITY_NAME}}</span>
+              <span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==1">
+                 <img src="../../../../assets/img/u228.png" alt=""><span>正常</span>
+              </span>
+              <span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==2">
+                 <img src="../../../../assets/img/u285.png" alt=""><span style="color: red;">异常</span>
+              </span>
+              
+              <!-- 在线/离线  -->
+               <span class="pull-right" style="width: 60px;" *ngIf="item.TYPE!=0">
+                 <img src="../../../../assets/img/u228.png" alt=""><span>在线</span>
+              </span>
+             <span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==0">
+                 <img src="../../../../assets/img/u361.png" alt=""><span>离线</span>
+              </span>
+              
+              <!-- 在线/离线  以上  -->
+            </p>
+            <div class="row rows" id="crow" style="height: 72px;padding: 0 10px;margin: 0">
+              <div class="col-md-2">
+                <img src="../../../../assets/img/hhhh.png" alt="" style="position: absolute;left: 0;">
+              </div>
+              <div class="col-md-2" [title]="item.SUN_MJ_DAY">
+                <p class="bl">{{item.SUN_MJ_DAY|fixedNumber}}</p>
+                <p>日照(Mj/<sup>2</sup>)</p>
+              </div>
+              <div class="col-md-2" [title]="item.SUN_MJ_DAY">
+                <p class="bl">{{item.SUN_MJ_DAY|fixedNumber}}</p>
+                <p>预测日电量(度)</p>
+              </div>
+              <div class="col-md-2" [title]="item.DAY_EQ">
+                <p class="bl">{{item.DAY_EQ|fixedNumber}}</p>
+                <p>当日日电量(度)</p>
+              </div>
+              <div class="col-md-2" [title]="item.SUM_EQ">
+                <p class="bl">{{item.SUM_EQ|fixedNumber}}</p>
+                <p>累计总电量(度)</p>
+              </div>
+              <div class="col-md-2" style="float: right;width: 13%!important;">
+                <span class="btn btn-block btn-info btn-sm" style="height: 50px;line-height: 42px;font-size: 15px;">65%</span>
+              </div>
+            </div>
+            <div class="row rows clearfix" style="height: 50px;margin-top: 3px;">
+              <div class="col-md-4 column axspan" style="height: 100%;">
+                <div class="row clearfix rows" style="height: 100%;">
+                  <div class="col-sm-5 column">电站类型</div>
+                  <div class="col-sm-7 column gn" style="border-radius: 8px;background: #eaeefb;">{{item.STAND_TYPE}}</div>
+                </div>
+              </div>
+              <div class="col-md-4 column axspan">
+                <div class="row clearfix rows" style="height: 100%;">
+                  <div class="col-sm-5 column">建设类型</div>
+                  <div class="col-sm-7 column gn" style="border-radius: 8px;background: #eaeefb;">{{item.CONSTRUCTION_TYPE}}</div>
+                </div>
+              </div>
+              <div class="col-md-4 column axspan">
+                <div class="row clearfix rows" style="height: 100%;">
+                  <div class="col-sm-5 column">建设规模</div>
+                  <div class="col-sm-7 column gn" style="border-radius: 8px;background: #eaeefb;">{{item.CONSTRUCTION_SCALE}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </aside>
+	
+	
+	
+	
 	<div id="wrapper">
 		<div class="content-wrapper" style="min-height: 90vh;margin: 0 440px 0 0" id="map" style="display: none;">
 		</div>
