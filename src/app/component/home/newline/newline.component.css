@@ -319,13 +319,13 @@
 }
 
 .comdetail{
-	box-shadow: 0 0 10px #999;
-	position: absolute;
-	top: 80px;
-	width: 350px;
-	left: calc(50% - 210px);
-	padding: 20px;
-	background: #fff;
+	    box-shadow: 0 0 10px #999;
+    position: absolute;
+    top: 80px;
+    width: 376px;
+    left: calc(50% - 241px);
+    padding: 20px;
+    background: #fff;
 }
 .comdetail h2{
 	font-size: 16px;
