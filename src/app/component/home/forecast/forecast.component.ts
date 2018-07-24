@@ -131,13 +131,11 @@ export class ForecastComponent implements OnInit {
 
 	getdatalist() {
 		let info = new HttpParams().set('page', '1').set('total_number', '10').set('company_id', '' + this.comid).set('start_time', this.dateformat(this.startdate)).set('end_time', this.dateformat(this.enddate));
-		console.log(info)
 		
 		this.http.post(`${this.service.path}/fbs/Predict/weatherPredictAll`, info, this.options).subscribe(function(data) {
-				console.log(data)
 			if(data['code'] == 200) {
-				this.tall = data['todayEle']['1'];
-				this.yall = data['todayEle']['2'];
+//				this.tall = data['todayEle']['1'];
+//				this.yall = data['todayEle']['2'];
 				this.pageslist = data['result']['list'];
 				this.allpages = data['result']['total'];
 				this.pages = data['result']['pages'];
@@ -227,6 +225,8 @@ export class ForecastComponent implements OnInit {
 		this.http.post(`${this.service.path}/fbs/Predict/getEleAndPowerCurr`, info, this.options)
 			.subscribe(function(data) {
 				if(data['code'] == 200) {
+					this.tall = data['todayEle']['1'];
+				this.yall = data['todayEle']['2'];
 					var dataer = data.result;
 					
 					for(let i = 0; i < dataer.length; i++) {

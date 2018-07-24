@@ -24,8 +24,8 @@ export class NewlineComponent implements OnInit {
 	marked: any;
 	team: any;
 	nameshow: any = false;
-	lineshow:any = false;
-// 临时	
+	lineshow: any = false;
+	// 临时	
 	stationNumber: any;
 	warnNumber: any;
 	energy: any;
@@ -37,10 +37,15 @@ export class NewlineComponent implements OnInit {
 	sectype: any = '';
 	lister: any;
 	map: any;
+	
+	totleO2:any; // 减排
+	day:any; //日发电
+	year:any; //年发电
+	power:any; //功率
 	constructor(private route: Router, private serve: IndexService, private http: HttpClient) {}
 	ngOnInit() {
 		this.get();
-		
+		this.getalertdata();
 		var a = [{ //路径
 			name: '路线0',
 			path: [
@@ -92,7 +97,6 @@ export class NewlineComponent implements OnInit {
 
 		AMapUI.loadUI(['overlay/SimpleInfoWindow'], function(SimpleInfoWindow) {
 			// 根据线路 条数生成 n 个容器
-			console.log(this)
 
 			var markers1 = [];
 			var markers2 = [];
@@ -314,7 +318,7 @@ export class NewlineComponent implements OnInit {
 		this.team = team + 1;
 	}
 	cl(e) {
-		 e.stopPropagation();
+		e.stopPropagation();
 		this.lineshow = !this.lineshow;
 		this.nameshow = false;
 	}
@@ -323,20 +327,17 @@ export class NewlineComponent implements OnInit {
 		this.setEc(this.ecmsg[0][1]);
 		document.getElementById('line').style.display = 'block';
 	}
-	cloline(){
+	cloline() {
 		this.lineshow = false;
 	}
-	p(){
+	p() {
 		this.nameshow = !this.nameshow;
 	}
-	
-	
+
 	// 临时
-		get() {
+	get() {
 		let info = new HttpParams().set('page', '1').set('total_number', '10000').set('area', this.area).set('stand_type', this.standtype).set('company_name', this.companyname);
-		console.log(info)
 		this.serve.getData(this.url, info).then(data => {
-			console.log(data);
 			if(data['code'] == 200) {
 				this.secarea = data['areaAll'];
 				//				this.sectype = data['listCompany'];
@@ -353,8 +354,20 @@ export class NewlineComponent implements OnInit {
 			console.log(err);
 		})
 	}
-		
-			onClick(ystpow, now, all, companyname, fin_number, type, stand_type) {
+
+	getalertdata() {
+		let info = new HttpParams().set('company_id', '141');
+		this.serve.getData('/fbs/Predict/probabilityInfluence', info).then(data => {
+			this.totleO2 = data['result']['totleO2']; // 减排
+			this.day = data['result']['day']; //日发电
+			this.year = data['result']['year']; //年发电
+			this.power = data['result']['p']; //功率
+		}).catch(err => {
+			console.log(err);
+		})
+	}
+
+	onClick(ystpow, now, all, companyname, fin_number, type, stand_type) {
 		this.route.navigate(['home/map_detail'], {
 			queryParams: {
 				'ystpow': ystpow,

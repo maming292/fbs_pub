@@ -150,7 +150,7 @@
               
               <!-- 在线/离线  以上  -->
             </p>
-            <div class="row rows" id="crow" style="height: 72px;padding: 0 10px;margin: 0">
+            <div class="row rows" id="crow" style="height: 72px;padding: 0 0 0 20px;margin: 0">
               <div class="col-md-2">
                 <img src="../../../../assets/img/hhhh.png" alt="" style="position: absolute;left: 0;">
               </div>
@@ -158,21 +158,21 @@
                 <p class="bl">{{item.SUN_MJ_DAY}}</p>
                 <p>日照</p>
               </div>
-              <div class="col-md-2" [title]="item.SUN_MJ_DAY">
+              <div class="col-md-2" [title]="item.SUN_MJ_DAY" style="width: 20%;">
                 <p class="bl">{{item.SUN_MJ_DAY}}</p>
                 <p>预测日电量</p>
               </div>
-              <div class="col-md-2" [title]="item.DAY_EQ">
+              <div class="col-md-2" [title]="item.DAY_EQ" style="width: 20%;">
                 <p class="bl">{{item.DAY_EQ}}</p>
                 <p>当日日电量</p>
               </div>
-              <div class="col-md-2" [title]="item.SUM_EQ">
+              <div class="col-md-3" [title]="item.SUM_EQ"  style="padding-top: 14px;">
                 <p class="bl">{{item.SUM_EQ}}</p>
                 <p>累计总电量</p>
               </div>
-              <div class="col-md-2" style="float: right;width: 13%!important;">
+              <!--<div class="col-md-2" style="float: right;width: 13%!important;">
                 <span class="btn btn-block btn-info btn-sm" style="height: 50px;line-height: 42px;font-size: 15px;">65%</span>
-              </div>
+              </div>-->
             </div>
             <div class="row rows clearfix" style="height: 50px;margin-top: 3px;">
               <div class="col-md-4 column axspan" style="height: 100%;">
@@ -227,10 +227,10 @@
 							<li>电站类型：光伏站</li>
 							<li>电站状态：正常</li>
 							<li>建设类型：办公园区</li>
-							<li>有功功率：155.33kW</li>
-							<li>日发电量：35.33kWh</li>
-							<li>CO2减排：11Kg</li>
-							<li>总发电量：1115.33kWh</li>
+							<li>有功功率：{{power}}</li>
+							<li>日发电量：{{day}}</li>
+							<li>CO2减排：{{totleO2}}</li>
+							<li>总发电量：{{year}}</li>
 						</ul>
 					</div>
 					<div (click)='showliner()' class="lbtn">

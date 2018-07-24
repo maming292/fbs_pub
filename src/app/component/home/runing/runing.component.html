@@ -26,7 +26,7 @@
                   </span>
 
                   <div class="info-box-content">
-                    <span class="info-box-number bl">{{leftData.companyNumber}}</span>
+                    <span class="info-box-number bl">{{facilityCount}}</span>
                     <span class="">接入光伏站总数</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -35,13 +35,13 @@
             </div>
             <div class="row clearfix pdlft" style="padding: 6px 0;">
               <div class="col-md-4 column ui-sortable info-box-number bl" style="">
-                {{leftData.all|fixedNumber}}
+                {{allp}}
               </div>
               <div class="col-md-4 column ui-sortable info-box-number gn" style="">
-                {{leftData.month|fixedNumber}}
+                {{monp}}
               </div>
               <div class="col-md-4 column ui-sortable info-box-number og" style="">
-                {{leftData.day|fixedNumber}}
+                {{dadp}}
               </div>
             </div>
             <div class="row clearfix pdlft" style="padding: 15px 0;">
@@ -60,16 +60,16 @@
             </div>
             <div class="row clearfix pdlft wid-76" style="padding-bottom: 8px;">
               <div class="col-md-3 column ui-sortable" style="">
-                <span class="clor1 bac"><img src="../../../../assets/images/u5079.png" alt="">运行:0</span>
+                <span class="clor1 bac"><img src="../../../../assets/images/u5079.png" alt="">运行:{{run}}</span>
               </div>
               <div class="col-md-3 column ui-sortable" style="">
-                <span class="clor2 bac"><img src="../../../../assets/images/u5084.png" alt="">待机:0</span>
+                <span class="clor2 bac"><img src="../../../../assets/images/u5084.png" alt="">待机:{{dj}}</span>
               </div>
               <div class="col-md-3 column ui-sortable" style="">
-                <span class="clor3 bac"><img src="../../../../assets/images/u5089.png" alt="">告警:0</span>
+                <span class="clor3 bac"><img src="../../../../assets/images/u5089.png" alt="">告警:{{warn}}</span>
               </div>
               <div class="col-md-3 column ui-sortable" style="">
-                <span class="clor4 bac"><img src="../../../../assets/images/u5094.png" alt=""> 离线:0</span>
+                <span class="clor4 bac"><img src="../../../../assets/images/u5094.png" alt=""> 离线:{{lx}}</span>
               </div>
             </div>
           </div>
