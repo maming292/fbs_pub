@@ -131,6 +131,8 @@ export class ForecastComponent implements OnInit {
 
 	getdatalist() {
 		let info = new HttpParams().set('page', '1').set('total_number', '10').set('company_id', '' + this.comid).set('start_time', this.dateformat(this.startdate)).set('end_time', this.dateformat(this.enddate));
+		console.log(info)
+		
 		this.http.post(`${this.service.path}/fbs/Predict/weatherPredictAll`, info, this.options).subscribe(function(data) {
 				console.log(data)
 			if(data['code'] == 200) {

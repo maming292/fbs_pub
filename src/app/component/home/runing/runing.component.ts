@@ -147,7 +147,10 @@ this.Run(141)
   	this.route.navigateByUrl('/home/datadisplay');
   }
   tables() {
-  	this.route.navigateByUrl('/home/tablestatc');
+//  	this.route.navigateByUrl('/home/tablestatc');
+//  	this.route.navigateByUrl('/home/tablestatc',{queryParams:{id: 112}});
+
+	 this.route.navigate(['/home/tablestatc'],{ queryParams: { id: 112 } })
   }
 }
 class electricModule{

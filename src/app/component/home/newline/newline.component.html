@@ -103,7 +103,7 @@
           <div style="background: #88DD67">
             <img src="../../../assets/img/u199.png" alt="">
             <span>年累计电量<br>
-								<span style="background: #6DB152">{{energy}}</span>度
+								<span style="background: #6DB152">{{energy}}</span>
 							</span>
           </div>
         </div>
@@ -130,7 +130,7 @@
           </div>	
           
           <div style="overflow: scroll;height: 65vh;">
-          <div class="ct_list" *ngFor="let item of lister;let i=index" style="cursor: pointer"  (click)="onClick(item.DAY_EQ,item.SUM_EQ)"  >
+          <div class="ct_list" *ngFor="let item of lister;let i=index" style="cursor: pointer"  (click)="onClick(item.DAY_EQ,item.SUM_EQ)"  (click)="onClick(item.SUN_MJ_DAY,item.DAY_EQ,item.SUM_EQ,item.FACILITY_NAME,item.FACILITY_NUMBER,item.TYPE,item.STAND_TYPE)">
             <p  style="padding: 10px;height: 40px;line-height: 20px;" >
               <span class="toogle">{{i+1}}、{{item.FACILITY_NAME}}</span>
               <span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==1">
@@ -155,20 +155,20 @@
                 <img src="../../../../assets/img/hhhh.png" alt="" style="position: absolute;left: 0;">
               </div>
               <div class="col-md-2" [title]="item.SUN_MJ_DAY">
-                <p class="bl">{{item.SUN_MJ_DAY|fixedNumber}}</p>
-                <p>日照(Mj/<sup>2</sup>)</p>
+                <p class="bl">{{item.SUN_MJ_DAY}}</p>
+                <p>日照</p>
               </div>
               <div class="col-md-2" [title]="item.SUN_MJ_DAY">
-                <p class="bl">{{item.SUN_MJ_DAY|fixedNumber}}</p>
-                <p>预测日电量(度)</p>
+                <p class="bl">{{item.SUN_MJ_DAY}}</p>
+                <p>预测日电量</p>
               </div>
               <div class="col-md-2" [title]="item.DAY_EQ">
-                <p class="bl">{{item.DAY_EQ|fixedNumber}}</p>
-                <p>当日日电量(度)</p>
+                <p class="bl">{{item.DAY_EQ}}</p>
+                <p>当日日电量</p>
               </div>
               <div class="col-md-2" [title]="item.SUM_EQ">
-                <p class="bl">{{item.SUM_EQ|fixedNumber}}</p>
-                <p>累计总电量(度)</p>
+                <p class="bl">{{item.SUM_EQ}}</p>
+                <p>累计总电量</p>
               </div>
               <div class="col-md-2" style="float: right;width: 13%!important;">
                 <span class="btn btn-block btn-info btn-sm" style="height: 50px;line-height: 42px;font-size: 15px;">65%</span>
@@ -227,10 +227,10 @@
 							<li>电站类型：光伏站</li>
 							<li>电站状态：正常</li>
 							<li>建设类型：办公园区</li>
-							<li>有功功率：155.33KW</li>
-							<li>日发电量：35.33KW</li>
+							<li>有功功率：155.33kW</li>
+							<li>日发电量：35.33kWh</li>
 							<li>CO2减排：11Kg</li>
-							<li>总发电量：1115.33KW</li>
+							<li>总发电量：1115.33kWh</li>
 						</ul>
 					</div>
 					<div (click)='showliner()' class="lbtn">

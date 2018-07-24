@@ -60,7 +60,7 @@
 							</div>
 							<div>
 								<span class="og cc">{{suntime}}</span>
-								<span class="orange bac">min</span>
+								<span class="orange bac">W/m²</span>
 								<span class="bk">
                  <img src="../../../../assets/img/riz.png" alt=""> 日照
              </span>
@@ -106,7 +106,7 @@
 							</div>
 						</div>
 					</div>
-
+<!--
 					<div class="box">
 						<div class="p1">
 							<div>
@@ -143,15 +143,16 @@
 							<span>组件温度<span class="bl">{{zujian}}<sup>。</sup>C</span></span>
 							<span>风速瞬时<span class="bl">{{windsped}}M/s</span></span>
 						</div>
-					</div>
+					</div>-->
 				</div>
 			</div>
 			<div class="right" style="max-width: calc(100% - 496px);min-height: 660px;">
 				<div class="time" style="margin: 20px ;">
 					<div class="select" id="search_sp" style="display: inline-block">
 						<span>
-                <select class="form-control " style="width: 300px;height: 30px;border-radius: 5px;vertical-align: middle;padding:0 20px" name="" id="s">
+                <select class="form-control " style="width: 300px;height: 30px;border-radius: 5px;vertical-align: middle;padding:0 20px" name="" id="s"[(ngModel)]='comid'>
                     <option value="141">无锡广盈实业有限公司</option>
+                    <option value="367">碧桂园·玲珑湾别墅</option>
                 </select>
             </span>
 					</div>

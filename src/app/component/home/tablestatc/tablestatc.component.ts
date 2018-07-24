@@ -45,6 +45,7 @@ export class TablestatcComponent implements OnInit {
 	};
 
 	ngOnInit() {
+    console.log(this.route['navigations']['value']['rawUrl']['queryParams']['id'])
 		layui.use(['laypage'], function() {
 			var laypage = layui.laypage
 			laypage.render({

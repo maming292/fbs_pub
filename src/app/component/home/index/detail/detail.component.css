@@ -9,6 +9,6 @@
 .ht-25,.ht-50,.ht-33{width: 100%;position: relative }.ht-25{height: 25%;}.ht-50{height: 50%;}.ht-33{height: 33.333333%;}
 .wid-50,.wid-33{height: 100%;width: 50%;}.wid-33{width: 33.333333%;}.inft{padding: 20px 0;}
 .inft>div{float: left;}.inftext{font-size: 22px;font-weight: bold;text-align: left;line-height: 3.5;}
-.bigfont{color: #00b89f;font-size: 55px;position: absolute;top:-66px;}
+.bigfont{color: #00b89f;font-size: 22px;position: absolute;top:0;padding-left: 5px;}
 .clr1,.clr2,.clr3{text-align: center;font-size: 17px;font-weight: bold;line-height: 3}
 .clr1{color: #5fc2db}.clr2{color: #55c4ab}.clr3{color: #e3b55d}

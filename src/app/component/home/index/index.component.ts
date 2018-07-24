@@ -4,6 +4,7 @@ import { IndexService } from '../../../services/index.service';
 import swal from 'sweetalert2';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { PublicService } from '../../../services/public.service';
+import * as $ from "jquery";
 declare var AMap: any;
 @Component({
 	selector: 'app-index',
@@ -12,7 +13,7 @@ declare var AMap: any;
 })
 export class IndexComponent implements OnInit {
 
-//	title: string = 'Angular4 AGM Demo';
+	//	title: string = 'Angular4 AGM Demo';
 	lat: number = 31.575787;
 	lng: number = 120.299815;
 	url = '/fbs/foreignForC/synthesize';
@@ -20,6 +21,7 @@ export class IndexComponent implements OnInit {
 	warnNumber: any;
 	energy: any;
 	map: any;
+	maps: any;
 	list: any;
 	secarea: any = '';
 	sectype: any = '';
@@ -28,55 +30,60 @@ export class IndexComponent implements OnInit {
 	companyname: any = '';
 	av: any;
 	marker: any;
+	markdetail: any;
 	constructor(private route: Router, private serve: IndexService, private http: HttpClient) {}
 	ngOnInit() {
-		this.get();
 		this.map = new AMap.Map('map', {
 			resizeEnable: true,
-			zoom: 11,
-			center: [120.299815, 31.575787]
 		});
-
-		var markdetail = [{
-				text: '碧桂园·玲珑湾别墅用户',
-				dw: [120.131369,31.48077]
-			},
-			{
-				text: '无锡广盈实业有限公司',
-				dw: [120.284703,31.565999]
-			}
-		];
-
-		$.each(markdetail, function(i, v) {
-			this.setmaerk(v.dw, v.text)
-		}.bind(this));
+		this.get();
+		this.markdetail = [];
 	}
 	// 首页地图
 	get() {
+		this.map.clearMap();
+		var athis = this.map;
 		let info = new HttpParams().set('page', '1').set('total_number', '10000').set('area', this.area).set('stand_type', this.standtype).set('company_name', this.companyname);
-		
+
 		this.serve.getData(this.url, info).then(data => {
+			console.log(data['company']);
+			if(data['company']['list'].length == 0) {
+				this.list = [];
+				return;
+			}
 			if(data['code'] == 200) {
+
 				this.secarea = data['areaAll'];
-				//				this.sectype = data['listCompany'];
 				this.sectype = data['standtype'];
-				this.list = data['company']['list'];
 				this.stationNumber = data['facilityCount'];
 				this.warnNumber = data['warnCount'];
 				this.energy = data['energy'];
-				this.map = data['start']
+				this.maps = data['start'];
+				this.list = data['company']['list'];
+				
+				if(data['company']['list'].length == 0) {
+				this.list = [];
+				return;
+			}
+				this.map.setZoomAndCenter(20, [data['company']['list'][0]['LONGITUDE'], data['company']['list'][0]['LATITUDE']]);
+				$.each(data['company']['list'], function(i, v) {
+					this.setmaerk([v['LONGITUDE'], v['LATITUDE']], v['FACILITY_NAME'], v['SUN_MJ_DAY'], v['DAY_EQ'], v['SUM_EQ'], v['FACILITY_NAME'], v['FACILITY_NUMBER'], v['TYPE'], v['STAND_TYPE']);
+				}.bind(this));
+
 			} else {
 				swal(`~~~@${data['code']}`);
 			}
 		}).catch(err => {
 			console.log(err);
 		})
+
 	}
 	isOpen: boolean = false;
 
 	//  首页地图添加点标记
 
-	setmaerk(position, text) {
+	setmaerk(position, text, ystpow, nower, aller, companyname, fin_number, type, stand_type) {
+		var that = this;
 		this.marker = new AMap.Marker({
 			map: this.map,
 			offset: new AMap.Pixel(-17, -45),
@@ -87,45 +94,65 @@ export class IndexComponent implements OnInit {
 				imageOffset: new AMap.Pixel(0, 0)
 			})
 		});
-
 		var text = new AMap.Text({
 			text: text,
 			textAlign: 'center', // 'left' 'right', 'center',
 			verticalAlign: 'middle', //middle 、bottom
-//			draggable: true,
+			//			draggable: true,
 			cursor: 'pointer',
 			// angle: 10,
 			style: {
 				'background-color': 'rgba(0,0,0,0)',
 				'border': 'none',
 				'font-size': '12px',
-  				'color': '#000099',
-  				'padding-top': '20px'
+				'color': '#000099',
+				'margin-top': '20px'
 			},
 			position: position
 		});
-    text.setMap(this.map);
+		text.setMap(this.map);
+
+		this.marker.customData = {
+			myProperty: 666
+		}; //添加私有属性
+		//鼠标移入marker弹出自定义的信息窗体 click mouseover
+		AMap.event.addListener(this.marker, 'click', function(e) {
+			//			 var name = ecmsg[marker.customData.myProperty][0];
+			//   		that.route.navigate(['/home/tablestatc'],{ queryParams: { id: 112 } })
+			that.route.navigate(['home/map_detail'], {
+				queryParams: {
+					'ystpow': ystpow, // 昨日发电量
+					'now': nower, // 今日发电量
+					'all': aller, // 总发电量
+					'companyname': companyname, // 公司名称
+					'fin_number': fin_number, // 站点id
+					'type': type, // 充电桩状态
+					'stand_type': stand_type,
+				}
+			});
+		});
 	}
 
 	markerClick(e) {
 		e.open()
 		this.isOpen = true;
 	}
-	onClick(now, all) {
+	onClick(ystpow, now, all, companyname, fin_number, type, stand_type) {
 		this.route.navigate(['home/map_detail'], {
 			queryParams: {
+				'ystpow': ystpow,
 				'now': now,
-				'all': all
+				'all': all,
+				'companyname': companyname,
+				'fin_number': fin_number,
+				'type': type,
+				'stand_type': stand_type,
 			}
 		});
-	}
-	givedata() {
-		//		console.log('提供list')
 	}
 	backLineMap() {
 		this.route.navigateByUrl('/home/newline');
 	}
-
 }
 class childData {
 	public companyName: string; //公司名称

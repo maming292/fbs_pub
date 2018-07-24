@@ -353,4 +353,18 @@ export class NewlineComponent implements OnInit {
 			console.log(err);
 		})
 	}
+		
+			onClick(ystpow, now, all, companyname, fin_number, type, stand_type) {
+		this.route.navigate(['home/map_detail'], {
+			queryParams: {
+				'ystpow': ystpow,
+				'now': now,
+				'all': all,
+				'companyname': companyname,
+				'fin_number': fin_number,
+				'type': type,
+				'stand_type': stand_type,
+			}
+		});
+	}
 }
