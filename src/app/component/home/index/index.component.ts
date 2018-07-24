@@ -44,7 +44,7 @@ export class IndexComponent implements OnInit {
 		this.map.clearMap();
 		var athis = this.map;
 		let info = new HttpParams().set('page', '1').set('total_number', '10000').set('area', this.area).set('stand_type', this.standtype).set('company_name', this.companyname);
-
+console.log(info)
 		this.serve.getData(this.url, info).then(data => {
 			console.log(data['company']);
 			if(data['company']['list'].length == 0) {
