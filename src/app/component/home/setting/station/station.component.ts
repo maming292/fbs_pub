@@ -48,8 +48,8 @@ export class StationComponent implements OnInit {
 	savings_com: any; // 编辑 节约成本
 	long_com: any; // 编辑 经度
 	latitude_com: any; // 编辑 纬度
-	imgbase64_com:any;
-	id_com:any;
+	imgbase64_com: any;
+	id_com: any;
 	constructor(private route: Router, private serve: IndexService, private http: HttpClient, private service: PublicService) {}
 	headers = new HttpHeaders().set("Accept", "*/*");
 	options = {
@@ -74,52 +74,52 @@ export class StationComponent implements OnInit {
 		layer.open({
 			type: 1,
 			title: false,
-			closeBtn: 0,
-			area: '700px',
+			closeBtn: 2,
+			area: '[700px,700px]',
 			skin: 'layui-layer-nobg', //没有背景色
 			shadeClose: true,
-			content: `<img src="${this.showimg}" style="width: 700px;"/>`
+			content: `<div style='height:700px;line-height:700px;width:700px;font-size:0;background:#fff;text-align:center'><img src="${this.showimg}" style="max-width:700px;max-height700px;vertical-align:middle;"/></div>`
 		});
 	}
 
 	loadImg() {
 		//获取文件  
-		//		var file = $("#pic")[0].files[0];
+		var reader = new FileReader();
 		var file = $("#pic")[0]['files'][0];
 		//创建读取文件的对象  
-		var reader = new FileReader();
+		 var imgUrlBase64;
 
 		//创建文件读取相关的变量  
-		var imgFile;
-
+		imgUrlBase64 = reader.readAsDataURL(file);
 		//为文件读取成功设置事件  
 		reader.onload = function(e) {
-			imgFile = e['target']['result'];
-			this.imgbase64_new = imgFile;
+			console.log(reader.result)
+			this.imgbase64_new = reader.result;
 		}.bind(this);
 		//正式读取文件  
-		reader.readAsDataURL(file);
+		
 	}
 	comImg() {
 		//获取文件  
 		let file = $("#pic_com")[0]['files'][0];
-		
+
 		//创建读取文件的对象  
 		let reader = new FileReader();
 		//创建文件读取相关的变量  
 		let imgFiles;
 		//为文件读取成功设置事件  
 		reader.onload = function(e) {
-//			console.log('文件读取完成');
+			//			console.log('文件读取完成');
 			imgFiles = e['target']['result'];
 			this.imgbase64_com = imgFiles;
+			// console.log(typeof(this.imgbase64_com))
 		}.bind(this);
 		//正式读取文件  
 		reader.readAsDataURL(file);
 	}
 	// 编辑回显
-	compile(companyname_com,standtype_com,construction_com,constructionscale_com,area_com,raroc_com,savings_com,long_com,latitude_com,imgbase64_com, id_com) {
-//		console.log(id_com)
+	compile(companyname_com, standtype_com, construction_com, constructionscale_com, area_com, raroc_com, savings_com, long_com, latitude_com, imgbase64_com, id_com) {
+		//		console.log(id_com)
 		this.companyname_com = companyname_com;
 		this.standtype_com = standtype_com;
 		this.construction_com = construction_com;
@@ -132,36 +132,36 @@ export class StationComponent implements OnInit {
 		this.imgbase64_com = imgbase64_com;
 		this.id_com = id_com;
 		this.showcompile = true;
-console.log(this.imgbase64_com)
+		console.log(this.imgbase64_com)
 	}
 	hiddencompile() {
 		this.showcompile = false;
 	}
 	savecompile() {
-				if(!this.companyname_com) {
-					swal("站点不能为空！");
-					return;
-				}
-				if(!this.standtype_com) {
-					swal("电站类型不能为空！");
-					return;
-				}
-				if(!this.construction_com) {
-					swal("建设类型不能为空！");
-					return;
-				}
-				if(!this.constructionscale_com) {
-					swal("建设规模不能为空！");
-					return;
-				}
-				if(!this.long_com) {
-					swal("经度不能为空！");
-					return;
-				}
-				if(!this.latitude_com) {
-				swal("纬度不能为空！");
-				return;
-				}
+		if(!this.companyname_com) {
+			swal("站点不能为空！");
+			return;
+		}
+		if(!this.standtype_com) {
+			swal("电站类型不能为空！");
+			return;
+		}
+		if(!this.construction_com) {
+			swal("建设类型不能为空！");
+			return;
+		}
+		if(!this.constructionscale_com) {
+			swal("建设规模不能为空！");
+			return;
+		}
+		if(!this.long_com) {
+			swal("经度不能为空！");
+			return;
+		}
+		if(!this.latitude_com) {
+			swal("纬度不能为空！");
+			return;
+		}
 		let area_com = this.area_obj[this.area_com];
 		let info = new HttpParams()
 			.set('COMPANY_NAME', this.companyname_com)
@@ -173,7 +173,7 @@ console.log(this.imgbase64_com)
 			.set('COST_SAVINGS', this.savings_com)
 			.set('LONGITUDE', this.long_com)
 			.set('LATITUDE', this.latitude_com)
-			.set('uploadFile', this.imgbase64_com?this.imgbase64_com:'')
+			.set('uploadFile', this.imgbase64_com ? this.imgbase64_com : '')
 			.set('ID', this.id_com);
 		this.http.post(`${this.service.path}/fbs/system/updateCompany`, info, this.options).toPromise().then(function() {
 			this.msglist = [];
@@ -182,9 +182,9 @@ console.log(this.imgbase64_com)
 		this.showcompile = false;
 	}
 
-// companyname_com,standtype_com,construction_com,constructionscale_com,area_com,raroc_com,savings_com,long_com,latitude_com,imgbase64_com
+	// companyname_com,standtype_com,construction_com,constructionscale_com,area_com,raroc_com,savings_com,long_com,latitude_com,imgbase64_com
 	getdata() {
-		
+
 		var msg = this.msglist;
 		this.http.get(`${this.service.path}/fbs/system/findCompany`)
 			.subscribe(function(data) {
@@ -221,34 +221,34 @@ console.log(this.imgbase64_com)
 			}.bind(this))
 	}
 	save() {
-			if(!this.companyname_new) {
-					swal("站点不能为空！");
-					return;
-				}
-				if(!this.standtype_new) {
-					swal("电站类型不能为空！");
-					return;
-				}
-				if(!this.construction_new) {
-					swal("建设类型不能为空！");
-					return;
-				}
-				if(!this.constructionscale_new) {
-					swal("建设规模不能为空！");
-					return;
-				}
-				if(!this.area_new) {
-					swal("区域不能为空！");
-					return;
-				}
-				if(!this.long_new) {
-					swal("经度不能为空！");
-					return;
-				}
-				if(!this.latitude_new) {
-				swal("纬度不能为空！");
-				return;
-				}
+		if(!this.companyname_new) {
+			swal("站点不能为空！");
+			return;
+		}
+		if(!this.standtype_new) {
+			swal("电站类型不能为空！");
+			return;
+		}
+		if(!this.construction_new) {
+			swal("建设类型不能为空！");
+			return;
+		}
+		if(!this.constructionscale_new) {
+			swal("建设规模不能为空！");
+			return;
+		}
+		if(!this.area_new) {
+			swal("区域不能为空！");
+			return;
+		}
+		if(!this.long_new) {
+			swal("经度不能为空！");
+			return;
+		}
+		if(!this.latitude_new) {
+			swal("纬度不能为空！");
+			return;
+		}
 
 		let area_new = this.area_obj[this.area_new]
 
@@ -270,17 +270,17 @@ console.log(this.imgbase64_com)
 			this.getdata();
 		}.bind(this));
 		this.alertshow = false;
-		
+
 		this.companyname_new = '';
-	this.standtype_new = '';
-	this.construction_new = '';
-	this.constructionscale_new = '';
-	this.area_new = '';
-	this.raroc_new = '';
-	this.savings_new = '';
-	this.long_new = '';
-	this.latitude_new = '';
-	this.imgbase64_new = '';
+		this.standtype_new = '';
+		this.construction_new = '';
+		this.constructionscale_new = '';
+		this.area_new = '';
+		this.raroc_new = '';
+		this.savings_new = '';
+		this.long_new = '';
+		this.latitude_new = '';
+		this.imgbase64_new = '';
 	}
 
 	seach() {
@@ -341,16 +341,16 @@ console.log(this.imgbase64_com)
 	}
 	hiddens() {
 		this.alertshow = false;
-	this.companyname_new = '';
-	this.standtype_new = '';
-	this.construction_new = '';
-	this.constructionscale_new = '';
-	this.area_new = '';
-	this.raroc_new = '';
-	this.savings_new = '';
-	this.long_new = '';
-	this.latitude_new = '';
-	this.imgbase64_new = '';
+		this.companyname_new = '';
+		this.standtype_new = '';
+		this.construction_new = '';
+		this.constructionscale_new = '';
+		this.area_new = '';
+		this.raroc_new = '';
+		this.savings_new = '';
+		this.long_new = '';
+		this.latitude_new = '';
+		this.imgbase64_new = '';
 	}
 
 	prev() {
