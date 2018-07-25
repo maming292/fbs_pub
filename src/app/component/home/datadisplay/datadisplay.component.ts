@@ -35,7 +35,7 @@ export class DatadisplayComponent implements OnInit {
 		this.btnChange = this.ecBtn[0];
 		this.ectype = 'line';
 		this.company_id = 141;
-		this.time = '2018-05';
+		this.time = '2018-07';
 		this.xData = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
 		//		this.num = [0, 0, 0, 0, 0, 52, 87, 52, 546, 5, 9, 4, 12, 457, 110, 211, 77, 44, 88, 99, 66, 33, 22, 55, 88, 33, 88, 77, 12, 98, 15]
 		this.getData(this.company_id, this.time);
@@ -48,44 +48,15 @@ export class DatadisplayComponent implements OnInit {
 
 	getData(company_id, time) {
 		var num = [];
-		//		console.log(`${this.service.path}/fbs/foreignForC/photovoltaic_chart?company_id=${company_id}&time=${time}`);
-		this.http.get(`${this.service.path}/fbs/foreignForC/photovoltaic_chart?company_id=${company_id}&time=${time}`)
+		//		console.log(`${this.service.path}/fbs/foreignForC/getEleAndPowerCurr?company_id=${company_id}&month=${time}`); // photovoltaic_chart
+		this.http.get(`${this.service.path}/fbs/Predict/getEleAndPowerCurr?company_id=${company_id}&month=${time}`)
 			.subscribe(
 				function(data) {
-					num[0] = data.chart.ONE;
-					num[1] = data.chart.TWO;
-					num[2] = data.chart.THREE;
-					num[3] = data.chart.FOUR;
-					num[4] = data.chart.FIVE;
-					num[5] = data.chart.SIX;
-					num[6] = data.chart.SEVEN;
-					num[7] = data.chart.EIGHT;
-					num[8] = data.chart.NINE;
-					num[9] = data.chart.TEN;
-					num[10] = data.chart.ELEVEN;
-					num[11] = data.chart.TWELVE;
-					num[12] = data.chart.THIRTEEN;
-					num[13] = data.chart.FOURTEEN;
-					num[14] = data.chart.FIVETEEN;
-					num[15] = data.chart.SIXTEEN;
-					num[16] = data.chart.SEVENTEEN;
-					num[17] = data.chart.EIGHTEEN;
-					num[18] = data.chart.NINETEEN;
-					num[19] = data.chart.TWENTY;
-					num[20] = data.chart.TWENTYONE;
-					num[21] = data.chart.TWENTYTWO;
-					num[22] = data.chart.TWENTYTHREE;
-					num[23] = data.chart.TWENTYFOUR;
-					num[24] = data.chart.TWENTYFIVE;
-					num[25] = data.chart.TWENTYSIX;
-					num[26] = data.chart.TWENTYSEVEN;
-					num[27] = data.chart.TWENTYEIGHT;
-					num[28] = data.chart.TWENTYNINE;
-					num[29] = data.chart.THIRTY;
-					num[30] = data.chart.THIRTYONE;
+					$.each(data['result'], function(i,v) {
+						num.push(v['DAY_P']);
+					});
 					this.num = num;
 					this.setEchars(this.ectype, this.xData, this.num);
-					console.log(this.num);
 				}.bind(this),
 				function(err) {
 					console.log('失败');

@@ -93,8 +93,9 @@ export class TablestatcComponent implements OnInit {
 //	}
 	getdata() {
 		let info = new HttpParams().set('page', '1').set('total_number', '10').set('facility_number', this.par_seach).set('company_id', this.station_seach).set('start_time', this.star_seach).set('end_time', this.end_seach);
-
+console.log(info)
 		this.http.post(`${this.service.path}/fbs/foreignForC/photovoltaic_statistics`, info, this.options).subscribe(function(data) {
+			console.log(data)
 			if(data['code'] == 200) {
 				this.par_arr = data['listFacility'];
 				this.station_arr = data['listCompany'];

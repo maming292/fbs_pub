@@ -12,12 +12,13 @@
 		<select name="" id="kind" [(ngModel)]='standtype_s'>
 			<option value="">电站类型</option>
 			<option value="光伏站">光伏站</option>
+			<option value="风能站">风能站</option>
+			<option value="储能站">储能站</option>
 		</select>
 		<input  type="text" name="stationName" id="stationName" value="" placeholder="站点名称"  [(ngModel)]='companyname_s'/>
 		<a class="sea" (click)='seach()'>
 			<img src="../../../../../assets/img/search_b.png" />
 		</a>
-
 		<div class="fr">
 			<a class="add" (click)='shows()'>
 				<img src="../../../../../assets/img/adds.png" />
@@ -101,6 +102,7 @@
 		</div>
 	</div>
 	<div class="alerts" *ngIf='alertshow'>
+		
 		<span class="middles"></span>
 		<div id="win">
 			<div class="alerttitle">
@@ -148,6 +150,7 @@
 			</div>
 			<div class="up">
 				<span>站点图片</span>
+				
 				<div class="upImg"><img src="../../../../../assets/img/up.png"/><input (change)='loadImg()' type="file" name="pic" id="pic" accept="image/gif, image/jpeg, image/png"/></div>
 			</div>
 			<div class="notes">备注：电站类型：1.光伏站 2.风能站 3.其他&nbsp;&nbsp;建设类型：1.办公园区 2.工厂 3.住宅</div>
