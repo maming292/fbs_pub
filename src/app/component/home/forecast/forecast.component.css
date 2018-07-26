@@ -298,6 +298,8 @@ nav .lc {
 	border: 1px solid #ccc;
 	background-color: #fff;
 	margin-left: 6px;
+	overflow: hidden;
+    overflow-y: scroll;
 }
 
 .article>.content>.right>.time>span {
@@ -425,4 +427,16 @@ nav .lc {
 	display: inline-block;
 	width: 140px;
 	text-align: left;
+}
+.allnum a{
+	color: #666;
+	background: #fff;
+}
+.allnum a:hover{
+	color: #666;
+	background: #fff;
+}
+.allnum a:visited{
+	color: #f00;
+	background: #fff;
 }

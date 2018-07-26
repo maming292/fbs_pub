@@ -130,12 +130,18 @@ export class ForecastComponent implements OnInit {
 	}
 
 	getdatalist() {
+		if(!!this.startdate && !!this.enddate){
+			if(this.dateformat(this.startdate) == this.dateformat(this.enddate)) {
+				swal('查询的时间不能相同！')
+				return false;
+			}
+		}
+		
+		
 		let info = new HttpParams().set('page', '1').set('total_number', '10').set('company_id', '' + this.comid).set('start_time', this.dateformat(this.startdate)).set('end_time', this.dateformat(this.enddate));
 		
 		this.http.post(`${this.service.path}/fbs/Predict/weatherPredictAll`, info, this.options).subscribe(function(data) {
 			if(data['code'] == 200) {
-//				this.tall = data['todayEle']['1'];
-//				this.yall = data['todayEle']['2'];
 				this.pageslist = data['result']['list'];
 				this.allpages = data['result']['total'];
 				this.pages = data['result']['pages'];
@@ -259,7 +265,21 @@ this.myoption(data1,data2)
 
 
 	}
-	
+		exports() {
+					if(!!this.startdate && !!this.enddate){
+			if(this.dateformat(this.startdate) == this.dateformat(this.enddate)) {
+				swal('查询的时间不能相同！')
+				return false;
+			}
+		}	
+			
+			
+		let start, end;
+			start = this.dateformat(this.startdate);
+			end = this.dateformat(this.enddate);
+//			console.log(`${this.serve.path}/fbs/Predict/exportPredict?start_time=${start}&end_time=${end}&company_id=${this.comid}`)
+			location.href = `${this.serve.path}/fbs/Predict/exportPredict?start_time=${start}&end_time=${end}&company_id=${this.comid}`
+	}
 	
 	myoption(data1,data2){
 		let od5 = document.getElementById('od5');

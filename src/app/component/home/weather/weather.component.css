@@ -355,3 +355,7 @@ nav .lc{
 .selt select:last-child{
 	margin-left: 15px;
 }
+.allnum a{
+	color: #666;
+	background: #fff;
+}

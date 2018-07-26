@@ -46,7 +46,6 @@ export class IndexComponent implements OnInit {
 		let info = new HttpParams().set('page', '1').set('total_number', '10000').set('area', this.area).set('stand_type', this.standtype).set('company_name', this.companyname);
 console.log(info)
 		this.serve.getData(this.url, info).then(data => {
-			console.log(data['company']);
 			if(data['company']['list'].length == 0) {
 				this.list = [];
 				return;
@@ -60,7 +59,9 @@ console.log(info)
 				this.energy = data['energy'];
 				this.maps = data['start'];
 				this.list = data['company']['list'];
-				
+				for(let i = 0;i<this.list.length;i++){
+					console.log(this.list[i].TYPE)
+				}
 				if(data['company']['list'].length == 0) {
 				this.list = [];
 				return;

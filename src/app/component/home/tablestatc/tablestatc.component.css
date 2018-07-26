@@ -58,6 +58,7 @@
 	background: #1DBC9B;
 	float: right;
 	font-size: 18px;
+	cursor: pointer;
 }
 .tablecontent{
 	overflow: scroll;
@@ -111,7 +112,10 @@ li{
 	border-radius: 5px;
 }
 
-
+.allnum a{
+	color: #666;
+	background: #fff;
+}
 
 
 

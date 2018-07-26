@@ -153,7 +153,7 @@
 								</th>
 								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 242px;">总辐射Mj/m<sup>2</sup></th>
 								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 216px;">总热量W/m<sup>2</sup>
-									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 216px;">日照时min<sup>2</sup>
+									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 216px;">日照时min
 								</th>
 								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 169px;">温度℃
 								</th>
@@ -180,8 +180,8 @@
 								<td class="sorting_1">{{i+1}}</td>
 								<td>{{item.SUN_MJ_DAY}}</td>
 								<td>{{item.SUN_MJ}}</td>
-								<td>{{item.T_ONE}}</td>
 								<td>{{item.SUN_TIME}}</td>
+								<td>{{item.T_ONE}}</td>
 								<td>{{item.T_EM}}</td>
 								<td>{{item.T_TOW}}</td>
 								<td>{{item.HD_EM}}</td>
@@ -210,7 +210,7 @@
 							<li class="paginate_button " (click)="turn(5,$event)">
 								<a href="javascript:(0)" aria-controls="example1" data-dt-idx="3" tabindex="0">尾页</a>
 							</li>
-							<li class="paginate_button ">
+							<li  class="allnum">
 								<a href="javascript:(0)" aria-controls="example1" data-dt-idx="4" tabindex="0">当前{{pagenum}}/{{pages}}页，{{allpages}}条数据</a>
 							</li>
 							<li class="paginate_button ">

@@ -133,22 +133,24 @@
           <div class="ct_list" *ngFor="let item of lister;let i=index" style="cursor: pointer"  (click)="onClick(item.DAY_EQ,item.SUM_EQ)"  (click)="onClick(item.SUN_MJ_DAY,item.DAY_EQ,item.SUM_EQ,item.FACILITY_NAME,item.FACILITY_NUMBER,item.TYPE,item.STAND_TYPE)">
             <p  style="padding: 10px;height: 40px;line-height: 20px;" >
               <span class="toogle">{{i+1}}、{{item.FACILITY_NAME}}</span>
-              <span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==1">
+              			<span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==1">
                  <img src="../../../../assets/img/u228.png" alt=""><span>正常</span>
-              </span>
-              <span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==2">
+								</span>
+								<span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==3 || item.TYPE == 4">
                  <img src="../../../../assets/img/u285.png" alt=""><span style="color: red;">异常</span>
-              </span>
-              
-              <!-- 在线/离线  -->
-               <span class="pull-right" style="width: 60px;" *ngIf="item.TYPE!=0">
-                 <img src="../../../../assets/img/u228.png" alt=""><span>在线</span>
-              </span>
-             <span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==0">
+								</span>
+
+								<!-- 在线/离线  -->
+								<span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==1 || item.TYPE==2 || item.TYPE==3">
+                 <img src="../../../../assets/img/u228.png" alt=""><span>运行</span>
+								</span>
+								<span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==2 || item.TYPE==4">
+                 <img src="../../../../assets/img/m228.png" alt=""><span>待机</span>
+								</span>
+
+								<span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==0">
                  <img src="../../../../assets/img/u361.png" alt=""><span>离线</span>
-              </span>
-              
-              <!-- 在线/离线  以上  -->
+								</span>
             </p>
             <div class="row rows" id="crow" style="height: 72px;padding: 0 0 0 20px;margin: 0">
               <div class="col-md-2">

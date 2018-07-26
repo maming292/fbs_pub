@@ -164,7 +164,7 @@
           </span>
 					<i (click)='prelode()' class="glyphicon glyphicon-repeat" style="width: 28px;height:28px;line-height: 28px;margin-top: -5px;border-radius: 3px;vertical-align:middle;color: #fff;background: #2399E5;text-align: center;margin-right: 4px;"></i>
 					<button pButton type="button" icon="fa-search" iconPos="left" (click)='getdatalist()'></button>
-					<button class="pull-right" style="margin-top: 5px" pButton type="button" icon="fa-external-link" iconPos="left" title="导出"></button>
+					<button (click)="exports()" class="pull-right" style="margin-top: 5px" pButton type="button" icon="fa-external-link" iconPos="left" title="导出"></button>
 
 				</div>
 
@@ -251,7 +251,7 @@
 							<li class="paginate_button " (click)="turn(5,$event)">
 								<a href="javascript:(0)" aria-controls="example1" data-dt-idx="3" tabindex="0">尾页</a>
 							</li>
-							<li class="paginate_button ">
+							<li class="allnum">
 								<a href="javascript:(0)" aria-controls="example1" data-dt-idx="4" tabindex="0">当前{{pagenum}}/{{pages}}页，{{allpages}}条数据</a>
 							</li>
 							<li class="paginate_button ">

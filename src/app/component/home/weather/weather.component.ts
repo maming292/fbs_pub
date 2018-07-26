@@ -178,6 +178,7 @@ export class WeatherComponent implements OnInit {
 		this.service.getWeatherDetailData(value).then(data => {
 			if(data['code'] == 200) {
 				this.detailweather = data['result'];
+				console.log(this.detailweather)
 			}
 		}).catch(e => {
 			swal(e)
@@ -229,11 +230,10 @@ export class WeatherComponent implements OnInit {
 	}
 	search() {
 		if(this.startSearch && this.endSearch) {
-			if(this.startSearch == this.endSearch) {
+if(this.startSearch == this.endSearch) {
 				swal('查询的时间不能相同！')
-				return false;
+				return false; 
 			}
-			//    console.log(this.startSearch,this.endSearch);
 			this.service.getPages(this.nowpage, 10, this.startSearch, this.endSearch, true, this.wid).then(data => {
 				if(data['code'] == 200) {
 					this.pageslist = data['result']['list'];
