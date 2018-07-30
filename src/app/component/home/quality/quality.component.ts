@@ -172,10 +172,14 @@ this.charts();
 				// max:10000,
 				// interval:1000,
 				axisTick: {
-					show: false
+					show: true
 				},
 				axisLine: {
-					show: false,
+					show: true,
+					lineStyle: {
+							color: ['#999'],
+							type: 'solid'
+						}
 					//    onZero:false
 				},
 				axisLabel: {

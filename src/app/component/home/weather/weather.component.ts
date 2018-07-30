@@ -322,10 +322,14 @@ if(this.startSearch == this.endSearch) {
 				yAxis: {
 					name:'(MJ/m²)',
 					axisTick: {
-						show: false
+						show: true,
 					},
 					axisLine: {
-						show: false,
+						show: true,
+							lineStyle: {
+							color: ['#999'],
+							type: 'solid'
+						}
 						//    onZero:false
 					},
 					axisLabel: {

@@ -161,7 +161,7 @@ export class RuningComponent implements OnInit {
 			this.monp = data['month']; // 月发
 			this.dadp = data['today']; // 日发
 			this.run = data['runCount']; // 运行
-			this.dj = data['waitCount	']; // 待机
+			this.dj = data['waitCount']; // 待机
 			this.warn = data['warnCount']; //告警
 			this.lx = data['outLineCount']; // 离线
 

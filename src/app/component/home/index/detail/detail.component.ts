@@ -145,10 +145,14 @@ export class DetailComponent implements OnInit {
 					//				max: 5000,
 					//				interval: 1000,
 					axisTick: {
-						show: false
+						show: true
 					},
 					axisLine: {
-						show: false,
+						show: true,
+						lineStyle: {
+							color: ['#999'],
+							type: 'solid'
+						}
 						//    onZero:false
 					},
 					axisLabel: {
