@@ -150,7 +150,7 @@
 			</div>
 			<div class="up">
 				<span>站点图片</span>
-				<div class="upImg"><img src="../../../../../assets/img/up.png"/><input (change)='loadImg()' type="file" name="pic" id="pic" accept="image/gif, image/jpeg, image/png"/></div>
+				<div class="upImg"><img style="width: 68px;height: 68px;" [src]="newimg"/><input (change)='loadImg()' type="file" name="pic" id="pic" accept="image/gif, image/jpeg, image/png"/></div>
 			</div>
 			<div class="notes">备注：电站类型：1.光伏站 2.风能站 3.其他&nbsp;&nbsp;建设类型：1.办公园区 2.工厂 3.住宅</div>
 			<div class="myBtn">
@@ -209,7 +209,7 @@
 			</div>
 			<div class="up">
 				<span>站点图片</span>
-				<div class="upImg"><img src="../../../../../assets/img/up.png"/><input (change)='comImg()' type="file" name="pic" id="pic_com" accept="image/gif, image/jpeg, image/png"/></div>
+				<div class="upImg"><img style="width: 68px;height: 68px;"  [src]="comimg"/><input (change)='comImg()' type="file" name="pic" id="pic_com" accept="image/gif, image/jpeg, image/png"/></div>
 			</div>
 			<div class="notes">备注：电站类型：1.光伏站 2.风能站 3.其他&nbsp;&nbsp;建设类型：1.办公园区 2.工厂 3.住宅</div>
 			<div class="myBtn">

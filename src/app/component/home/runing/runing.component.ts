@@ -24,6 +24,9 @@ export class RuningComponent implements OnInit {
 	dj: any; // 待机
 	warn: any; //告警
 	lx: any; // 离线
+	gl:any;
+	dl:any;
+	sj:any;
 	facilityCount:any; // 接入光伏总户数
 	constructor(private route: Router, private loop: LoopService, private runSev: RuningService) {}
 	url: string = '/fbs/foreignForC/'; //url前缀
@@ -157,7 +160,7 @@ export class RuningComponent implements OnInit {
 		this.runSev.getData(url, this.info).then(data => {
 			console.log(data)
 			this.facilityCount = data['facilityCount']
-			this.allp = data['energy']; // 总发
+			this.allp = data['energyNum']; // 总发
 			this.monp = data['month']; // 月发
 			this.dadp = data['today']; // 日发
 			this.run = data['runCount']; // 运行
@@ -203,6 +206,9 @@ export class RuningComponent implements OnInit {
 			let datas = data;
 			if(datas['code'] == 200) {
 				this.centerData = datas['result1']['list'];
+				this.gl = datas['result']['TOTLE_P'];
+				this.dl = datas['result']['DAY_EQ'];
+				this.sj = datas['result']['TIME'];
 			} else {
 				swal(`${datas['code']}`);
 			}

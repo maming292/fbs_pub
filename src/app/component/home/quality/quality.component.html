@@ -14,13 +14,7 @@
               <option>无锡广盈实业有限公司</option>
             </select>
             <select class="form-control" id="selcd" title="" style="width: 200px;margin-top: 8px;padding:0 0 0 15px;height:30px;border-radius: 8px;margin-right: 25px;display: inline-block;" [(ngModel)]='month' (change)='charts()'>
-                  <option value="2018-07">2018年07月</option>
-                  <option value="2018-06">2018年06月</option>
-                  <option value="2018-05">2018年05月</option>
-                  <option value="2018-04">2018年04月</option>
-                  <option value="2018-03">2018年03月</option>
-                  <option value="2018-02">2018年02月</option>
-                  <option value="2018-01">2018年01月</option>
+                 <option *ngFor="let item of montharr" [value]='thisyear+"-"+item'>{{thisyear}}年{{item}}月</option>
               </select>
 	</div>
 

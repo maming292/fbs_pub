@@ -37,6 +37,7 @@ export class TablestatcComponent implements OnInit {
 	gflag: any;
 	par_arr: any = []; // 逆变器列表
 	station_arr: any = []; // 站点列表
+	a:any;
 	constructor(private route: Router, private serve: IndexService, private http: HttpClient, private service: PublicService) {}
 	headers = new HttpHeaders().set("Accept", "*/*");
 	options = {
@@ -88,14 +89,28 @@ export class TablestatcComponent implements OnInit {
 		this.getdata();
 
 	}
-//	test(e){
-//		console.log(e)
-//	}
+	dateformat(dater) {
+		if(!dater) {
+			return '';
+		}
+		var date = new Date(dater);
+		var Y = date.getFullYear() + '-';
+		var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+		var D = date.getDate();
+		this.a = Y + M + D
+		return Y + M + D;
+	}
+
 	getdata() {
+			if(!!this.star_seach && !!this.end_seach){
+			if(this.star_seach == this.end_seach) {
+				swal('查询的时间不能相同！')
+				return false;
+			}
+		}
 		let info = new HttpParams().set('page', '1').set('total_number', '10').set('facility_number', this.par_seach).set('company_id', this.station_seach).set('start_time', this.star_seach).set('end_time', this.end_seach);
 console.log(info)
 		this.http.post(`${this.service.path}/fbs/foreignForC/photovoltaic_statistics`, info, this.options).subscribe(function(data) {
-			console.log(data)
 			if(data['code'] == 200) {
 				this.par_arr = data['listFacility'];
 				this.station_arr = data['listCompany'];
@@ -178,6 +193,15 @@ console.log(info)
 	}
 
 	out() {
+/*		$.ajax({
+			type:"post",
+			url:`${this.service.path}/fbs/foreignForC/exportStatistics?company_id=${this.station_seach}&facility_number=${this.par_seach}&start_time=${this.star_seach}&end_time=${this.end_seach}`,
+			async:true,
+			success:function(){
+				alert('下载完毕')
+			}
+		});*/
+		
 			location.href = `${this.service.path}/fbs/foreignForC/exportStatistics?company_id=${this.station_seach}&facility_number=${this.par_seach}&start_time=${this.star_seach}&end_time=${this.end_seach}`
 	}
 	backs() {

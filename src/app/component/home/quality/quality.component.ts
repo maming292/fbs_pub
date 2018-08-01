@@ -21,6 +21,8 @@ export class QualityComponent implements OnInit {
 	date: any;
 	date_sc: any;
 	ch: any;
+		thisyear:any;
+	montharr:any = [];
 	comid: number = 141; // 默认站点ID
 		constructor(private route: Router, private serve: IndexService, private http: HttpClient, private service: PublicService) {}
 	headers = new HttpHeaders().set("Accept", "*/*");
@@ -30,6 +32,14 @@ export class QualityComponent implements OnInit {
 	};
 
 	ngOnInit() {
+		
+				this.thisyear = new Date().getFullYear();
+		var thismonth =new Date().getMonth()+1;
+		for(let i=1;i<=thismonth;i++){
+			var as = i<10?'0'+i:i;
+			this.montharr.push(as);
+		}
+		// 获取当前月份
 //		var newdate = new Date();
 //		var nY = newdate.getFullYear() + '-';
 //		var nM = (newdate.getMonth() + 1 < 10 ? '0' + (newdate.getMonth() + 1) : newdate.getMonth() + 1);

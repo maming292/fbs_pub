@@ -47,15 +47,15 @@
             <div class="row clearfix pdlft" style="padding: 15px 0;">
               <div class="col-md-4 column ui-sortable " style="">
                 总电量
-                <span class="blue bac">kWh</span>
+                <span class="blue bac">MWh</span>
               </div>
               <div class="col-md-4 column ui-sortable " style="">
                 当月
-                <span class="green bac">kWh</span>
+                <span class="green bac">MWh</span>
               </div>
               <div class="col-md-4 column ui-sortable " style="">
                 当日
-                <span class="orange bac">kWh</span>
+                <span class="orange bac">MWh</span>
               </div>
             </div>
             <div class="row clearfix pdlft wid-76" style="padding-bottom: 8px;">
@@ -103,15 +103,15 @@
             <div class="row clearfix pdlft" style="padding: 15px 0;">
               <div class="col-md-4 column ui-sortable " style="">
                 总电量
-                <span class="blue bac">kWh</span>
+                <span class="blue bac">MWh</span>
               </div>
               <div class="col-md-4 column ui-sortable " style="">
                 当月
-                <span class="green bac">kWh</span>
+                <span class="green bac">MWh</span>
               </div>
               <div class="col-md-4 column ui-sortable " style="">
                 当日
-                <span class="orange bac">kWh</span>
+                <span class="orange bac">MWh</span>
               </div>
             </div>
             <div class="row clearfix pdlft wid-76" style="padding-bottom: 8px;">
@@ -159,15 +159,15 @@
             <div class="row clearfix pdlft" style="padding: 15px 0;">
               <div class="col-md-4 column ui-sortable " style="">
                 总电量
-                <span class="blue bac">kWh</span>
+                <span class="blue bac">MWh</span>
               </div>
               <div class="col-md-4 column ui-sortable " style="">
                 当月
-                <span class="green bac">kWh</span>
+                <span class="green bac">MWh</span>
               </div>
               <div class="col-md-4 column ui-sortable " style="">
                 当日
-                <span class="orange bac">kWh</span>
+                <span class="orange bac">MWh</span>
               </div>
             </div>
             <div class="row clearfix pdlft wid-76" style="padding-bottom: 8px;">
@@ -201,9 +201,9 @@
           <div class="row clearfix pdlft bg_yellow" >
             <div class="col-md-3 column ui-sortable" style="position: relative;height: 92px;">
               <div class="box" style="border-top: 1px solid #d2d6de;bottom: 0;position: relative;top:0;padding: 10px!important;">
-                <div>日发电量：<span class="bl">{{topData.day|fixedNumber}} kwh</span></div>
-                <div>当月电量：<span class="bl">{{topData.month|fixedNumber}} kwh</span></div>
-                <div>总发电量：<span class="bl">{{topData.all|fixedNumber}} kwh</span></div>
+                <div>日发电量：<span class="bl">{{topData.day}} MWh</span></div>
+                <div>当月电量：<span class="bl">{{topData.month}} MWh</span></div>
+                <div>总发电量：<span class="bl">{{topData.all}} MWh</span></div>
               </div>
             </div>
             <div class="col-md-4 column ui-sortable" style="height: 100px;">
@@ -234,26 +234,26 @@
                     <div class="col-md-10  " style="min-height: 200px;">
                       <div class="col-md-12 text-right npd  " style="height: 50px;line-height: 50px;">有功功率:
                         <div class="gn dinbk" >
-                          <div class="gn dbox" style="position: relative;top:-9px;" >{{item.P|fixedNumber}} kW</div>
+                          <div class="gn dbox" style="position: relative;top:-9px;" >{{item.P}} kW</div>
 
                         </div>
                       </div>
                       <div class="col-md-12 text-right npd " style="height: 50px;line-height: 50px;">A项:
                         <div class="gn dinbk" >
-                          <div class="gn dbox" >{{item.UA|fixedNumber}}V</div>
-                          <div class="gn dbox" >{{item.IA|fixedNumber}}A</div>
+                          <div class="gn dbox" >{{item.UA}}V</div>
+                          <div class="gn dbox" >{{item.IA}}A</div>
                         </div>
                       </div>
                       <div class="col-md-12 text-right npd  " style="height: 50px;line-height: 50px;">B项:
                         <div class="gn dinbk" >
-                          <div class="gn dbox" >{{item.UB|fixedNumber}}V</div>
-                          <div class="gn dbox" >{{item.IB|fixedNumber}} A</div>
+                          <div class="gn dbox" >{{item.UB}}V</div>
+                          <div class="gn dbox" >{{item.IB}} A</div>
                         </div>
                       </div>
                       <div class="col-md-12 text-right npd " style="height: 50px;line-height: 50px;">C项:
                         <div class="gn dinbk" >
-                          <div class="gn dbox" >{{item.UC|fixedNumber}}V</div>
-                          <div class="gn dbox" >{{item.IC|fixedNumber}}A</div>
+                          <div class="gn dbox" >{{item.UC}}V</div>
+                          <div class="gn dbox" >{{item.IC}}A</div>
                         </div>
                       </div>
                     </div>
@@ -271,12 +271,12 @@
                     </div>
                     <div class="col-md-12">
                       <div class="pull-right">
-                        <div><span class="grey ibk "></span>PV6: <span class="gy">--/--</span></div>
-                        <div><span class="green ibk "></span>PV6:<span class="gn">537.2V/7.31A</span> </div>
-                        <div><span class="green ibk "></span>PV6:<span class="gn">537.2V/7.31A</span></div>
-                        <div><span class="red ibk"></span>PV6:<span class="rd">537.2V/7.31A</span></div>
-                        <div><span class="blue ibk"></span>PV6:<span class="bl">537.2V/7.31A</span></div>
-                        <div><span class="grey ibk"></span>PV6:<span class="gy">537.2V/7.31A</span></div>
+                        <div><span class="grey ibk "></span>PV1: <span class="gy">{{item.V_PV1}}V/{{item.I_PV1}}A</span></div>
+                        <div><span class="green ibk "></span>PV2:<span class="gn">{{item.V_PV2}}V/{{item.I_PV2}}A</span> </div>
+                        <div><span class="green ibk "></span>PV3:<span class="gn">{{item.V_PV3}}V/{{item.I_PV3}}A</span></div>
+                        <div><span class="red ibk"></span>PV4:<span class="rd">{{item.V_PV4}}V/{{item.I_PV4}}A</span></div>
+                        <div><span class="blue ibk"></span>PV5:<span class="bl">{{item.V_PV5}}V/{{item.I_PV5}}A</span></div>
+                        <div><span class="grey ibk"></span>PV6:<span class="gy">{{item.V_PV6}}V/{{item.I_PV6}}A</span></div>
                       </div>
                     </div>
                   </div>
@@ -303,9 +303,10 @@
                     <div class="mt-45 lt down-bg" style="width: 22px;height: 390px;"></div>
                     <div class="fuhe" style="margin: auto;height: 90px;line-height: 6">负荷</div>
                     <div class="pull-right">
-                      <div>有功: <span class="gn">{{P|fixedNumber}}</span></div>
-                      <div>电量：<span class="gn">{{topData.all|fixedNumber}}</span></div>
-                      <div>时间：<span class="gn">2018-1-10</span></div>
+                      <div>电量: <span class="gn">{{dl}}</span></div>
+                      <!--<div>有功: <span class="gn">{{P|fixedNumber}}</span></div>-->
+                      <div>功率：<span class="gn">{{gl}}</span></div>
+                      <div>时间：<span class="gn">{{sj}}</span></div>
                     </div>
                   </div>
                   <div class="col-md-6  " >

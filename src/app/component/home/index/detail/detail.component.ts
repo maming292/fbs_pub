@@ -22,7 +22,7 @@ export class DetailComponent implements OnInit {
 	name: any;
 	now: any;
 	all: any;
-	ystpow: any;
+	month: any;
 	companyname: any;
 	fin_number: any;
 	type: any;
@@ -35,7 +35,7 @@ export class DetailComponent implements OnInit {
 	ngOnInit() {
 		var val = this.ActivatedRoute.queryParams['value'];
 		console.log(val)
-		this.ystpow = val.ystpow;
+		this.month = val.month;
 		this.now = val.now;
 		this.all = val.all;
 		this.companyname = val.companyname;
@@ -137,7 +137,7 @@ export class DetailComponent implements OnInit {
 							type: 'solid'
 						}
 					},
-					data: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31']
+					data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31']
 				},
 				yAxis: {
 					name: 'kWh',

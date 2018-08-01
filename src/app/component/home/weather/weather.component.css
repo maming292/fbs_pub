@@ -359,3 +359,10 @@ nav .lc{
 	color: #666;
 	background: #fff;
 }
+th{
+	text-align: center;
+}
+
+.lf{
+	text-align: left!important;
+}

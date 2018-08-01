@@ -50,6 +50,10 @@ export class StationComponent implements OnInit {
 	latitude_com: any; // 编辑 纬度
 	imgbase64_com: any;
 	id_com: any;
+	
+	
+	newimg:any = '../../../../../assets/img/up.png';
+	comimg:any = '../../../../../assets/img/up.png';
 	constructor(private route: Router, private serve: IndexService, private http: HttpClient, private service: PublicService) {}
 	headers = new HttpHeaders().set("Accept", "*/*");
 	options = {
@@ -95,6 +99,7 @@ export class StationComponent implements OnInit {
 		reader.onload = function(e) {
 			console.log(reader.result)
 			this.imgbase64_new = reader.result;
+			this.newimg = reader.result;
 		}.bind(this);
 		//正式读取文件  
 		
@@ -112,7 +117,7 @@ export class StationComponent implements OnInit {
 			//			console.log('文件读取完成');
 			imgFiles = e['target']['result'];
 			this.imgbase64_com = imgFiles;
-			// console.log(typeof(this.imgbase64_com))
+			this.comimg = imgFiles;
 		}.bind(this);
 		//正式读取文件  
 		reader.readAsDataURL(file);
@@ -132,7 +137,7 @@ export class StationComponent implements OnInit {
 		this.imgbase64_com = imgbase64_com;
 		this.id_com = id_com;
 		this.showcompile = true;
-		console.log(this.imgbase64_com)
+		this.comimg = imgbase64_com
 	}
 	hiddencompile() {
 		this.showcompile = false;
@@ -195,7 +200,6 @@ export class StationComponent implements OnInit {
 					this.area_obj[data['areaAll'][i]['AREA']] = data['areaAll'][i]['ID']
 				}
 
-				console.log(data)
 				for(var m = 0; m < data['result'].length; m++) {
 					var arr = [
 						data['result'][m]['COMPANY_NAME'], // 0
@@ -263,7 +267,6 @@ export class StationComponent implements OnInit {
 			.set('LONGITUDE', this.long_new)
 			.set('LATITUDE', this.latitude_new)
 			.set('uploadFile', this.imgbase64_new);
-		console.log(info)
 		this.http.post(`${this.service.path}/fbs/system/saveCompany`, info, this.options).toPromise().then(function() {
 
 			this.msglist = [];
@@ -281,6 +284,7 @@ export class StationComponent implements OnInit {
 		this.long_new = '';
 		this.latitude_new = '';
 		this.imgbase64_new = '';
+		this.newimg = '../../../../../assets/img/up.png';
 	}
 
 	seach() {

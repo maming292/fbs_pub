@@ -21,13 +21,7 @@
             </span>
 						<span>
                <select class="form-control pull-left" id="selcd" title="" style="width: 200px" [(ngModel)]='month' (change)='charts()'>
-                  <option value="2018-07">2018年07月</option>
-                  <option value="2018-06">2018年06月</option>
-                  <option value="2018-05">2018年05月</option>
-                  <option value="2018-04">2018年04月</option>
-                  <option value="2018-03">2018年03月</option>
-                  <option value="2018-02">2018年02月</option>
-                  <option value="2018-01">2018年01月</option>
+                  <option *ngFor="let item of montharr" [value]='thisyear+"-"+item'>{{thisyear}}年{{item}}月</option>
               </select>
             </span>
 					</div>
@@ -48,21 +42,20 @@
 								<span class="gn cc">{{sunmj}}</span>
 								<span class="green bac">Mj/m<sup>2</sup></span>
 								<span class="bk">
-                         <img src="../../../../assets/img/rel.png" alt=""> 热量
-                     </span>
+                         <img src="../../../../assets/img/rel.png" alt="">总表瞬时值</span>
 							</div>
 							<div>
-								<span class="bl cc">{{sunmj_all}}</span>
-								<span class="blue bac">W/m<sup>2</sup></span>
+								<span class="bl cc">{{fs}}</span>
+								<span class="blue bac">Mj/m<sup>2</sup></span>
 								<span class="bk">
-                     <img src="../../../../assets/img/fus.png" alt=""> 辐射
+                     <img src="../../../../assets/img/fus.png" alt=""> 总表日累计
                  </span>
 							</div>
 							<div>
 								<span class="og cc">{{suntime}}</span>
-								<span class="orange bac">W/m²</span>
+								<span class="orange bac">hpa</span>
 								<span class="bk">
-                 <img src="../../../../assets/img/riz.png" alt=""> 日照
+                 <img src="../../../../assets/img/riz.png" alt=""> 气压
              </span>
 							</div>
 						</div>
@@ -71,37 +64,37 @@
 						<div class="p1">
 							<div>
 								<span class="gn cc">{{sunmj_all}}</span>
-								<span class="gn bac">MJ/m<sup>2</sup></span>
-								<span class="bk">总辐射</span>
+								<span class="gn bac lf">kWh</span>
+								<span class="bk">预测日发电量</span>
 							</div>
 							<div>
 								<span class="bl cc">{{zhimj}}</span>
-								<span class="bl bac">MJ/m<sup>2</sup></span>
-								<span class="bk">直辐射</span>
+								<span class="bl bac lf">℃</span>
+								<span class="bk">温度</span>
 							</div>
 							<div>
-								<span class="og cc">{{sanmj}}</span>
-								<span class="og bac">MJ/m<sup>2</sup></span>
-								<span class="bk"> 散辐射</span>
+								<span class="og cc">{{sbrlj}}</span>
+								<span class="og bac lf">MJ/m<sup>2</sup></span>
+								<span class="bk">散表日累计</span>
 							</div>
 						</div>
 						<div class="p1">
 							<div>
-								<span class="gn cc">{{sunmj}}</span>
-								<span class="gn bac">W/m<sup>2</sup></span>
-								<span class="bk">总热量
+								<span class="gn cc">{{zrl}}</span>
+								<span class="gn bac lf">MJ/m<sup>2</sup></span>
+								<span class="bk">总表瞬时值
             </span>
 							</div>
 							<div>
 								<span class="bl cc">{{zhirl}}</span>
-								<span class="bl bac">W/m<sup>2</sup></span>
-								<span class="bk">直热量
+								<span class="bl bac lf">°</span>
+								<span class="bk">风向
             </span>
 							</div>
 							<div>
 								<span class="og cc">{{sanr}}</span>
-								<span class="og bac">W/m<sup>2</sup></span>
-								<span class="bk">散热量
+								<span class="og bac lf">MJ/m<sup>2</sup></span>
+								<span class="bk">散表瞬时值
             </span>
 							</div>
 						</div>
@@ -177,21 +170,21 @@
 								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 160px;">站点</th>
 								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 180px;">总表日累计<br/>MJ/m<sup>2</sup>
 								</th>
-								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 169px;">直表日累计<br/>MJ/m<sup>2</sup>
+								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 169px;">温度℃
 								</th>
 								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">散表日累计MJ/m<sup>2</sup>
 								</th>
 								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">总表瞬时值<br/>MJ/m<sup>2</sup>
 								</th>
-								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">直表瞬时值<br/>MJ/m<sup>2</sup>
+								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">风向°
 								</th>
 								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">散表瞬时值<br/>MJ/m<sup>2</sup>
 								</th>
-								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">日照时<br />min
+								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">气压<br />hpa
 								</th>
 								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 180px;">预测日发电量<br />kwh
 								</th>
-								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 180px;">预测累计发电量<br />kwh
+								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 180px;">预测累计发电量<br />Mwh
 								</th>
 								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">
 									<div style="min-width: 89px">上报时间</div>
@@ -203,13 +196,12 @@
 								<td class="sorting_1">{{i+1}}</td>
 								<td>{{item.FACILITY_NUMBER}}</td>
 								<td>{{item.SUN_MJ_DAY}}</td>
-								<td>{{item.ZHI_MJ_DAY}}</td>
+								<td>{{item.T_ONE}}</td>
 								<td>{{item.SAN_MJ_DAY}}</td>
 								<td>{{item.SUN_MJ}}</td>
-
-								<td>{{item.ZHI_MJ}}</td>
+								<td>{{item.WIND_DIRECTION}}</td>
 								<td>{{item.SAN_MJ}}</td>
-								<td>{{item.SUN_TIME}}</td>
+								<td>{{item.AP}}</td>
 								<td>{{item.SUN_MJ_DAY}}</td>
 								<td>{{item.SUM_EQ}}</td>
 								<td>{{item.TIME}}</td>

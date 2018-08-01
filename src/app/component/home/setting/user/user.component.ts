@@ -178,15 +178,21 @@ export class UserComponent implements OnInit {
 			return;
 		}
 		let info = new HttpParams().set('USERNAME', this.user_name).set('NAME', this.real_name).set('PASSWORD', this.password).set('ROLE_ID', this.role_name);
-		this.http.post(`${this.service.path}/fbs/system/saveUser`, info, this.options).toPromise().then(function() {
+		this.http.post(`${this.service.path}/fbs/system/saveUser`, info, this.options).toPromise().then(function(data) {
+			if(data){
 			this.msglist = [];
 			this.getdata();
-		}.bind(this));
-		this.alertshow = false;
+			this.alertshow = false;
 			this.user_name = '';
-		this.password = '';
-		this.real_name = '';
-		this.role_name = -1;
+			this.password = '';
+			this.real_name = '';
+			this.role_name = -1;
+			}else{
+			swal("用户名已存在,请重新填写！");	
+			}
+			
+		}.bind(this));
+		
 	}
 	setuserId(delUserId) {
 		this.delUserId = delUserId;

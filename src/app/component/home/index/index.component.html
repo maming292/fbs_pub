@@ -45,7 +45,7 @@
 					</div>
 
 					<div style="overflow: scroll;height: 65vh;">
-						<div class="ct_list" *ngFor="let item of list;let i=index" style="cursor: pointer" (click)="onClick(item.SUN_MJ_DAY,item.DAY_EQ,item.SUM_EQ,item.FACILITY_NAME,item.FACILITY_NUMBER,item.TYPE,item.STAND_TYPE)">
+						<div class="ct_list" *ngFor="let item of list;let i=index" style="cursor: pointer" (click)="onClick(item.MONTH_EQ,item.DAY_EQ,item.SUM_EQ,item.FACILITY_NAME,item.FACILITY_NUMBER,item.TYPE,item.STAND_TYPE)">
 							<p style="padding: 10px;height: 40px;line-height: 20px;">
 								<span class="toogle">{{i+1}}、{{item.FACILITY_NAME}}</span>
 								<span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==1">
@@ -73,21 +73,22 @@
 								<div class="col-md-2">
 									<img src="../../../../assets/img/hhhh.png" alt="" style="position: absolute;left: 0;">
 								</div>
-								<div class="col-md-2" [title]="item.SUN_MJ_DAY">
+								<!--<div class="col-md-2" [title]="item.SUN_MJ_DAY">
 									<p class="bl">{{item.SUN_MJ_DAY}}</p>
-									<p>日照</p>
-								</div>
-								<div class="col-md-2" [title]="item.SUN_MJ_DAY" style="width: 20%;">
-									<p class="bl">{{item.SUN_MJ_DAY}}</p>
-									<p>预测日电量</p>
-								</div>
-								<div class="col-md-2" [title]="item.DAY_EQ" style="width: 20%;">
+									<p>日照(MWh)</p>
+								</div>-->
+								
+								<div class="col-md-2" [title]="item.DAY_EQ" style="width: 25%;">
 									<p class="bl">{{item.DAY_EQ}}</p>
-									<p>当日日电量</p>
+									<p>当日日电量(MWh)</p>
+								</div>
+								<div class="col-md-2" [title]="item.SUN_MJ_DAY" style="width: 25%;">
+									<p class="bl">{{item.MONTH_EQ}}</p>
+									<p>当月发电量(MWh)</p>
 								</div>
 								<div class="col-md-3" [title]="item.SUM_EQ">
 									<p class="bl">{{item.SUM_EQ}}</p>
-									<p>累计总电量</p>
+									<p>累计总电量(MWh)</p>
 								</div>
 								<!--<div class="col-md-2" style="float: right;width: 13%!important;">
                 <span class="btn btn-block btn-info btn-sm" style="height: 50px;line-height: 42px;font-size: 15px;">65%</span>

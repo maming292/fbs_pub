@@ -33,8 +33,9 @@ export class ForecastComponent implements OnInit {
 	pages: any = 1; // 分页数据 以上
 	gflag: any;
 	//  左数据
-	sunmj: any; //热量  //总热量  
-	sunmj_all: any; // 总辐射// 辐射
+	sunmj: any; //热量   
+	sunmj_all: any; // 总辐射
+	fs:any; // 辐射
 	suntime: any; // 日照
 	zhimj: any; // 直辐射
 	sanmj: any; //散辐射
@@ -47,10 +48,13 @@ export class ForecastComponent implements OnInit {
 	t_em: any; // 环境温度
 	zujian: any; // 组件温度
 	windsped: any; // 风速 
-	
+	zrl:any; //总热量 
 	tall:any; // 今日实际
 	yall:any; //昨日预测
 	month: any; // 左侧搜索条件
+		thisyear:any;
+	montharr:any = [];
+	sbrlj:any;
 	constructor(private route: Router, private serve: IndexService, private http: HttpClient, private service: PublicService) {}
 	headers = new HttpHeaders().set("Accept", "*/*");
 	options = {
@@ -58,6 +62,17 @@ export class ForecastComponent implements OnInit {
 		contentType: 'application/x-www-form-urlencoded'
 	};
 	ngOnInit() {
+		
+		this.thisyear = new Date().getFullYear();
+		var thismonth =new Date().getMonth()+1;
+		for(let i=1;i<=thismonth;i++){
+			var as = i<10?'0'+i:i;
+			this.montharr.push(as);
+		}
+		
+		
+		
+		
 		var newdate = new Date();
 		var nY = newdate.getFullYear() + '-';
 		var nM = (newdate.getMonth() + 1 < 10 ? '0' + (newdate.getMonth() + 1) : newdate.getMonth() + 1);
@@ -100,13 +115,17 @@ export class ForecastComponent implements OnInit {
 		let info = new HttpParams().set('company_id', '' + this.comid);
 		this.http.post(`${this.service.path}/fbs/Predict/weatherPredict`, info, this.options).toPromise().then(function(data) {
 			var result = data.result;
-			this.sunmj = result['SUN_MJ']; //热量  //总热量  
-			this.sunmj_all = result['SUN_MJ_DAY']; // 总辐射// 辐射
-			this.suntime = result['SUN_TIME']; // 日照
-			this.zhimj = result['ZHI_MJ_DAY']; // 直辐射
-			this.sanmj = result['SAN_MJ_DAY']; //散辐射
-			this.zhirl = result['ZHI_MJ']; //直热量
-			this.sanr = result['SAN_MJ']; // 散热量
+			this.sunmj = result['SUN_MJ']; //热量 ==>总表瞬时值
+			this.fs = result['SUN_MJ_DAY'];// 辐射 ==> 总表日累计
+			this.suntime = result['AP']; // 日照 ==> 气压
+			this.sunmj_all = result['SUN_MJ_DAY']; // 总辐射==> 预测日发电量
+			this.zhimj = result['T_ONE']; // 直辐射 ==>  温度℃
+			this.sbrlj = result['SAN_MJ_DAY']; //散辐射 ==>散表日累计
+			this.zrl = result['SUN_MJ']//总热量 ==>总表瞬时值
+			this.zhirl = result['WIND_DIRECTION']; //直热量==>风向
+			this.sanr = result['SAN_MJ']; // 散热量==>散表瞬时值
+			
+			
 			this.hd_em = result['HD_EM']; // 湿度
 			this.wind_dir = result['WIND_DIRECTION']; // 风向
 			this.t_one = result['T_ONE']; // 温度

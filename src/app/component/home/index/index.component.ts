@@ -68,7 +68,7 @@ console.log(info)
 			}
 				this.map.setZoomAndCenter(20, [data['company']['list'][0]['LONGITUDE'], data['company']['list'][0]['LATITUDE']]);
 				$.each(data['company']['list'], function(i, v) {
-					this.setmaerk([v['LONGITUDE'], v['LATITUDE']], v['FACILITY_NAME'], v['SUN_MJ_DAY'], v['DAY_EQ'], v['SUM_EQ'], v['FACILITY_NAME'], v['FACILITY_NUMBER'], v['TYPE'], v['STAND_TYPE']);
+					this.setmaerk([v['LONGITUDE'], v['LATITUDE']], v['FACILITY_NAME'], v['MONTH_EQ'], v['DAY_EQ'], v['SUM_EQ'], v['FACILITY_NAME'], v['FACILITY_NUMBER'], v['TYPE'], v['STAND_TYPE']);
 				}.bind(this));
 
 			} else {
@@ -83,7 +83,8 @@ console.log(info)
 
 	//  首页地图添加点标记
 
-	setmaerk(position, text, ystpow, nower, aller, companyname, fin_number, type, stand_type) {
+	setmaerk(position, text, month, nower, aller, companyname, fin_number, type, stand_type) {
+		console.log()
 		var that = this;
 		this.marker = new AMap.Marker({
 			map: this.map,
@@ -122,7 +123,7 @@ console.log(info)
 			//   		that.route.navigate(['/home/tablestatc'],{ queryParams: { id: 112 } })
 			that.route.navigate(['home/map_detail'], {
 				queryParams: {
-					'ystpow': ystpow, // 昨日发电量
+					'month': month, // 昨日发电量
 					'now': nower, // 今日发电量
 					'all': aller, // 总发电量
 					'companyname': companyname, // 公司名称
@@ -138,10 +139,10 @@ console.log(info)
 		e.open()
 		this.isOpen = true;
 	}
-	onClick(ystpow, now, all, companyname, fin_number, type, stand_type) {
+	onClick(month, now, all, companyname, fin_number, type, stand_type) {
 		this.route.navigate(['home/map_detail'], {
 			queryParams: {
-				'ystpow': ystpow,
+				'month': month,
 				'now': now,
 				'all': all,
 				'companyname': companyname,

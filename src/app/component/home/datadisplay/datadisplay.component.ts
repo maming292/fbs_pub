@@ -24,8 +24,20 @@ export class DatadisplayComponent implements OnInit {
 	ecBtn: any;
 	btnChange: any;
 	num: any;
+	thisyear:any;
+	montharr:any = [];
 	constructor(private route: Router, private serve: IndexService, private http: HttpClient, private service: PublicService) {}
 	ngOnInit() {
+		this.thisyear = new Date().getFullYear();
+		var thismonth =new Date().getMonth()+1;
+		for(let i=1;i<=thismonth;i++){
+			var as = i<10?'0'+i:i;
+			this.montharr.push(as);
+		}
+		// 获取当前月份
+		
+		
+		
 		this.myChart = echarts.init(document.getElementById('main'));
 		var numarr = [];
 		this.ecBtn = [
