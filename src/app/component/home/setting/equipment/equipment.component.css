@@ -14,7 +14,8 @@ li{
 	height: 75px;
 }
 .selects select{
-	width: 120px;
+	width: 185px;
+	padding-left: 15px;
 	border: 1px solid #CCCCCC;
 	outline: none;
 	height: 30px;

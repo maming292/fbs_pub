@@ -109,7 +109,7 @@ table {
 .tableHead thead td div a {
 	display: inline-block;
 	width: 33%;
-	color: #666666;
+	/*color: #666666;*/
 }
 
 .tableHead tbody td {
