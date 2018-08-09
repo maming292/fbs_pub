@@ -84,7 +84,7 @@ this.charts();
 				if(data['code'] == 200) {
 					if(data['result'].length != 0) {
 							var dataer = data.result;
-					for(let i = 0; i < dataer.length-1; i++) {
+					for(let i = 0; i < dataer.length; i++) {
 						data1.push(dataer[i]['DAY_EQ']);
 						data3.push(dataer[i]['DAY_P']);
 					}
@@ -92,9 +92,9 @@ this.charts();
 						data1 = data5;
 						data3 = data5;
 					}
-				console.log(data1.length)
+				
 				this.createChart(1, data1, color1, name1);
-			this.createChart(3, data3, color2, name3);
+				this.createChart(3, data3, color2, name3);
 				} else {
 					swal(`未知错误${data['code']}`);
 				}
@@ -174,10 +174,10 @@ this.charts();
 						type: 'solid'
 					}
 				},
-				data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30','31']
+				data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30','31']
 			},
 			yAxis: {
-				name: 'Kwh',
+				name: 'kWh',
 				// min:0,
 				// max:10000,
 				// interval:1000,

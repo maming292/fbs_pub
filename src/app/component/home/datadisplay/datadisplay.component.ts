@@ -92,7 +92,7 @@ export class DatadisplayComponent implements OnInit {
 				name:'KW'
 			},
 			series: [{
-				name: '销量',
+				name: '有功功率',
 				type: type,
 				areaStyle: { //折线以下样式
 					normal: {

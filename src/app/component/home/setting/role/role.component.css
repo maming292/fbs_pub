@@ -64,6 +64,7 @@ li {
 	text-align: center;
 	color: #FFFFFF;
 	margin-right: 20px;
+	cursor: pointer;
 }
 
 .out {
@@ -75,6 +76,7 @@ li {
 	border: 1px solid #1DBC9B;
 	text-align: center;
 	color: #FFFFFF;
+	cursor: pointer;
 }
 
 .out span {

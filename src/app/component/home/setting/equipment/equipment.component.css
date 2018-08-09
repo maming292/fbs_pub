@@ -23,7 +23,7 @@ li{
 	border-radius: 5px;
 	background: none;
 	margin-right: 20px;
-	vertical-align: middle;
+	vertical-align: middle;cursor: pointer;
 }
 .selects input{
 	width: 200px;
@@ -66,6 +66,7 @@ li{
 	border: 1px solid #1DBC9B;
 	text-align: center;
 	color: #FFFFFF;
+	cursor: pointer;
 }
 .out span{
 	color: #1DBC9B;

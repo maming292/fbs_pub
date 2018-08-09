@@ -93,11 +93,11 @@ export class DetailComponent implements OnInit {
 					x: 'left',
 					padding: [60, 20, 0, 100],
 					data: [{
-							name: '当月实际发电量',
+							name: '当日实际发电量',
 							icon: 'circle'
 						},
 						{
-							name: '当月预测发电量',
+							name: '当日预测发电量',
 							icon: 'circle'
 						}
 					],
@@ -169,7 +169,7 @@ export class DetailComponent implements OnInit {
 					}
 				},
 				series: [{
-						name: '当月实际发电量',
+						name: '当日实际发电量',
 						type: 'line',
 						smooth: true,
 						symbolSize: 12,
@@ -182,7 +182,7 @@ export class DetailComponent implements OnInit {
 						}
 					},
 					{
-						name: '当月预测发电量',
+						name: '当日预测发电量',
 						type: 'line',
 						smooth: true,
 						symbolSize: 12,
