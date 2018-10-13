@@ -40,13 +40,13 @@
 						<div class="p1">
 							<div>
 								<span class="gn cc">{{sunmj}}</span>
-								<span class="green bac">Mj/m<sup>2</sup></span>
+								<span class="green bac">MJ/m<sup>2</sup></span>
 								<span class="bk">
                          <img src="../../../../assets/img/rel.png" alt="">总表瞬时值</span>
 							</div>
 							<div>
 								<span class="bl cc">{{fs}}</span>
-								<span class="blue bac">Mj/m<sup>2</sup></span>
+								<span class="blue bac">MJ/m<sup>2</sup></span>
 								<span class="bk">
                      <img src="../../../../assets/img/fus.png" alt=""> 总表日累计
                  </span>
@@ -155,7 +155,7 @@
 					<span style="margin-left: 50px;width:200px;margin-right: 20px;">
             <p-calendar [(ngModel)]="enddate" [showIcon]="true" [placeholder]="'结束日期'" [minDate]="startdate"  dateFormat="yy-mm-dd" [locale]="ch" [readonlyInput]="false"></p-calendar>
           </span>
-					<i (click)='prelode()' class="glyphicon glyphicon-repeat" style="width: 28px;height:28px;line-height: 28px;margin-top: -5px;border-radius: 3px;vertical-align:middle;color: #fff;background: #2399E5;text-align: center;margin-right: 4px;"></i>
+					<i (click)='prelode()' class="glyphicon glyphicon-repeat setp" style="width: 28px;height:28px;line-height: 28px;margin-top: -5px;border-radius: 3px;vertical-align:middle;color: #fff;background: #2399E5;text-align: center;margin-right: 4px;"></i>
 					<button pButton type="button" icon="fa-search" iconPos="left" (click)='getdatalist()'></button>
 					<button (click)="exports()" class="pull-right" style="margin-top: 5px" pButton type="button" icon="fa-external-link" iconPos="left" title="导出"></button>
 
@@ -184,7 +184,7 @@
 								</th>
 								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 180px;">预测日发电量<br />kWh
 								</th>
-								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 180px;">预测累计发电量<br />Mwh
+								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 180px;">预测累计发电量<br />MWh
 								</th>
 								<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">
 									<div style="min-width: 89px">上报时间</div>

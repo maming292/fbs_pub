@@ -1,11 +1,14 @@
 <div class="tables">
 	<div>
-		<div class="backs" (click)='backs()'>
-			<span><img src="../../../../../assets/images/backs.png" /></span>
+		<div style="height: 50px;border-bottom: 1px solid #E2E2E2;">
+			<div class="backs" style="float: right;height: 50px;">
+			<span (click)='backs()'><img src="../../../../../assets/images/backs.png" /></span>
 		</div>
+		</div>
+		
 		<div class="seach">
 			
-			<select [(ngModel)]='station_seach'>
+			<select [(ngModel)]='station_seach' (change)='seachplace()'>
 				<option value="">站点</option>
 				<ng-container *ngFor='let p of station_arr'>
 					<option [value]="p.ID">{{p.COMPANY_NAME}}</option>

@@ -46,7 +46,7 @@ export class TablestatcComponent implements OnInit {
 	};
 
 	ngOnInit() {
-    console.log(this.route['navigations']['value']['rawUrl']['queryParams']['id'])
+//  console.log(this.route['navigations']['value']['rawUrl']['queryParams']['id'])
 		layui.use(['laypage'], function() {
 			var laypage = layui.laypage
 			laypage.render({
@@ -109,10 +109,9 @@ export class TablestatcComponent implements OnInit {
 			}
 		}
 		let info = new HttpParams().set('page', '1').set('total_number', '10').set('facility_number', this.par_seach).set('company_id', this.station_seach).set('start_time', this.star_seach).set('end_time', this.end_seach);
-console.log(info)
 		this.http.post(`${this.service.path}/fbs/foreignForC/photovoltaic_statistics`, info, this.options).subscribe(function(data) {
 			if(data['code'] == 200) {
-				this.par_arr = data['listFacility'];
+//				this.par_arr = data['listFacility'];
 				this.station_arr = data['listCompany'];
 				this.pageslist = data['inverterAll']['list'];
 				this.allpages = data['inverterAll']['total'];
@@ -124,6 +123,18 @@ console.log(info)
 				this.hasnextpage = data['inverterAll']['hasNextPage'];
 			} else {
 				swal(`未知错误${data['code']}`);
+			}
+		}.bind(this))
+	}
+	
+	seachplace(){
+				let info = new HttpParams().set('company_id', this.station_seach)
+		this.http.post(`${this.service.path}/fbs/foreignForC/changeWZ`, info, this.options).subscribe(function(data) {
+			
+			if(data['result'] == true) {
+				this.par_arr = data['date']['list'];
+				console.log(this.par_arr)
+			} else {
 			}
 		}.bind(this))
 	}

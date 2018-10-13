@@ -45,7 +45,7 @@ export class QualityComponent implements OnInit {
 //		var nM = (newdate.getMonth() + 1 < 10 ? '0' + (newdate.getMonth() + 1) : newdate.getMonth() + 1);
 //		this.month = nY + nM;
 		
-		this.month = '2018-04';
+		this.month = '2018-07';
 		this.ch = {
 			/** 每周第一天，0代表周日 */
 			firstDayOfWeek: 0,

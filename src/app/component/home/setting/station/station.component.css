@@ -107,6 +107,7 @@ table{
 	display: inline-block;
 	width: 48%;
 	text-align: center;
+	cursor: pointer;
 }
 
 .alerts{

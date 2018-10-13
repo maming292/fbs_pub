@@ -97,7 +97,6 @@ export class StationComponent implements OnInit {
 		imgUrlBase64 = reader.readAsDataURL(file);
 		//为文件读取成功设置事件  
 		reader.onload = function(e) {
-			console.log(reader.result)
 			this.imgbase64_new = reader.result;
 			this.newimg = reader.result;
 		}.bind(this);
@@ -130,8 +129,8 @@ export class StationComponent implements OnInit {
 		this.construction_com = construction_com;
 		this.constructionscale_com = constructionscale_com;
 		this.area_com = area_com;
-		this.raroc_com = raroc_com;
-		this.savings_com = savings_com;
+		this.raroc_com = raroc_com?raroc_com:'';
+		this.savings_com = savings_com?savings_com:'';
 		this.long_com = long_com;
 		this.latitude_com = latitude_com;
 		this.imgbase64_com = imgbase64_com;
@@ -180,16 +179,20 @@ export class StationComponent implements OnInit {
 			.set('LATITUDE', this.latitude_com)
 			.set('uploadFile', this.imgbase64_com ? this.imgbase64_com : '')
 			.set('ID', this.id_com);
-		this.http.post(`${this.service.path}/fbs/system/updateCompany`, info, this.options).toPromise().then(function() {
+		this.http.post(`${this.service.path}/fbs/system/updateCompany`, info, this.options).toPromise().then(function(data) {
 			this.msglist = [];
 			this.getdata();
+			if(data){
+				swal('修改成功')
+			}else if(!data){
+				swal('修改失败')
+			}
 		}.bind(this));
 		this.showcompile = false;
 	}
 
 	// companyname_com,standtype_com,construction_com,constructionscale_com,area_com,raroc_com,savings_com,long_com,latitude_com,imgbase64_com
 	getdata() {
-
 		var msg = this.msglist;
 		this.http.get(`${this.service.path}/fbs/system/findCompany`)
 			.subscribe(function(data) {
@@ -207,13 +210,14 @@ export class StationComponent implements OnInit {
 						data['result'][m]['CONSTRUCTION_TYPE'], // 2
 						data['result'][m]['CONSTRUCTION_SCALE'], // 3
 						data['result'][m]['AREA'], // 4
-						data['result'][m]['RAROC'], // 5
+						data['result'][m]['RAROC']?data['result'][m]['RAROC']:'', // 5
 						data['result'][m]['COST_SAVINGS'], // 6
 						data['result'][m]['LONGITUDE'], // 7
 						data['result'][m]['LATITUDE'], // 8
 						data['result'][m]['BANNER_URL'], // 9
 						data['result'][m]['ID'] // 10
 					]
+					
 					msg.push(arr)
 				}
 				this.pageArr = [];
@@ -267,8 +271,12 @@ export class StationComponent implements OnInit {
 			.set('LONGITUDE', this.long_new)
 			.set('LATITUDE', this.latitude_new)
 			.set('uploadFile', this.imgbase64_new);
-		this.http.post(`${this.service.path}/fbs/system/saveCompany`, info, this.options).toPromise().then(function() {
-
+		this.http.post(`${this.service.path}/fbs/system/saveCompany`, info, this.options).toPromise().then(function(data) {
+			if(data){
+				swal('新增成功')
+			}else if(!data){
+				swal('新增失败')
+			}
 			this.msglist = [];
 			this.getdata();
 		}.bind(this));
@@ -322,7 +330,6 @@ export class StationComponent implements OnInit {
 		}, function() {
 			let info = new HttpParams().set('ID', id);
 			this.http.post(`${this.service.path}/fbs/system/deleteCompany`, info, this.options).toPromise().then(function() {
-				console.log(666)
 				this.msglist = [];
 				this.getdata();
 			}.bind(this));

@@ -112,7 +112,7 @@ table {
 .tableHead thead td div a {
 	display: inline-block;
 	width: 31%;
-	color: #666666;
+	/*color: #666666;*/
 }
 
 .tableHead tbody td {
@@ -123,6 +123,7 @@ table {
 	display: inline-block;
 	width: 31%;
 	text-align: center;
+	cursor: pointer;
 }
 
 .alerts{
