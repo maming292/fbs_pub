@@ -83,28 +83,28 @@
 
                    </span>
 								<span class="max">{{detailweather.HD_EM}}%</span><br>
-								<span class="min">湿度</span>
+								<span class="min" style="display: inline-block; margin-top: 7px;">湿度</span>
 							</div>
 							<div>
 								<span class="arc" style="background: url(../../../../assets/img/u843.png);">
 
                     </span>
 								<span class="max">{{detailweather.WIND_DIRECTION}}<sup>。</sup></span><br>
-								<span class="min">风向</span>
+								<span class="min" style="display: inline-block; margin-top: 7px;">风向</span>
 							</div>
 							<div>
 								<span class="arc" style="background: url(../../../../assets/img/u845.png);">
 
                     </span>
 								<span class="max">{{detailweather.T_ONE}}℃</span><br>
-								<span class="min">温度</span>
+								<span class="min" style="display: inline-block; margin-top: 7px;">温度</span>
 							</div>
 							<div>
 								<span class="arc" style="background: url(../../../../assets/img/u863.png);">
 
                     </span>
 								<span class="max">{{detailweather.AP}}hPa</span><br>
-								<span class="min">气压</span>
+								<span class="min" style="display: inline-block; margin-top: 7px;">气压</span>
 							</div>
 						</div>
 						<div>
@@ -139,7 +139,7 @@
             <p-calendar [(ngModel)]="enddate" (onSelect)="callbackII($event)" [showIcon]="true" [placeholder]="'结束日期'" [minDate]="startdate"
                         dateFormat="yy-mm-dd" [locale]="ch" [readonlyInput]="false"></p-calendar>
           </span>
-					<i (click)='prelode()' class="glyphicon glyphicon-repeat" style="width: 28px;height:28px;line-height: 28px;margin-right: 4px;border-radius: 3px;vertical-align:middle;color: #fff;background: #2399E5;text-align: center;margin-top: -2px;"></i>
+					<i (click)='prelode()' class="glyphicon glyphicon-repeat" style="width: 28px;height:28px;line-height: 28px;margin-right: 4px;border-radius: 3px;vertical-align:middle;color: #fff;background: #2399E5;text-align: center;margin-top: -2px;cursor: pointer;"></i>
 					<button pButton type="button" icon="fa-search" iconPos="left" (click)="search()" style="vertical-align: middle;"></button>
 					<a (click)="exports()" class="pull-right" style="margin-top: 5px" pButton type="button" icon="fa-external-link" iconPos="left" title="导出"></a>
 				</div>

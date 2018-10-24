@@ -27,6 +27,7 @@
 						<td>序号</td>
 						<td>用户名称</td>
 						<td>真实姓名</td>
+						<td>密码</td>
 						<td>角色</td>
 						<td>最近登录时间</td>
 						<td style="width: 200px;">
@@ -43,6 +44,7 @@
 							<td>{{i+1}}</td>
 							<td>{{items[0]}}</td>
 							<td>{{items[1]}}</td>
+							<td>{{items[5]}}</td>
 							<td>{{items[2]}}</td>
 							<td>{{items[3]}}</td>
 							<td><a><img src="../../../../../assets/img/qx.png" /></a><a (click)='compile(items[0],items[1],items[2],items[4],items[5])'><img src="../../../../../assets/img/bj.png" /></a><a (click)="del(items[4])"><img src="../../../../../assets/img/sc.png" /></a>
@@ -120,11 +122,12 @@
 			<!--<div class="put">
 				<span>用户名</span><input type="text" placeholder="填写用户名" [(ngModel)]='username_com'/>
 			</div>-->
-			<!--<div class="put">
-				<span>密码</span><input type="text" placeholder="密码" [(ngModel)]='password_com'/>
-			</div>-->
+		
 			<div class="put">
 				<span>真实姓名</span><input type="text" placeholder="填写真实姓名"[(ngModel)]='realname_com'/>
+			</div>
+				<div class="put">
+				<span>密码</span><input type="text" placeholder="密码" [(ngModel)]='password_com'/>
 			</div>
 			<div class="put">
 				<span>角色</span>

@@ -74,6 +74,10 @@ export class StationComponent implements OnInit {
 	}
 
 	showPic(url) {
+		if(!url){
+			layer.msg('暂无图片');
+			return;
+		}
 		this.showimg = url;
 		layer.open({
 			type: 1,
@@ -180,10 +184,12 @@ export class StationComponent implements OnInit {
 			.set('uploadFile', this.imgbase64_com ? this.imgbase64_com : '')
 			.set('ID', this.id_com);
 		this.http.post(`${this.service.path}/fbs/system/updateCompany`, info, this.options).toPromise().then(function(data) {
-			this.msglist = [];
-			this.getdata();
+			// var index = layer.load(0, {shade: false});
 			if(data){
-				swal('修改成功')
+				//layer.close(index);
+				swal('修改成功');
+				this.msglist = [];
+			this.getdata();
 			}else if(!data){
 				swal('修改失败')
 			}
@@ -211,7 +217,7 @@ export class StationComponent implements OnInit {
 						data['result'][m]['CONSTRUCTION_SCALE'], // 3
 						data['result'][m]['AREA'], // 4
 						data['result'][m]['RAROC']?data['result'][m]['RAROC']:'', // 5
-						data['result'][m]['COST_SAVINGS'], // 6
+						data['result'][m]['COST_SAVINGS']?data['result'][m]['COST_SAVINGS']:"", // 6
 						data['result'][m]['LONGITUDE'], // 7
 						data['result'][m]['LATITUDE'], // 8
 						data['result'][m]['BANNER_URL'], // 9
@@ -273,7 +279,8 @@ export class StationComponent implements OnInit {
 			.set('uploadFile', this.imgbase64_new);
 		this.http.post(`${this.service.path}/fbs/system/saveCompany`, info, this.options).toPromise().then(function(data) {
 			if(data){
-				swal('新增成功')
+				swal('新增成功');
+				this.getdata();
 			}else if(!data){
 				swal('新增失败')
 			}

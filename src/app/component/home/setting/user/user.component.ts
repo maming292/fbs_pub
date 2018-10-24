@@ -146,7 +146,7 @@ export class UserComponent implements OnInit {
 					var arr = [data['result'][m]['USERNAME'], data['result'][m]['NAME'], data['result'][m]['ROLE_NAME'], data['result'][m]['LOG_TIME'], data['result'][m]['ID'], data['result'][m]['PASSWORD']]
 					msg.push(arr)
 				}
-				//				console.log(msg)
+				console.log(msg)
 				this.pageArr = [];
 				this.maxPage = Math.ceil((msg.length) / 10);
 				for(let i = 1; i <= this.maxPage; i++) {
