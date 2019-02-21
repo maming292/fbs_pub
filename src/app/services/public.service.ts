@@ -3,7 +3,7 @@ import {HttpHeaders,HttpClient,HttpParams} from '@angular/common/http';
 import {NavigationEnd, Router} from '@angular/router';
 @Injectable()
 export class PublicService {
-path="http://192.168.1.181:8088";
+path="http://192.168.1.181:8081";
 //path="http://192.168.20.95:8080";
   headers = new HttpHeaders().set("Accept", "*/*");
   options={headers:this.headers,withCredentials:true};

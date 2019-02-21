@@ -233,8 +233,16 @@
 							<li>总发电量：{{year}}</li>
 						</ul>
 					</div>
-					<div (click)='showliner()' class="lbtn">
-						<a class="showLine">概率影响分析结果查看</a>
+					<div class="lineBtn">
+						<div (click)='showliner1()' class="lbtn">
+							<a class="showLine">电压越限概率分析</a>
+						</div>
+						<div (click)='showliner2()' class="lbtn">
+							<a class="showLine">三相电压平衡分析</a>
+						</div>
+						<div (click)='showliner3()' class="lbtn">
+							<a class="showLine">支路潮流越限分析</a>
+						</div>
 					</div>
 				</div>
 
@@ -244,12 +252,16 @@
 	</div>
 	<div class="backMap" (click)="backMap()"> <img src="../../../assets/img/dtd.png" alt=""></div>
 	<!--Echart  弹窗-->
-	<div id="line">
+	<div id="line" >
 		<span class="middles"></span>
-		<div id="echart">
+		<div id="echart"[ngClass]="{true:'twowidth',false:'onewidth'}[isHideEc2]">
 			<span class="closes" (click)='closes()'>X</span>
-			<div id="ec"></div>
-			<p style="text-align: left;padding: 0 30px;">结论：光伏用户对整条线路的影响分布曲线图光伏用户概率影响分布曲线图光伏用户对整条线路的影响分布曲线图光伏用户概率影响分布曲线图</p>
+			<div class="ecs">
+				<div id="ec"></div>
+				<div id="ec2"></div>
+			</div>
+			
+			<p style="text-align: left;padding: 0 30px;max-width: 1150px;">总结：本项目重点着手于分布式新能源运行数据质量控制及修复处理技术和含分布式新能源的综合运行管控技术，配电网设备及实时运行状态的研究，利用最小二乘、卡尔曼滤波等思想对带有误差的生数据进行处理；利用配电网实时数据和历史数据对配电网的设备及运行状态进行实时状态估计，滤除量测数据中的粗差，实现对配电网实时运行状态的监测</p>
 		</div>
 	</div>
 	<div class="amap-ui-smp-ifwn-content-body" style="display: none;"></div>

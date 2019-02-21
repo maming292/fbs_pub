@@ -15,6 +15,7 @@ declare var echarts: any;
 	styleUrls: ['./newline.component.css']
 })
 export class NewlineComponent implements OnInit {
+	isHideEc2:any = false;
 	text: any;
 	lnglats: any;
 	details: any;
@@ -37,7 +38,7 @@ export class NewlineComponent implements OnInit {
 	sectype: any = '';
 	lister: any;
 	map: any;
-	
+	lineData:any;
 	totleO2:any; // 减排
 	day:any; //日发电
 	year:any; //年发电
@@ -45,6 +46,7 @@ export class NewlineComponent implements OnInit {
 	constructor(private route: Router, private serve: IndexService, private http: HttpClient) {}
 	ngOnInit() {
 		this.get();
+		this.getEchartsData();
 		this.getalertdata();
 		var a = [{ //路径
 			name: '路线0',
@@ -87,151 +89,12 @@ export class NewlineComponent implements OnInit {
 			]
 		];
 		var lnglats = [];
-		var map = new AMap.Map('map', {
-			zoom: 4
-		});
+
 		/*
 		 把创建点标记(new AMap.Marker) 写在创建信息窗体内 
 		 以下为创建信息窗体
 		 */
-
-		AMapUI.loadUI(['overlay/SimpleInfoWindow'], function(SimpleInfoWindow) {
-			// 根据线路 条数生成 n 个容器
-
-			var markers1 = [];
-			var markers2 = [];
-
-			for(var i = 0; i < a[0].path.length; i++) {
-				addMarker(markers1, 'marker1', a[0].path[i], "../../../../assets/img/z2.png", true);
-			}
-			for(var i = 0; i < a[1].path.length; i++) {
-				addMarker(markers1, 'marker2', a[1].path[i], "../../../../assets/img/z2.png", false);
-
-			}
-			var infoWindow = null;
-			var infoTitle = '<span style="color:#fff">实业</span>';
-
-			function addMarker(markers, marker, position, icon, boll) { //添加点标记 marker 方法
-
-				//			map.clearMap();//清除之前添加的Marker (全显示  不需要)
-				marker = new AMap.Marker({
-					map: map,
-					offset: new AMap.Pixel(-17, -45),
-					position: position,
-					//				icon:icon,
-					icon: new AMap.Icon({
-						size: new AMap.Size(34, 50), //图标大小
-						image: icon,
-						imageOffset: new AMap.Pixel(0, 0)
-					})
-				});
-				marker.customData = {
-					myProperty: i
-				}; //添加私有属性
-				//鼠标移入marker弹出自定义的信息窗体 click mouseover
-				AMap.event.addListener(marker, 'click', function(e) {
-					var name = ecmsg[marker.customData.myProperty][0];
-					var data = ecmsg[marker.customData.myProperty][1];
-					console.log(marker.customData.myProperty)
-					infoTitle = '<span style="color:#333">' + name + '</span>';
-					setInfoWindow(infoTitle, data);
-					infoWindow.open(map, marker.getPosition());
-
-					$('.amap-ui-smp-ifwn-content-body').css({
-						'borderRadius': '5px'
-					});
-					$('.amap-ui-smp-ifwn-combo-sharp').hide();
-
-					console.log(marker);
-
-					//						for(let i = 0; i < markers1.length; i++) {
-					//							markers1[i].setIcon('../../../../assets/img/z2.png')
-					//						}
-					//						markers1[marker.customData.myProperty].setIcon('../../../../assets/img/z1a.png')
-					//					
-
-				});
-				markers.push(marker);
-
-				AMap.event.addListener(marker, 'mouseover', function(e) {
-					infoTitle = '<span style="color:#333">' + ecmsg[marker.customData.myProperty][0] + '</span>';
-					var infoCompany = new AMap.InfoWindow({
-						offset: new AMap.Pixel(0, -30)
-					});
-					infoCompany.setContent(infoTitle);
-
-					//				showCompany(ecmsg[marker.customData.myProperty][0]);
-					infoCompany.open(map, marker.getPosition());
-				})
-			}
-
-			$('.posi').on('click', getCenter)
-
-			function getCenter() {
-				for(let i = 0; i < markers1.length; i++) {
-					markers1[i].setIcon('../../../../assets/img/z2.png')
-				}
-
-				markers1[$(this).attr('title')].setIcon('../../../../assets/img/z1a.png')
-			}
-
-			function setInfoWindow(infoTitle, data) {
-				infoWindow = new SimpleInfoWindow({
-					infoTitle: infoTitle,
-					infoBody: '<div><span style="display:inline-block;width:150px;padding:5px 0;color:#333">所属线路:广盈线</span><span style="display:inline-block;width:150px;padding:5px 0;color:#333">所属线路:广盈线</span><span style="display:inline-block;width:150px;padding:5px 0;color:#333">所属线路:广盈线</span><span style="display:inline-block;width:150px;padding:5px 0;color:#333">所属线路:广盈线</span></div><div style="text-align:center;padding:10px 0"><button class="mybtn"style="display:inline-block;width:200px;padding:5px 0;color:#fff;background:#01BEA4;border-radius:5px">概率影响分析结果查看</button></div>',
-					offset: new AMap.Pixel(0, -45)
-				});
-
-				infoWindow.get$InfoBody().on('click', '.mybtn', function(event) { //点击 '点击这里' 按钮
-					//阻止冒泡
-					event.stopPropagation();
-					setEc(data);
-					document.getElementById('line').style.display = 'block';
-				});
-			}
-			setInfoWindow(infoTitle, []);
-
-			function showCompany(companyName, marker) {
-
-			}
-		}.bind(this)); //创建信息窗体 end
-
-		AMapUI.load(['ui/misc/PathSimplifier', 'lib/$'], function(PathSimplifier, $) { // 路径
-			if(!PathSimplifier.supportCanvas) {
-				alert('当前环境不支持 Canvas！');
-				return;
-			}
-			var pathSimplifierIns = new PathSimplifier({
-				zIndex: 100,
-				//autoSetFitView:false,
-				map: map, //所属的地图实例
-
-				getPath: function(pathData, pathIndex) {
-
-					return pathData.path;
-				},
-				getHoverTitle: function(pathData, pathIndex, pointIndex) {
-					if(pointIndex >= 0) {}
-
-				},
-				renderOptions: { //节点样式
-					renderAllPointsIfNumberBelow: 100, //绘制路线节点，如不需要可设置为-1
-					"pathLineSelectedStyle": {
-						"lineWidth": 2,
-						"strokeStyle": "#3434FB",
-						"borderWidth": 1,
-						"borderStyle": "#cccccc",
-						"dirArrowStyle": false
-					}
-				}
-			});
-			window.pathSimplifierIns = pathSimplifierIns;
-			pathSimplifierIns.setData(a);
-			//选中路线0 改变样式
-			pathSimplifierIns.setSelectedPathIndex(0);
-		});
-		// echart
-		var setEc = this.setEc;
+//		var setEc = this.setEc;
 	}
 	backMap() {
 		this.route.navigateByUrl('/home/map');
@@ -239,12 +102,12 @@ export class NewlineComponent implements OnInit {
 	closes() {
 		$('#line').hide();
 	}
-	setEc(data) {
+	setEc(xdata,ydata,_id,titleText) {
 		$('#box').removeAttr('_echarts_instance_');
-		var myChart = echarts.init(document.getElementById('ec'));
-		var option = {
+		var myChart = echarts.init(document.getElementById(_id));
+		var option = { 
 			title: {
-				text: '光伏用户概率影响分布曲线图',
+				text: titleText,
 				show: true, //标题显示隐藏
 				left: 'center',
 				top: '20',
@@ -265,7 +128,7 @@ export class NewlineComponent implements OnInit {
 						width: 1
 					}
 				},
-				data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+				data: xdata,
 			},
 			yAxis: {
 				name: 'P(x)',
@@ -278,7 +141,7 @@ export class NewlineComponent implements OnInit {
 				}
 			},
 			series: [{
-				name: '销量',
+				
 				type: 'line',
 				areaStyle: { //折线以下样式
 					normal: {
@@ -303,17 +166,15 @@ export class NewlineComponent implements OnInit {
 						}
 					}
 				},
-				data: data
+				data: ydata
 			}]
 		};
 		myChart.setOption(option);
 		document.getElementById('line').style.display = 'block';
 	}
 
-	getCenter(index) {
 
-	}
-
+	
 	setteam(team) {
 		this.team = team + 1;
 	}
@@ -323,17 +184,41 @@ export class NewlineComponent implements OnInit {
 		this.nameshow = false;
 	}
 
-	showliner() {
-		this.setEc(this.ecmsg[0][1]);
-		document.getElementById('line').style.display = 'block';
-	}
+
 	cloline() {
 		this.lineshow = false;
 	}
 	p() {
 		this.nameshow = !this.nameshow;
 	}
-
+	/* 获取折线数据 */
+	getEchartsData(){
+		this.serve.noPathGetData('http://192.168.20.95:8080/fbs/Predict/curve').then(data => {
+			console.log(data)
+			this.lineData = data;
+		})
+		)
+	}
+	
+	showliner1() {
+		this.setEc(this.lineData.curve2.XList,this.lineData.curve2.YList,"ec",this.lineData.curve2.name);
+		this.setEc(this.lineData.curve3.XList,this.lineData.curve3.YList,"ec2",this.lineData.curve3.name);
+		this.isHideEc2 = true;
+		document.getElementById('line').style.display = 'block';
+		document.getElementById('ec2').style.display = 'block';
+	}
+	showliner2() {
+		this.setEc(this.lineData.curve1.XList,this.lineData.curve1.YList,"ec",this.lineData.curve1.name);
+		this.isHideEc2 = false;
+		document.getElementById('line').style.display = 'block';
+		document.getElementById('ec2').style.display = 'none';
+	}
+		showliner3() {
+		this.setEc(this.lineData.curve4.XList,this.lineData.curve4.YList,"ec",this.lineData.curve4.name);
+		this.isHideEc2 = false;
+		document.getElementById('line').style.display = 'block';
+		document.getElementById('ec2').style.display = 'none';
+	}
 	// 临时
 	get() {
 		let info = new HttpParams().set('page', '1').set('total_number', '10000').set('area', this.area).set('stand_type', this.standtype).set('company_name', this.companyname);
@@ -366,7 +251,7 @@ export class NewlineComponent implements OnInit {
 			console.log(err);
 		})
 	}
-
+/**/
 	onClick(ystpow, now, all, companyname, fin_number, type, stand_type) {
 		this.route.navigate(['home/map_detail'], {
 			queryParams: {
