@@ -120,6 +120,7 @@ export class NewlineComponent implements OnInit {
 				trigger: 'axis'
 			},
 			xAxis: {
+
 				boundaryGap: false,
 				splitLine: {
 					show: true,
@@ -127,6 +128,11 @@ export class NewlineComponent implements OnInit {
 						color: '#C9C9C9',
 						width: 1
 					}
+				},
+				axisLabel: {
+					show: true,
+//					showMaxLabel: true,
+//					rotate: 70
 				},
 				data: xdata,
 			},
@@ -194,10 +200,8 @@ export class NewlineComponent implements OnInit {
 	/* 获取折线数据 */
 	getEchartsData(){
 		this.serve.noPathGetData('http://192.168.20.95:8080/fbs/Predict/curve').then(data => {
-			console.log(data)
 			this.lineData = data;
 		})
-		)
 	}
 	
 	showliner1() {
