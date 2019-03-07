@@ -102,7 +102,7 @@ export class NewlineComponent implements OnInit {
 	closes() {
 		$('#line').hide();
 	}
-	setEc(xdata,ydata,_id,titleText) {
+	setEc(xdata,ydata,_id,titleText,xAxisName) {
 		$('#box').removeAttr('_echarts_instance_');
 		var myChart = echarts.init(document.getElementById(_id));
 		var option = { 
@@ -120,7 +120,9 @@ export class NewlineComponent implements OnInit {
 				trigger: 'axis'
 			},
 			xAxis: {
-
+				name:xAxisName,
+				nameLocation:"center",
+				nameGap:30,
 				boundaryGap: false,
 				splitLine: {
 					show: true,
@@ -137,7 +139,7 @@ export class NewlineComponent implements OnInit {
 				data: xdata,
 			},
 			yAxis: {
-				name: 'P(x)',
+				name: '%',
 				splitLine: {
 					show: true,
 					lineStyle: {
@@ -147,7 +149,6 @@ export class NewlineComponent implements OnInit {
 				}
 			},
 			series: [{
-				
 				type: 'line',
 				areaStyle: { //折线以下样式
 					normal: {
@@ -199,26 +200,26 @@ export class NewlineComponent implements OnInit {
 	}
 	/* 获取折线数据 */
 	getEchartsData(){
-		this.serve.noPathGetData('http://192.168.20.95:8080/fbs/Predict/curve').then(data => {
+		this.serve.noPathGetData('/fbs/Predict/curve').then(data => {
 			this.lineData = data;
 		})
 	}
 	
 	showliner1() {
-		this.setEc(this.lineData.curve2.XList,this.lineData.curve2.YList,"ec",this.lineData.curve2.name);
-		this.setEc(this.lineData.curve3.XList,this.lineData.curve3.YList,"ec2",this.lineData.curve3.name);
+		this.setEc(this.lineData.curve2.XList,this.lineData.curve2.YList,"ec",this.lineData.curve2.name,"电压标幺值");
+		this.setEc(this.lineData.curve3.XList,this.lineData.curve3.YList,"ec2",this.lineData.curve3.name,"");
 		this.isHideEc2 = true;
 		document.getElementById('line').style.display = 'block';
 		document.getElementById('ec2').style.display = 'block';
 	}
 	showliner2() {
-		this.setEc(this.lineData.curve1.XList,this.lineData.curve1.YList,"ec",this.lineData.curve1.name);
+		this.setEc(this.lineData.curve1.XList,this.lineData.curve1.YList,"ec",this.lineData.curve1.name,"三相不平衡度");
 		this.isHideEc2 = false;
 		document.getElementById('line').style.display = 'block';
 		document.getElementById('ec2').style.display = 'none';
 	}
 		showliner3() {
-		this.setEc(this.lineData.curve4.XList,this.lineData.curve4.YList,"ec",this.lineData.curve4.name);
+		this.setEc(this.lineData.curve4.XList,this.lineData.curve4.YList,"ec",this.lineData.curve4.name,"有功标幺值");
 		this.isHideEc2 = false;
 		document.getElementById('line').style.display = 'block';
 		document.getElementById('ec2').style.display = 'none';
@@ -229,7 +230,6 @@ export class NewlineComponent implements OnInit {
 		this.serve.getData(this.url, info).then(data => {
 			if(data['code'] == 200) {
 				this.secarea = data['areaAll'];
-				//				this.sectype = data['listCompany'];
 				this.sectype = data['standtype'];
 				this.lister = data['company']['list'];
 				this.stationNumber = data['facilityCount'];

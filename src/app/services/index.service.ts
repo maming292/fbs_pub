@@ -13,6 +13,6 @@ path="http://192.168.1.181:8081";
     return this.http.post(this.path+url,info,this.options).toPromise();
   }
   noPathGetData(url){
-    return this.http.get(url).toPromise();
+    return this.http.get(this.path+url).toPromise();
   }
 }
