@@ -204,6 +204,7 @@ export class RuningComponent implements OnInit {
 		let inf = new HttpParams().set('facility_number', `${number}`).set('page', '1').set('total_number', `4`);
 		this.runSev.getData(url, inf).then(data => {
 			let datas = data;
+			
 			if(datas['code'] == 200) {
 				this.centerData = datas['result1']['list'];
 				this.gl = datas['result']['TOTLE_P'];

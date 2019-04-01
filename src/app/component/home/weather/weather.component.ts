@@ -266,6 +266,9 @@ if(this.startSearch == this.endSearch) {
 				tooltip: {
 					trigger: 'axis'
 				},
+				  title: {
+        text: '当日辐射'
+    },
 				legend: {
 					x: 'center',
 					y: 'bottom',

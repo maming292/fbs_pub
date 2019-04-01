@@ -32,20 +32,21 @@ export class QualityComponent implements OnInit {
 	};
 
 	ngOnInit() {
-		
-				this.thisyear = new Date().getFullYear();
-		var thismonth =new Date().getMonth()+1;
-		for(let i=1;i<=thismonth;i++){
-			var as = i<10?'0'+i:i;
-			this.montharr.push(as);
+		let startime = [2018, 5];
+		for(var a = startime[0]; a <= new Date().getFullYear(); a++) {
+			for(var b = 1; b <= 12; b++) {
+				if((a == new Date().getFullYear())&&(b > new Date().getMonth()+1)) break;
+				if(a == startime[0]&&b < startime[1]) continue;
+				let m = b>9?b:"0"+b
+				this.montharr.push(a+"-"+m)
+			}
 		}
-		// 获取当前月份
-//		var newdate = new Date();
-//		var nY = newdate.getFullYear() + '-';
-//		var nM = (newdate.getMonth() + 1 < 10 ? '0' + (newdate.getMonth() + 1) : newdate.getMonth() + 1);
-//		this.month = nY + nM;
 		
-		this.month = '2018-07';
+		console.log(this.montharr)
+		
+		// 获取当前月份
+		this.month = this.montharr[this.montharr.length-2];
+		
 		this.ch = {
 			/** 每周第一天，0代表周日 */
 			firstDayOfWeek: 0,
@@ -77,7 +78,7 @@ this.charts();
 		let data2 = [];
 		let data3 = [];
 		let data4 = [];
-		let data5 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0];
+		let data5 = [];
 		let info = new HttpParams().set('month', ''+this.month).set('company_id', ''+this.comid);
 		this.http.post(`${this.service.path}/fbs/Predict/getEleAndPowerCurr`, info, this.options)
 			.subscribe(function(data) {
@@ -106,7 +107,7 @@ this.charts();
 					if(data['code'] == 200) {
 					if(data['result'].length != 0) {
 							var dataer = data.result;
-					for(let i = 0; i < dataer.length-1; i++) {
+					for(let i = 0; i < dataer.length; i++) {
 						data2.push(dataer[i]['DAY_EQ']);
 						data4.push(dataer[i]['DAY_P']);
 					}
@@ -114,7 +115,6 @@ this.charts();
 						data2 = data5;
 						data4 = data5;
 					}
-				
 				this.createChart(2, data2, color1, name2);
 			this.createChart(4, data4, color2, name4);
 				}else {

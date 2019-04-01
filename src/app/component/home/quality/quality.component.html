@@ -14,7 +14,7 @@
               <option>无锡广盈实业有限公司</option>
             </select>
             <select class="form-control" id="selcd" title="" style="width: 200px;margin-top: 8px;padding:0 0 0 15px;height:30px;border-radius: 8px;margin-right: 25px;display: inline-block;" [(ngModel)]='month' (change)='charts()'>
-                 <option *ngFor="let item of montharr" [value]='thisyear+"-"+item'>{{thisyear}}年{{item}}月</option>
+                 <option *ngFor="let item of montharr" [value]='item'>{{item}}</option>
               </select>
 	</div>
 

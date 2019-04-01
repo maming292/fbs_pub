@@ -66,6 +66,15 @@ export class DatadisplayComponent implements OnInit {
 					$.each(data['result'], function(i, v) {
 						num.push(v['DAY_P']);
 					});
+					let date = new Date();
+					let year = date.getFullYear();
+					let month = date.getMonth()+1;
+					month = month<=9?"0"+month:month;
+					
+					if(year+"-"+month == time){
+						let day = date.getDate();
+						num = num.slice(0,day);
+					}
 					this.num = num;
 					this.setEchars(this.ectype, this.xData, this.num);
 				}.bind(this),
