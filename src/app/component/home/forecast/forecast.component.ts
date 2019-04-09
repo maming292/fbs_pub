@@ -245,7 +245,15 @@ export class ForecastComponent implements OnInit {
 	charts() {
 		let data1 = [];
 		let data2 = [];
-		let data3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0];
+		let data3 = [];
+			var myDate = new Date();
+			var myYear = myDate.getFullYear();    //获取完整的年份(4位,1970-????)
+			var myMonth = myDate.getMonth();       //获取当前月份(0-11,0代表1月)
+			var thisMonth = new Date(myYear,myMonth+1,0);
+			var monthLen = thisMonth.getDate();  // 获取当月天数
+				for(let i=0;i<monthLen;i++){
+					data3.push(0)
+				}
 		let info = new HttpParams().set('month', ''+this.month).set('company_id', ''+this.comid);
 		this.http.post(`${this.service.path}/fbs/Predict/getEleAndPowerCurr`, info, this.options)
 			.subscribe(function(data) {

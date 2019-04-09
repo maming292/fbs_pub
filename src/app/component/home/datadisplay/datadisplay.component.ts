@@ -69,9 +69,10 @@ export class DatadisplayComponent implements OnInit {
 					let date = new Date();
 					let year = date.getFullYear();
 					let month = date.getMonth()+1;
-					month = month<=9?"0"+month:month;
 					
-					if(year+"-"+month == time){
+					let months = month<=9?"0"+month:month;
+					
+					if(year+"-"+months == time){
 						let day = date.getDate();
 						num = num.slice(0,day);
 					}

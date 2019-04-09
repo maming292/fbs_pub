@@ -183,7 +183,6 @@ export class AreaComponent implements OnInit {
 		}, function() {
 			let info = new HttpParams().set('ID', id);
 			this.http.post(`${this.service.path}/fbs/system/deleteArea`, info, this.options).toPromise().then(function() {
-				console.log(666)
 				this.msglist = [];
 				this.getdata();
 			}.bind(this));
@@ -191,10 +190,11 @@ export class AreaComponent implements OnInit {
 				icon: 1
 			});
 		}.bind(this), function() {});
-
 	}
 
 	seach(prov, city, area) {
+		console.log(arguments)
+				console.log(this.seachcity[city])
 		var prov_a = (prov == -1 ? '' : this.seachprov[prov]);
 		var city_a = (city == -1 ? '' : this.seachcity[city]);
 		var area_a = (area == -1 ? '' : area);
@@ -218,6 +218,8 @@ export class AreaComponent implements OnInit {
 	}
 
 	getshi(effect) {
+		this.city_v = -1;
+			this.area_v = -1;
 		if(this.prov_v == -1 && effect == 1) {
 			this.city_s = [];
 			this.area_s = [];
@@ -233,7 +235,6 @@ export class AreaComponent implements OnInit {
 			this.area_c = [];
 			return;
 		}
-		console.log(effect)
 		this.http.get(`${this.service.path}/fbs/system/getshi`)
 			.subscribe(function(data) {
 				console.log(effect)
@@ -249,6 +250,7 @@ export class AreaComponent implements OnInit {
 				for(let i = 0; i < data.shi.length; i++) {
 					this.seachcity[data.shi[i]['CITYID']] = data.shi[i]['CITYNAME'];
 				}
+				
 			}.bind(this))
 	}
 	getqu() {
@@ -269,7 +271,6 @@ export class AreaComponent implements OnInit {
 			}.bind(this))
 	}
 		getqubj(e) {
-			console.log(this)
 		this.area_v = -1;
 		let info = new HttpParams().set('CITYID', this.city_com);
 		this.http.post(`${this.service.path}/fbs/system/getqu`, info, this.options)

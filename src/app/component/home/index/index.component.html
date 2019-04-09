@@ -56,12 +56,13 @@
 								</span>
 
 								<!-- 在线/离线  -->
-								<span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==1 || item.TYPE==2 || item.TYPE==3">
-                 <img src="../../../../assets/img/u228.png" alt=""><span>运行</span>
-								</span>
 								<span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==2 || item.TYPE==4">
                  <img src="../../../../assets/img/m228.png" alt=""><span>待机</span>
 								</span>
+								<span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==1 || item.TYPE==2 || item.TYPE==3">
+                 <img src="../../../../assets/img/u228.png" alt=""><span>运行</span>
+								</span>
+								
 
 								<span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==0">
                  <img src="../../../../assets/img/u361.png" alt=""><span>离线</span>

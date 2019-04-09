@@ -80,10 +80,6 @@ export class WeatherComponent implements OnInit {
 		this.service.getPages(1, this.pageArr[0], '', '', false, this.wid).then(data => {
 			if(data['code'] == 200) {
 				this.pageslist = data['result']['list'];
-				
-				console.log(this.pageslist)
-				
-				
 				this.allpages = data['result']['total'];
 				this.pagenum = data['result']['pageNum'];
 				this.pages = data['result']['pages'];
@@ -184,7 +180,6 @@ export class WeatherComponent implements OnInit {
 			swal(e)
 		})
 		this.service.getWeatherDetailData(value).then(data => {
-			
 			this.setlinedata(this.data1, data['results'][0]);
 			this.setlinedata(this.data2, data['results'][1]);
 			this.setlinedata(this.data3, data['results'][2]);
@@ -257,9 +252,19 @@ if(this.startSearch == this.endSearch) {
 	}
 
 	setlinedata(data, result) {
-
 		for(var s in result) {
 			data.push(Number(result[s]));
+			let date = new Date();
+			let day = date.getHours();
+			if(Number(s)>day){
+				break;
+			}
+		}
+			
+			/*let date = new Date();
+			let day = date.getHours();
+			data = data.slice(0,day);
+			console.log(data)*/
 			this.option = {
 				backgroundColor: 'white',
 				color: ['#02E676', '#11A2FF', '#4caf50'],
@@ -267,8 +272,8 @@ if(this.startSearch == this.endSearch) {
 					trigger: 'axis'
 				},
 				  title: {
-        text: '当日辐射'
-    },
+				        text: '当日辐射'
+				    },
 				legend: {
 					x: 'center',
 					y: 'bottom',
@@ -390,7 +395,7 @@ if(this.startSearch == this.endSearch) {
 				]
 			};
 
-		}
+		
 	}
 }
 export class detail {
