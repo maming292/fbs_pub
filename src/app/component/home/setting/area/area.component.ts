@@ -218,7 +218,7 @@ export class AreaComponent implements OnInit {
 	}
 
 	getshi(effect) {
-		this.city_v = -1;
+			this.city_v = -1;
 			this.area_v = -1;
 		if(this.prov_v == -1 && effect == 1) {
 			this.city_s = [];
