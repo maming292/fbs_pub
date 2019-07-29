@@ -4,8 +4,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class IndexService {
-path="http://192.168.1.181:8081";
-//path="http://192.168.20.95:8080";
+//path="http://192.168.1.181:8081";
+path="http://153.35.178.42:8081";
+
   headers = new HttpHeaders().set("Accept", "*/*");
   options={headers:this.headers,withCredentials:true};
   constructor(private route:Router,private http:HttpClient) { }

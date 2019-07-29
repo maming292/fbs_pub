@@ -108,22 +108,22 @@ export class StationComponent implements OnInit {
 		
 	}
 	comImg() {
-		//获取文件  
-		let file = $("#pic_com")[0]['files'][0];
-
-		//创建读取文件的对象  
-		let reader = new FileReader();
-		//创建文件读取相关的变量  
-		let imgFiles;
-		//为文件读取成功设置事件  
-		reader.onload = function(e) {
-			//			console.log('文件读取完成');
-			imgFiles = e['target']['result'];
-			this.imgbase64_com = imgFiles;
-			this.comimg = imgFiles;
-		}.bind(this);
-		//正式读取文件  
-		reader.readAsDataURL(file);
+			//获取文件  
+			let file = $("#pic_com")[0]['files'][0];
+	
+			//创建读取文件的对象  
+			let reader = new FileReader();
+			//创建文件读取相关的变量  
+			let imgFiles;
+			//为文件读取成功设置事件  
+			reader.onload = function(e) {
+				//			console.log('文件读取完成');
+				imgFiles = e['target']['result'];
+				this.imgbase64_com = imgFiles;
+				this.comimg = imgFiles;
+			}.bind(this);
+			//正式读取文件  
+			reader.readAsDataURL(file);
 	}
 	// 编辑回显
 	compile(companyname_com, standtype_com, construction_com, constructionscale_com, area_com, raroc_com, savings_com, long_com, latitude_com, imgbase64_com, id_com) {
